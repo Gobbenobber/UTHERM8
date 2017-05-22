@@ -37,13 +37,11 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c \
-../RegistrerLektor_Optaget.c \
-../RegistrerLektor_PaaKontor.c \
-../Sensor.c \
-../Timer.c \
-../ToggleSwitch.c \
-../ToggleSwitchLED.c
+../led.c \
+../Manchester.c \
+../UTHERM8.c \
+../switch.c \
+../uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -53,44 +51,36 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o \
-RegistrerLektor_Optaget.o \
-RegistrerLektor_PaaKontor.o \
-Sensor.o \
-Timer.o \
-ToggleSwitch.o \
-ToggleSwitchLED.o
+led.o \
+Manchester.o \
+UTHERM8.o \
+switch.o \
+uart.o
 
 OBJS_AS_ARGS +=  \
-main.o \
-RegistrerLektor_Optaget.o \
-RegistrerLektor_PaaKontor.o \
-Sensor.o \
-Timer.o \
-ToggleSwitch.o \
-ToggleSwitchLED.o
+led.o \
+Manchester.o \
+UTHERM8.o \
+switch.o \
+uart.o
 
 C_DEPS +=  \
-main.d \
-RegistrerLektor_Optaget.d \
-RegistrerLektor_PaaKontor.d \
-Sensor.d \
-Timer.d \
-ToggleSwitch.d \
-ToggleSwitchLED.d
+led.d \
+Manchester.d \
+UTHERM8.d \
+switch.d \
+uart.d
 
 C_DEPS_AS_ARGS +=  \
-main.d \
-RegistrerLektor_Optaget.d \
-RegistrerLektor_PaaKontor.d \
-Sensor.d \
-Timer.d \
-ToggleSwitch.d \
-ToggleSwitchLED.d
+led.d \
+Manchester.d \
+UTHERM8.d \
+switch.d \
+uart.d
 
-OUTPUT_FILE_PATH +=LEKTOR_MIKROCONTROLLER.elf
+OUTPUT_FILE_PATH +=UTHERM8.elf
 
-OUTPUT_FILE_PATH_AS_ARGS +=LEKTOR_MIKROCONTROLLER.elf
+OUTPUT_FILE_PATH_AS_ARGS +=UTHERM8.elf
 
 ADDITIONAL_DEPENDENCIES:=
 
@@ -113,14 +103,10 @@ LINKER_SCRIPT_DEP+=
 
 
 
-
-
-
-
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega328p" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
 
@@ -149,13 +135,13 @@ all: $(OUTPUT_FILE_PATH) $(ADDITIONAL_DEPENDENCIES)
 $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER_SCRIPT_DEP)
 	@echo Building target: $@
 	@echo Invoking: AVR/GNU Linker : 5.4.0
-	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="LEKTOR_MIKROCONTROLLER.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mmcu=atmega328p -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega328p"  
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE) -o$(OUTPUT_FILE_PATH_AS_ARGS) $(OBJS_AS_ARGS) $(USER_OBJS) $(LIBS) -Wl,-Map="UTHERM8.map" -Wl,--start-group -Wl,-lm  -Wl,--end-group -Wl,--gc-sections -mrelax -mmcu=atmega2560 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.2.132\gcc\dev\atmega2560"  
 	@echo Finished building target: $@
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "LEKTOR_MIKROCONTROLLER.elf" "LEKTOR_MIKROCONTROLLER.hex"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "LEKTOR_MIKROCONTROLLER.elf" "LEKTOR_MIKROCONTROLLER.eep" || exit 0
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "LEKTOR_MIKROCONTROLLER.elf" > "LEKTOR_MIKROCONTROLLER.lss"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "LEKTOR_MIKROCONTROLLER.elf" "LEKTOR_MIKROCONTROLLER.srec"
-	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "LEKTOR_MIKROCONTROLLER.elf"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O ihex -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures  "UTHERM8.elf" "UTHERM8.hex"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -j .eeprom  --set-section-flags=.eeprom=alloc,load --change-section-lma .eeprom=0  --no-change-warnings -O ihex "UTHERM8.elf" "UTHERM8.eep" || exit 0
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objdump.exe" -h -S "UTHERM8.elf" > "UTHERM8.lss"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-objcopy.exe" -O srec -R .eeprom -R .fuse -R .lock -R .signature -R .user_signatures "UTHERM8.elf" "UTHERM8.srec"
+	"C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-size.exe" "UTHERM8.elf"
 	
 	
 
@@ -167,5 +153,5 @@ $(OUTPUT_FILE_PATH): $(OBJS) $(USER_OBJS) $(OUTPUT_FILE_DEP) $(LIB_DEP) $(LINKER
 clean:
 	-$(RM) $(OBJS_AS_ARGS) $(EXECUTABLES)  
 	-$(RM) $(C_DEPS_AS_ARGS)   
-	rm -rf "LEKTOR_MIKROCONTROLLER.elf" "LEKTOR_MIKROCONTROLLER.a" "LEKTOR_MIKROCONTROLLER.hex" "LEKTOR_MIKROCONTROLLER.lss" "LEKTOR_MIKROCONTROLLER.eep" "LEKTOR_MIKROCONTROLLER.map" "LEKTOR_MIKROCONTROLLER.srec" "LEKTOR_MIKROCONTROLLER.usersignatures"
+	rm -rf "UTHERM8.elf" "UTHERM8.a" "UTHERM8.hex" "UTHERM8.lss" "UTHERM8.eep" "UTHERM8.map" "UTHERM8.srec" "UTHERM8.usersignatures"
 	
