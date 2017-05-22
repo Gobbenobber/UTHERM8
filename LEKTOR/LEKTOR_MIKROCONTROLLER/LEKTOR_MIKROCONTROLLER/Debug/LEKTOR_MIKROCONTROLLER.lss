@@ -1,5 +1,5 @@
 
-UTHERM8.elf:     file format elf32-avr
+LEKTOR_MIKROCONTROLLER.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000eff  00000000  00000000  00001ac5  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000744  00000000  00000000  000029c4  2**0
+  8 .debug_line   00000753  00000000  00000000  000029c4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000001cc  00000000  00000000  00003108  2**2
+  9 .debug_frame  000001cc  00000000  00000000  00003118  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000069e  00000000  00000000  000032d4  2**0
+ 10 .debug_str    000006d0  00000000  00000000  000032e4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000735  00000000  00000000  00003972  2**0
+ 11 .debug_loc    00000735  00000000  00000000  000039b4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f8  00000000  00000000  000040a7  2**0
+ 12 .debug_ranges 000000f8  00000000  00000000  000040e9  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -186,303 +186,303 @@ Disassembly of section .text:
  118:	a0 31       	cpi	r26, 0x10	; 16
  11a:	b2 07       	cpc	r27, r18
  11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
- 11e:	94 d0       	rcall	.+296    	; 0x248 <main>
+ 11e:	02 d0       	rcall	.+4      	; 0x124 <main>
  120:	84 c2       	rjmp	.+1288   	; 0x62a <_exit>
 
 00000122 <__bad_interrupt>:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
 
-00000124 <freePtr>:
-
-
-static unsigned char * manchesterPtr = 0;
-
-void freePtr(){
-	free(manchesterPtr);
- 124:	80 91 0a 02 	lds	r24, 0x020A	; 0x80020a <__data_end>
- 128:	90 91 0b 02 	lds	r25, 0x020B	; 0x80020b <__data_end+0x1>
- 12c:	ee c1       	rjmp	.+988    	; 0x50a <free>
- 12e:	08 95       	ret
-
-00000130 <stringToManchester>:
-}
-
-const unsigned char* stringToManchester(const unsigned char* toBeConverted)
-{
- 130:	8f 92       	push	r8
- 132:	9f 92       	push	r9
- 134:	af 92       	push	r10
- 136:	bf 92       	push	r11
- 138:	cf 92       	push	r12
- 13a:	df 92       	push	r13
- 13c:	ef 92       	push	r14
- 13e:	ff 92       	push	r15
- 140:	0f 93       	push	r16
- 142:	1f 93       	push	r17
- 144:	cf 93       	push	r28
- 146:	df 93       	push	r29
-	if (toBeConverted == (const unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
- 148:	22 e0       	ldi	r18, 0x02	; 2
- 14a:	88 30       	cpi	r24, 0x08	; 8
- 14c:	92 07       	cpc	r25, r18
- 14e:	09 f4       	brne	.+2      	; 0x152 <stringToManchester+0x22>
- 150:	6c c0       	rjmp	.+216    	; 0x22a <stringToManchester+0xfa>
- 152:	ec 01       	movw	r28, r24
-	int len = strlen((char*)toBeConverted);											// Lav size_t som kan passes til calloc.
- 154:	fc 01       	movw	r30, r24
- 156:	01 90       	ld	r0, Z+
- 158:	00 20       	and	r0, r0
- 15a:	e9 f7       	brne	.-6      	; 0x156 <stringToManchester+0x26>
- 15c:	31 97       	sbiw	r30, 0x01	; 1
- 15e:	e8 1b       	sub	r30, r24
- 160:	f9 0b       	sbc	r31, r25
- 162:	5f 01       	movw	r10, r30
-	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);						// Alloker hukommelse
- 164:	cf 01       	movw	r24, r30
- 166:	88 0f       	add	r24, r24
- 168:	99 1f       	adc	r25, r25
- 16a:	61 e0       	ldi	r22, 0x01	; 1
- 16c:	70 e0       	ldi	r23, 0x00	; 0
- 16e:	03 96       	adiw	r24, 0x03	; 3
- 170:	1a d1       	rcall	.+564    	; 0x3a6 <calloc>
- 172:	90 93 0b 02 	sts	0x020B, r25	; 0x80020b <__data_end+0x1>
- 176:	80 93 0a 02 	sts	0x020A, r24	; 0x80020a <__data_end>
-	int counter = 8;
-	int t = 0;
-
-	for (int i = 0; i < len; ++i)
- 17a:	1a 14       	cp	r1, r10
- 17c:	1b 04       	cpc	r1, r11
- 17e:	0c f0       	brlt	.+2      	; 0x182 <stringToManchester+0x52>
- 180:	56 c0       	rjmp	.+172    	; 0x22e <stringToManchester+0xfe>
- 182:	7e 01       	movw	r14, r28
- 184:	a0 e0       	ldi	r26, 0x00	; 0
- 186:	b0 e0       	ldi	r27, 0x00	; 0
- 188:	60 e0       	ldi	r22, 0x00	; 0
- 18a:	70 e0       	ldi	r23, 0x00	; 0
- 18c:	28 e0       	ldi	r18, 0x08	; 8
- 18e:	30 e0       	ldi	r19, 0x00	; 0
-			}
-			else
-			{
-				manchesterPtr[i + t] &= (255 - (0 << counter));
-				--counter;
-				manchesterPtr[i + t] |= (1 << counter);
- 190:	01 e0       	ldi	r16, 0x01	; 1
- 192:	10 e0       	ldi	r17, 0x00	; 0
-		{
-			--counter;
-
-			if (counter < 0 || counter > 7)
-			{
-				counter = 7;
- 194:	0f 2e       	mov	r0, r31
- 196:	f7 e0       	ldi	r31, 0x07	; 7
- 198:	9f 2e       	mov	r9, r31
- 19a:	f0 2d       	mov	r31, r0
- 19c:	81 2c       	mov	r8, r1
-	int counter = 8;
-	int t = 0;
-
-	for (int i = 0; i < len; ++i)
-	{
-		unsigned char ch = toBeConverted[i];
- 19e:	f7 01       	movw	r30, r14
- 1a0:	c1 91       	ld	r28, Z+
- 1a2:	7f 01       	movw	r14, r30
-
-		for (int j = 7; j >= 0; j--)
- 1a4:	47 e0       	ldi	r20, 0x07	; 7
- 1a6:	50 e0       	ldi	r21, 0x00	; 0
-			if (counter < 0 || counter > 7)
-			{
-				counter = 7;
-				++t;
-			}
-			if (ch & (1 << j))
- 1a8:	d0 e0       	ldi	r29, 0x00	; 0
-	{
-		unsigned char ch = toBeConverted[i];
-
-		for (int j = 7; j >= 0; j--)
-		{
-			--counter;
- 1aa:	21 50       	subi	r18, 0x01	; 1
- 1ac:	31 09       	sbc	r19, r1
-
-			if (counter < 0 || counter > 7)
- 1ae:	28 30       	cpi	r18, 0x08	; 8
- 1b0:	31 05       	cpc	r19, r1
- 1b2:	20 f0       	brcs	.+8      	; 0x1bc <stringToManchester+0x8c>
-			{
-				counter = 7;
-				++t;
- 1b4:	6f 5f       	subi	r22, 0xFF	; 255
- 1b6:	7f 4f       	sbci	r23, 0xFF	; 255
-		{
-			--counter;
-
-			if (counter < 0 || counter > 7)
-			{
-				counter = 7;
- 1b8:	29 2d       	mov	r18, r9
- 1ba:	38 2d       	mov	r19, r8
-				++t;
-			}
-			if (ch & (1 << j))
- 1bc:	fe 01       	movw	r30, r28
- 1be:	04 2e       	mov	r0, r20
- 1c0:	02 c0       	rjmp	.+4      	; 0x1c6 <stringToManchester+0x96>
- 1c2:	f5 95       	asr	r31
- 1c4:	e7 95       	ror	r30
- 1c6:	0a 94       	dec	r0
- 1c8:	e2 f7       	brpl	.-8      	; 0x1c2 <stringToManchester+0x92>
- 1ca:	e0 ff       	sbrs	r30, 0
- 1cc:	12 c0       	rjmp	.+36     	; 0x1f2 <stringToManchester+0xc2>
-			{
-				manchesterPtr[i + t] |= 1 << counter;
- 1ce:	fb 01       	movw	r30, r22
- 1d0:	ea 0f       	add	r30, r26
- 1d2:	fb 1f       	adc	r31, r27
- 1d4:	e8 0f       	add	r30, r24
- 1d6:	f9 1f       	adc	r31, r25
- 1d8:	68 01       	movw	r12, r16
- 1da:	02 2e       	mov	r0, r18
- 1dc:	02 c0       	rjmp	.+4      	; 0x1e2 <stringToManchester+0xb2>
- 1de:	cc 0c       	add	r12, r12
- 1e0:	dd 1c       	adc	r13, r13
- 1e2:	0a 94       	dec	r0
- 1e4:	e2 f7       	brpl	.-8      	; 0x1de <stringToManchester+0xae>
- 1e6:	d0 80       	ld	r13, Z
- 1e8:	cd 28       	or	r12, r13
- 1ea:	c0 82       	st	Z, r12
-				--counter;
- 1ec:	21 50       	subi	r18, 0x01	; 1
- 1ee:	31 09       	sbc	r19, r1
- 1f0:	11 c0       	rjmp	.+34     	; 0x214 <stringToManchester+0xe4>
-				manchesterPtr[i + t] &= (255 - (0 << counter));
-			}
-			else
-			{
-				manchesterPtr[i + t] &= (255 - (0 << counter));
- 1f2:	fb 01       	movw	r30, r22
- 1f4:	ea 0f       	add	r30, r26
- 1f6:	fb 1f       	adc	r31, r27
- 1f8:	e8 0f       	add	r30, r24
- 1fa:	f9 1f       	adc	r31, r25
-				--counter;
- 1fc:	21 50       	subi	r18, 0x01	; 1
- 1fe:	31 09       	sbc	r19, r1
-				manchesterPtr[i + t] |= (1 << counter);
- 200:	68 01       	movw	r12, r16
- 202:	02 2e       	mov	r0, r18
- 204:	02 c0       	rjmp	.+4      	; 0x20a <stringToManchester+0xda>
- 206:	cc 0c       	add	r12, r12
- 208:	dd 1c       	adc	r13, r13
- 20a:	0a 94       	dec	r0
- 20c:	e2 f7       	brpl	.-8      	; 0x206 <stringToManchester+0xd6>
- 20e:	d0 80       	ld	r13, Z
- 210:	cd 28       	or	r12, r13
- 212:	c0 82       	st	Z, r12
-
-	for (int i = 0; i < len; ++i)
-	{
-		unsigned char ch = toBeConverted[i];
-
-		for (int j = 7; j >= 0; j--)
- 214:	41 50       	subi	r20, 0x01	; 1
- 216:	51 09       	sbc	r21, r1
- 218:	40 f6       	brcc	.-112    	; 0x1aa <stringToManchester+0x7a>
-				manchesterPtr[i + t] &= (255 - (0 << counter));
-				--counter;
-				manchesterPtr[i + t] |= (1 << counter);
-			}
-		}
-		--t;															// Find næste character i array af chars som skal konverteres.
- 21a:	61 50       	subi	r22, 0x01	; 1
- 21c:	71 09       	sbc	r23, r1
-	int len = strlen((char*)toBeConverted);											// Lav size_t som kan passes til calloc.
-	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);						// Alloker hukommelse
-	int counter = 8;
-	int t = 0;
-
-	for (int i = 0; i < len; ++i)
- 21e:	11 96       	adiw	r26, 0x01	; 1
- 220:	aa 16       	cp	r10, r26
- 222:	bb 06       	cpc	r11, r27
- 224:	09 f0       	breq	.+2      	; 0x228 <stringToManchester+0xf8>
- 226:	bb cf       	rjmp	.-138    	; 0x19e <stringToManchester+0x6e>
- 228:	02 c0       	rjmp	.+4      	; 0x22e <stringToManchester+0xfe>
-	free(manchesterPtr);
-}
-
-const unsigned char* stringToManchester(const unsigned char* toBeConverted)
-{
-	if (toBeConverted == (const unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
- 22a:	80 e0       	ldi	r24, 0x00	; 0
- 22c:	90 e0       	ldi	r25, 0x00	; 0
-			}
-		}
-		--t;															// Find næste character i array af chars som skal konverteres.
-	}
-	return manchesterPtr;													// Returnér manchesterkoden
-}
- 22e:	df 91       	pop	r29
- 230:	cf 91       	pop	r28
- 232:	1f 91       	pop	r17
- 234:	0f 91       	pop	r16
- 236:	ff 90       	pop	r15
- 238:	ef 90       	pop	r14
- 23a:	df 90       	pop	r13
- 23c:	cf 90       	pop	r12
- 23e:	bf 90       	pop	r11
- 240:	af 90       	pop	r10
- 242:	9f 90       	pop	r9
- 244:	8f 90       	pop	r8
- 246:	08 95       	ret
-
-00000248 <main>:
+00000124 <main>:
 
 	/* Test af Manchester.h */
 
 int main(void) {
 
 	InitUART(9600,8,'E');
- 248:	25 e4       	ldi	r18, 0x45	; 69
- 24a:	48 e0       	ldi	r20, 0x08	; 8
- 24c:	60 e8       	ldi	r22, 0x80	; 128
- 24e:	75 e2       	ldi	r23, 0x25	; 37
- 250:	80 e0       	ldi	r24, 0x00	; 0
+ 124:	25 e4       	ldi	r18, 0x45	; 69
+ 126:	48 e0       	ldi	r20, 0x08	; 8
+ 128:	60 e8       	ldi	r22, 0x80	; 128
+ 12a:	75 e2       	ldi	r23, 0x25	; 37
+ 12c:	80 e0       	ldi	r24, 0x00	; 0
 	initSwitchPort();
- 252:	90 e0       	ldi	r25, 0x00	; 0
+ 12e:	90 e0       	ldi	r25, 0x00	; 0
 	const unsigned char* henningtilstede = "AA";
 
 	while (1)
 	{
 
 		if (switchStatus() != 0)
- 254:	25 d0       	rcall	.+74     	; 0x2a0 <InitUART>
- 256:	0d d0       	rcall	.+26     	; 0x272 <initSwitchPort>
- 258:	0e d0       	rcall	.+28     	; 0x276 <switchStatus>
+ 130:	b7 d0       	rcall	.+366    	; 0x2a0 <InitUART>
+ 132:	9f d0       	rcall	.+318    	; 0x272 <initSwitchPort>
+ 134:	a0 d0       	rcall	.+320    	; 0x276 <switchStatus>
 		{
 			if (switchOn(0))
- 25a:	88 23       	and	r24, r24
- 25c:	e9 f3       	breq	.-6      	; 0x258 <main+0x10>
+ 136:	88 23       	and	r24, r24
+ 138:	e9 f3       	breq	.-6      	; 0x134 <main+0x10>
 			{
 			/* Test af stringToManchester() */
 
 			SendString(stringToManchester(henningtilstede));
- 25e:	80 e0       	ldi	r24, 0x00	; 0
- 260:	0d d0       	rcall	.+26     	; 0x27c <switchOn>
- 262:	88 23       	and	r24, r24
- 264:	c9 f3       	breq	.-14     	; 0x258 <main+0x10>
- 266:	86 e0       	ldi	r24, 0x06	; 6
+ 13a:	80 e0       	ldi	r24, 0x00	; 0
+ 13c:	9f d0       	rcall	.+318    	; 0x27c <switchOn>
+ 13e:	88 23       	and	r24, r24
+ 140:	c9 f3       	breq	.-14     	; 0x134 <main+0x10>
+ 142:	86 e0       	ldi	r24, 0x06	; 6
 			freePtr();
- 268:	92 e0       	ldi	r25, 0x02	; 2
- 26a:	62 df       	rcall	.-316    	; 0x130 <stringToManchester>
- 26c:	6c d0       	rcall	.+216    	; 0x346 <SendString>
- 26e:	5a df       	rcall	.-332    	; 0x124 <freePtr>
- 270:	f3 cf       	rjmp	.-26     	; 0x258 <main+0x10>
+ 144:	92 e0       	ldi	r25, 0x02	; 2
+ 146:	09 d0       	rcall	.+18     	; 0x15a <stringToManchester>
+ 148:	fe d0       	rcall	.+508    	; 0x346 <SendString>
+ 14a:	01 d0       	rcall	.+2      	; 0x14e <freePtr>
+ 14c:	f3 cf       	rjmp	.-26     	; 0x134 <main+0x10>
+
+0000014e <freePtr>:
+
+
+static unsigned char * manchesterPtr = 0;
+
+void freePtr(){
+	free(manchesterPtr);
+ 14e:	80 91 0a 02 	lds	r24, 0x020A	; 0x80020a <__data_end>
+ 152:	90 91 0b 02 	lds	r25, 0x020B	; 0x80020b <__data_end+0x1>
+ 156:	d9 c1       	rjmp	.+946    	; 0x50a <free>
+ 158:	08 95       	ret
+
+0000015a <stringToManchester>:
+}
+
+const unsigned char* stringToManchester(const unsigned char* toBeConverted)
+{
+ 15a:	8f 92       	push	r8
+ 15c:	9f 92       	push	r9
+ 15e:	af 92       	push	r10
+ 160:	bf 92       	push	r11
+ 162:	cf 92       	push	r12
+ 164:	df 92       	push	r13
+ 166:	ef 92       	push	r14
+ 168:	ff 92       	push	r15
+ 16a:	0f 93       	push	r16
+ 16c:	1f 93       	push	r17
+ 16e:	cf 93       	push	r28
+ 170:	df 93       	push	r29
+	if (toBeConverted == (const unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
+ 172:	22 e0       	ldi	r18, 0x02	; 2
+ 174:	88 30       	cpi	r24, 0x08	; 8
+ 176:	92 07       	cpc	r25, r18
+ 178:	09 f4       	brne	.+2      	; 0x17c <stringToManchester+0x22>
+ 17a:	6c c0       	rjmp	.+216    	; 0x254 <stringToManchester+0xfa>
+ 17c:	ec 01       	movw	r28, r24
+	int len = strlen((char*)toBeConverted);											// Lav size_t som kan passes til calloc.
+ 17e:	fc 01       	movw	r30, r24
+ 180:	01 90       	ld	r0, Z+
+ 182:	00 20       	and	r0, r0
+ 184:	e9 f7       	brne	.-6      	; 0x180 <stringToManchester+0x26>
+ 186:	31 97       	sbiw	r30, 0x01	; 1
+ 188:	e8 1b       	sub	r30, r24
+ 18a:	f9 0b       	sbc	r31, r25
+ 18c:	5f 01       	movw	r10, r30
+	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);						// Alloker hukommelse
+ 18e:	cf 01       	movw	r24, r30
+ 190:	88 0f       	add	r24, r24
+ 192:	99 1f       	adc	r25, r25
+ 194:	61 e0       	ldi	r22, 0x01	; 1
+ 196:	70 e0       	ldi	r23, 0x00	; 0
+ 198:	03 96       	adiw	r24, 0x03	; 3
+ 19a:	05 d1       	rcall	.+522    	; 0x3a6 <calloc>
+ 19c:	90 93 0b 02 	sts	0x020B, r25	; 0x80020b <__data_end+0x1>
+ 1a0:	80 93 0a 02 	sts	0x020A, r24	; 0x80020a <__data_end>
+	int counter = 8;
+	int t = 0;
+
+	for (int i = 0; i < len; ++i)
+ 1a4:	1a 14       	cp	r1, r10
+ 1a6:	1b 04       	cpc	r1, r11
+ 1a8:	0c f0       	brlt	.+2      	; 0x1ac <stringToManchester+0x52>
+ 1aa:	56 c0       	rjmp	.+172    	; 0x258 <stringToManchester+0xfe>
+ 1ac:	7e 01       	movw	r14, r28
+ 1ae:	a0 e0       	ldi	r26, 0x00	; 0
+ 1b0:	b0 e0       	ldi	r27, 0x00	; 0
+ 1b2:	60 e0       	ldi	r22, 0x00	; 0
+ 1b4:	70 e0       	ldi	r23, 0x00	; 0
+ 1b6:	28 e0       	ldi	r18, 0x08	; 8
+ 1b8:	30 e0       	ldi	r19, 0x00	; 0
+			}
+			else
+			{
+				manchesterPtr[i + t] &= (255 - (0 << counter));
+				--counter;
+				manchesterPtr[i + t] |= (1 << counter);
+ 1ba:	01 e0       	ldi	r16, 0x01	; 1
+ 1bc:	10 e0       	ldi	r17, 0x00	; 0
+		{
+			--counter;
+
+			if (counter < 0 || counter > 7)
+			{
+				counter = 7;
+ 1be:	0f 2e       	mov	r0, r31
+ 1c0:	f7 e0       	ldi	r31, 0x07	; 7
+ 1c2:	9f 2e       	mov	r9, r31
+ 1c4:	f0 2d       	mov	r31, r0
+ 1c6:	81 2c       	mov	r8, r1
+	int counter = 8;
+	int t = 0;
+
+	for (int i = 0; i < len; ++i)
+	{
+		unsigned char ch = toBeConverted[i];
+ 1c8:	f7 01       	movw	r30, r14
+ 1ca:	c1 91       	ld	r28, Z+
+ 1cc:	7f 01       	movw	r14, r30
+
+		for (int j = 7; j >= 0; j--)
+ 1ce:	47 e0       	ldi	r20, 0x07	; 7
+ 1d0:	50 e0       	ldi	r21, 0x00	; 0
+			if (counter < 0 || counter > 7)
+			{
+				counter = 7;
+				++t;
+			}
+			if (ch & (1 << j))
+ 1d2:	d0 e0       	ldi	r29, 0x00	; 0
+	{
+		unsigned char ch = toBeConverted[i];
+
+		for (int j = 7; j >= 0; j--)
+		{
+			--counter;
+ 1d4:	21 50       	subi	r18, 0x01	; 1
+ 1d6:	31 09       	sbc	r19, r1
+
+			if (counter < 0 || counter > 7)
+ 1d8:	28 30       	cpi	r18, 0x08	; 8
+ 1da:	31 05       	cpc	r19, r1
+ 1dc:	20 f0       	brcs	.+8      	; 0x1e6 <stringToManchester+0x8c>
+			{
+				counter = 7;
+				++t;
+ 1de:	6f 5f       	subi	r22, 0xFF	; 255
+ 1e0:	7f 4f       	sbci	r23, 0xFF	; 255
+		{
+			--counter;
+
+			if (counter < 0 || counter > 7)
+			{
+				counter = 7;
+ 1e2:	29 2d       	mov	r18, r9
+ 1e4:	38 2d       	mov	r19, r8
+				++t;
+			}
+			if (ch & (1 << j))
+ 1e6:	fe 01       	movw	r30, r28
+ 1e8:	04 2e       	mov	r0, r20
+ 1ea:	02 c0       	rjmp	.+4      	; 0x1f0 <stringToManchester+0x96>
+ 1ec:	f5 95       	asr	r31
+ 1ee:	e7 95       	ror	r30
+ 1f0:	0a 94       	dec	r0
+ 1f2:	e2 f7       	brpl	.-8      	; 0x1ec <stringToManchester+0x92>
+ 1f4:	e0 ff       	sbrs	r30, 0
+ 1f6:	12 c0       	rjmp	.+36     	; 0x21c <stringToManchester+0xc2>
+			{
+				manchesterPtr[i + t] |= 1 << counter;
+ 1f8:	fb 01       	movw	r30, r22
+ 1fa:	ea 0f       	add	r30, r26
+ 1fc:	fb 1f       	adc	r31, r27
+ 1fe:	e8 0f       	add	r30, r24
+ 200:	f9 1f       	adc	r31, r25
+ 202:	68 01       	movw	r12, r16
+ 204:	02 2e       	mov	r0, r18
+ 206:	02 c0       	rjmp	.+4      	; 0x20c <stringToManchester+0xb2>
+ 208:	cc 0c       	add	r12, r12
+ 20a:	dd 1c       	adc	r13, r13
+ 20c:	0a 94       	dec	r0
+ 20e:	e2 f7       	brpl	.-8      	; 0x208 <stringToManchester+0xae>
+ 210:	d0 80       	ld	r13, Z
+ 212:	cd 28       	or	r12, r13
+ 214:	c0 82       	st	Z, r12
+				--counter;
+ 216:	21 50       	subi	r18, 0x01	; 1
+ 218:	31 09       	sbc	r19, r1
+ 21a:	11 c0       	rjmp	.+34     	; 0x23e <stringToManchester+0xe4>
+				manchesterPtr[i + t] &= (255 - (0 << counter));
+			}
+			else
+			{
+				manchesterPtr[i + t] &= (255 - (0 << counter));
+ 21c:	fb 01       	movw	r30, r22
+ 21e:	ea 0f       	add	r30, r26
+ 220:	fb 1f       	adc	r31, r27
+ 222:	e8 0f       	add	r30, r24
+ 224:	f9 1f       	adc	r31, r25
+				--counter;
+ 226:	21 50       	subi	r18, 0x01	; 1
+ 228:	31 09       	sbc	r19, r1
+				manchesterPtr[i + t] |= (1 << counter);
+ 22a:	68 01       	movw	r12, r16
+ 22c:	02 2e       	mov	r0, r18
+ 22e:	02 c0       	rjmp	.+4      	; 0x234 <stringToManchester+0xda>
+ 230:	cc 0c       	add	r12, r12
+ 232:	dd 1c       	adc	r13, r13
+ 234:	0a 94       	dec	r0
+ 236:	e2 f7       	brpl	.-8      	; 0x230 <stringToManchester+0xd6>
+ 238:	d0 80       	ld	r13, Z
+ 23a:	cd 28       	or	r12, r13
+ 23c:	c0 82       	st	Z, r12
+
+	for (int i = 0; i < len; ++i)
+	{
+		unsigned char ch = toBeConverted[i];
+
+		for (int j = 7; j >= 0; j--)
+ 23e:	41 50       	subi	r20, 0x01	; 1
+ 240:	51 09       	sbc	r21, r1
+ 242:	40 f6       	brcc	.-112    	; 0x1d4 <stringToManchester+0x7a>
+				manchesterPtr[i + t] &= (255 - (0 << counter));
+				--counter;
+				manchesterPtr[i + t] |= (1 << counter);
+			}
+		}
+		--t;															// Find næste character i array af chars som skal konverteres.
+ 244:	61 50       	subi	r22, 0x01	; 1
+ 246:	71 09       	sbc	r23, r1
+	int len = strlen((char*)toBeConverted);											// Lav size_t som kan passes til calloc.
+	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);						// Alloker hukommelse
+	int counter = 8;
+	int t = 0;
+
+	for (int i = 0; i < len; ++i)
+ 248:	11 96       	adiw	r26, 0x01	; 1
+ 24a:	aa 16       	cp	r10, r26
+ 24c:	bb 06       	cpc	r11, r27
+ 24e:	09 f0       	breq	.+2      	; 0x252 <stringToManchester+0xf8>
+ 250:	bb cf       	rjmp	.-138    	; 0x1c8 <stringToManchester+0x6e>
+ 252:	02 c0       	rjmp	.+4      	; 0x258 <stringToManchester+0xfe>
+	free(manchesterPtr);
+}
+
+const unsigned char* stringToManchester(const unsigned char* toBeConverted)
+{
+	if (toBeConverted == (const unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
+ 254:	80 e0       	ldi	r24, 0x00	; 0
+ 256:	90 e0       	ldi	r25, 0x00	; 0
+			}
+		}
+		--t;															// Find næste character i array af chars som skal konverteres.
+	}
+	return manchesterPtr;													// Returnér manchesterkoden
+}
+ 258:	df 91       	pop	r29
+ 25a:	cf 91       	pop	r28
+ 25c:	1f 91       	pop	r17
+ 25e:	0f 91       	pop	r16
+ 260:	ff 90       	pop	r15
+ 262:	ef 90       	pop	r14
+ 264:	df 90       	pop	r13
+ 266:	cf 90       	pop	r12
+ 268:	bf 90       	pop	r11
+ 26a:	af 90       	pop	r10
+ 26c:	9f 90       	pop	r9
+ 26e:	8f 90       	pop	r8
+ 270:	08 95       	ret
 
 00000272 <initSwitchPort>:
 

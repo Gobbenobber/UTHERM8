@@ -12,9 +12,9 @@
     <OutputFileName>$(MSBuildProjectName)</OutputFileName>
     <OutputFileExtension>.elf</OutputFileExtension>
     <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
-    <AssemblyName>UTHERM8</AssemblyName>
-    <Name>UTHERM8</Name>
-    <RootNamespace>UTHERM8</RootNamespace>
+    <AssemblyName>LEKTOR_MIKROCONTROLLER</AssemblyName>
+    <Name>LEKTOR_MIKROCONTROLLER</Name>
+    <RootNamespace>LEKTOR_MIKROCONTROLLER</RootNamespace>
     <ToolchainFlavour>Native</ToolchainFlavour>
     <KeepTimersRunning>true</KeepTimersRunning>
     <OverrideVtor>false</OverrideVtor>
@@ -120,10 +120,7 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="led.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="led.h">
+    <Compile Include="LEKTOR_MIKROCONTROLLER.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Manchester.c">
@@ -132,13 +129,46 @@
     <Compile Include="Manchester.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="UTHERM8.c">
+    <Compile Include="RegistrerLektor_Optaget.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RegistrerLektor_Optaget.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RegistrerLektor_PaaKontor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="RegistrerLektor_PaaKontor.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensor.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Sensor.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="switch.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="switch.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Timer.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Timer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ToggleSwitch.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ToggleSwitch.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ToggleSwitchLED.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ToggleSwitchLED.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="uart.c">
