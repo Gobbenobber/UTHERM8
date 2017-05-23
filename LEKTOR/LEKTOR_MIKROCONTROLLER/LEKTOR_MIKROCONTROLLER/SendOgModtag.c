@@ -29,18 +29,17 @@ void sendCharSW(char Tegn)
 char readCharSW()
 {
 	unsigned char i;
-	unsigned char x = PINNR_2;
-	unsigned char out = '0';
+	unsigned char out = '\0';
 
-	_delay_us(NO_us);
+	_delay_us(NO_us/2);
 	//STARTBIT
-	if (PINNR_2 != 0);
-	{
+	//if (PINNR_2 == 0);
+	//{
+		_delay_us(NO_us);
 		//Data
-		for (i = 8; i > 0; --i)
+		for (i = 0; i < 8; i++)
 		{
-			x = PINNR_2;
-			if (PINNR_2 != 0)
+			if ((PINA & 0b00000001) == 1)
 			{
 				out |= 1 << i;
 			}
@@ -50,15 +49,16 @@ char readCharSW()
 			}
 			_delay_us(NO_us);
 		}
-	}
-	if (PINNR_2 == 0)
-	{
+	//}
+	//if (PINNR_2 == 0)
+	//{
 		_delay_us(NO_us);
+		//out = 'a';
 		return out;
-	}
-	else
-	{
-		_delay_us(NO_us);
-		return '0';
-	}
+	//}
+	//else
+	//{
+		//_delay_us(NO_us);
+		//return '0';
+	//}
 }

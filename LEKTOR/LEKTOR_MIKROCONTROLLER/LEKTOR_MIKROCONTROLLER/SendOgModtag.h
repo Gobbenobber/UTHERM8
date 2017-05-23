@@ -4,13 +4,12 @@
 #define F_CPU 16000000
 #include <util/delay.h>
 
-
-//Constants
-#define NO_us 80000/BAUD
+//Local Constants
+#define NO_us 70000/BAUD
 #define DDR   DDRB
 #define PORT  PORTB
 #define PINNR 0
-#define PINNR_2 8
+#define PINNR_2 0
 #define BAUD  9600
 
 // 8 data bit, no parity, 1 stop bit
