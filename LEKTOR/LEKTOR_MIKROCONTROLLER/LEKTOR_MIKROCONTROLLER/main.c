@@ -3,6 +3,10 @@
 #define F_CPU 16000000
 #include <util/delay.h>
 
+//Drivers
+#include "SendOgModtag.h"
+
+
 // Prototyper
 void initExtInts(int interruptnr);
 
@@ -56,63 +60,6 @@ void initExtInt(int interruptnr)
 	
 }
 */
-// 8 data bit, no parity, 1 stop bit
-void SendCharSW(char Tegn)
-{
-	// Main-loop: Toggle LED7 hvert sekund
-	unsigned char i;
-	unsigned char x = Tegn;
-	// Start bit
-	PORT &= ~(1<<PINNR);
-	_delay_us(NO_us);
-	// 8 data bits (LSB first)
-	for (i = 0; i<8; i++)
-	{
-		if(x & 0b00000001)
-		PORT |= (1<<PINNR);
-		else
-		PORT &= ~(1<<PINNR);
-		_delay_us(NO_us);
-		x = x>>1;
-	}
-	PORT |= (1<<PINNR);
-	_delay_us(NO_us);
-	//Test ###DUNNO what the stopbit is###
-	PORT &= ~(1<<PINNR);
-}
-// 8 data bit, no parity, 1 stop bit
-char ReadCharSW()
-{
-	unsigned char i;
-	unsigned char x = PINNR_2;
-	unsigned char out = '0';
-	_delay_us(NO_us);
-	
-	//STARTBIT
-	if (PINNR_2 != 0);
-	{
-		//Data
-		for (i = 8; i > 0; --i)
-		{
-			x = PINNR_2;
-			if (PINNR_2 != 0)
-			{
-				out |= 1 << i;
-			}
-			else
-			{
-				out &= ~(1 << i);
-			}
-			_delay_us(NO_us);
-		}
-	}
-	if (PINNR_2 == 0)
-	{
-		_delay_us(NO_us);
-		printf("ERROR! STOPBIT IS FUKT");
-	}
-	_delay_us(NO_us);
-}
 
 int main(void)
 {
@@ -134,7 +81,7 @@ int main(void)
 	DDRC |= 1 << 0;
 
 	//Initializing
-	unsigned char* streng = "000";
+	//unsigned char* streng = "000";
 	UCSR0B = 0;
 	DDR |= (1<<PINNR);
 	DDR |= (1 << PINNR_2);
@@ -152,15 +99,17 @@ int main(void)
 
 		for (int i = 0; i < 3; i++)
 		{
-			streng[i] = karakter;
+			//streng[i] = karakter;
 		}
 
 		//testOutput
-		printf("%s\n", streng);
-		if (streng == "aaa")
-		{
-			PORTB = 255;
-		}
+		//if (streng == "aaa")
+		//{
+			//PORTB = 255;
+		//}
+
+
+
 	}
 }
 
