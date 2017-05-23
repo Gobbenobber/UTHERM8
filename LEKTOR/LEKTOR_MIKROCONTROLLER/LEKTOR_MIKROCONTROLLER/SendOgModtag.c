@@ -2,7 +2,7 @@
 #include "SendOgModtag.h"
 
 // 8 data bit, no parity, 1 stop bit
-void SendCharSW(char Tegn)
+void sendCharSW(char Tegn)
 {
 	// Main-loop: Toggle LED7 hvert sekund
 	unsigned char i;
@@ -26,13 +26,13 @@ void SendCharSW(char Tegn)
 	PORT &= ~(1<<PINNR);
 }
 // 8 data bit, no parity, 1 stop bit
-char ReadCharSW()
+char readCharSW()
 {
 	unsigned char i;
 	unsigned char x = PINNR_2;
 	unsigned char out = '0';
+
 	_delay_us(NO_us);
-	
 	//STARTBIT
 	if (PINNR_2 != 0);
 	{
@@ -54,6 +54,11 @@ char ReadCharSW()
 	if (PINNR_2 == 0)
 	{
 		_delay_us(NO_us);
+		return out;
 	}
-	_delay_us(NO_us);
+	else
+	{
+		_delay_us(NO_us);
+		return '0';
+	}
 }

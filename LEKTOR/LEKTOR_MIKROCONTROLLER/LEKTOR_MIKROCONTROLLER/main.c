@@ -15,23 +15,27 @@ void initExtInts(int interruptnr);
 #define PINNR 0
 #define PINNR_2 8
 #define BAUD  9600
-
 #define NO_us 80000/BAUD
 
 //------------------------------------//
 //				 Variables			  //
 //------------------------------------//
 volatile static int outputShizzle = 1;
-volatile static unsigned char karakter = '0';
+volatile static char karakter = '0';
 
-
+/*
 //------------------------------------//
 //				 Functions			  //
 //------------------------------------//
-//Enable interrupt (disabled)
+*/
 
 int main(void)
 {
+	//------------------------------------//
+	//			Variables(in scope)		  //
+	//------------------------------------//
+	unsigned char streng[3] = 0;
+	
 	//------------------------------------//
 	//			 interrupt test			  //
 	//------------------------------------//
@@ -68,16 +72,20 @@ int main(void)
 
 		for (int i = 0; i < 3; i++)
 		{
-			//streng[i] = karakter;
+			//Receive
+			streng[i] = karakter;
+
+			if (streng[0] = "000")
+			{
+				i = 0;
+			}
 		}
 
 		//testOutput
-		//if (streng == "aaa")
-		//{
-			//PORTB = 255;
-		//}
-
-
+		if (streng == "aaa")
+		{
+			PORTB = 255;
+		}
 
 	}
 }
@@ -86,8 +94,8 @@ int main(void)
 ISR (INT0_vect)
 {
 	// Test Write
-	SendCharSW('a');
+	sendCharSW('a');
 
 	// Test Read
-	//karakter = ReadCharSW();
+	karakter = readCharSW();
 }

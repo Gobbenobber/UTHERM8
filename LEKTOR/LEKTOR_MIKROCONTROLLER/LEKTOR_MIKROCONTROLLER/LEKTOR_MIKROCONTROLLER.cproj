@@ -157,12 +157,6 @@
     <Compile Include="Sensor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="switch.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="switch.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Timer.c">
       <SubType>compile</SubType>
     </Compile>
