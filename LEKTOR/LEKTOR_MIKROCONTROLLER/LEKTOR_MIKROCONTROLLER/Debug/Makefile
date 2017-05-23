@@ -46,7 +46,6 @@ C_SRCS +=  \
 ../Sensor.c \
 ../switch.c \
 ../Timer.c \
-../Timer1.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
 ../uart.c
@@ -68,7 +67,6 @@ SendOgModtag.o \
 Sensor.o \
 switch.o \
 Timer.o \
-Timer1.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 uart.o
@@ -83,7 +81,6 @@ SendOgModtag.o \
 Sensor.o \
 switch.o \
 Timer.o \
-Timer1.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 uart.o
@@ -98,7 +95,6 @@ SendOgModtag.d \
 Sensor.d \
 switch.d \
 Timer.d \
-Timer1.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 uart.d
@@ -113,7 +109,6 @@ SendOgModtag.d \
 Sensor.d \
 switch.d \
 Timer.d \
-Timer1.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 uart.d

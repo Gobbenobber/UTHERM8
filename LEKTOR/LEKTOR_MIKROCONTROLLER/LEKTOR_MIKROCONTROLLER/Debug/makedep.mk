@@ -20,8 +20,6 @@ switch.c
 
 Timer.c
 
-Timer1.c
-
 ToggleSwitch.c
 
 ToggleSwitchLED.c

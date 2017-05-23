@@ -15,9 +15,5 @@ volatile char lektorOptaget = '0';
 //Functions
 void skiftLEDTilstand_Optaget(char);
 void lektorStatus_Optaget(char*);
-void setTimer();
-void resetTimer();
-void timerStatus();
-void initTimer0();
 
 #endif /* REGISTRERLEKTOR_OPTAGET_H_ */
