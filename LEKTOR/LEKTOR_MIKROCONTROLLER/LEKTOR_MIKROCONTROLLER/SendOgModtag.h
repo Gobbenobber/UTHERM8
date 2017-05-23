@@ -14,7 +14,7 @@
 #define BAUD  9600
 
 // 8 data bit, no parity, 1 stop bit
-void SendCharSW(char Tegn);
+void sendCharSW(char Tegn);
 
 // 8 data bit, no parity, 1 stop bit
-char ReadCharSW();
+char readCharSW();
