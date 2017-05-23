@@ -12,13 +12,13 @@ RegistrerLektor_Optaget.c
 
 RegistrerLektor_PaaKontor.c
 
+SendOgModtag.c
+
 Sensor.c
 
 switch.c
 
 Timer.c
-
-Timer1.c
 
 ToggleSwitch.c
 

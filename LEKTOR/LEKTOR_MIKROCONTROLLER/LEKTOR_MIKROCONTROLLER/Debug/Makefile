@@ -42,10 +42,10 @@ C_SRCS +=  \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
 ../RegistrerLektor_PaaKontor.c \
+../SendOgModtag.c \
 ../Sensor.c \
 ../switch.c \
 ../Timer.c \
-../Timer1.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
 ../uart.c
@@ -63,10 +63,10 @@ main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
+SendOgModtag.o \
 Sensor.o \
 switch.o \
 Timer.o \
-Timer1.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 uart.o
@@ -77,10 +77,10 @@ main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
+SendOgModtag.o \
 Sensor.o \
 switch.o \
 Timer.o \
-Timer1.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 uart.o
@@ -91,10 +91,10 @@ main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
+SendOgModtag.d \
 Sensor.d \
 switch.d \
 Timer.d \
-Timer1.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 uart.d
@@ -105,10 +105,10 @@ main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
+SendOgModtag.d \
 Sensor.d \
 switch.d \
 Timer.d \
-Timer1.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 uart.d

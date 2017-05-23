@@ -144,6 +144,12 @@
     <Compile Include="RegistrerLektor_PaaKontor.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="SendOgModtag.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SendOgModtag.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Sensor.c">
       <SubType>compile</SubType>
     </Compile>
@@ -160,12 +166,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Timer.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer1.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="timer1.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ToggleSwitch.c">
