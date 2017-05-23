@@ -152,8 +152,6 @@ LINKER_SCRIPT_DEP+=
 
 
 
-
-
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0

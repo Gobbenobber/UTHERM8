@@ -6,8 +6,6 @@
 
 #include "avr/interrupt.h"
 #include "avr/io.h"
-#include "RegistrerLektor_Optaget.h"
-#include "Timer.h"
 
 #ifndef TIMER_H_
 #define TIMER_H_
@@ -17,7 +15,7 @@ volatile int ctr_ = 0;
 volatile int timerStatus_ = 0;
 
 //Functions
-int returnerTimerStatus(char);
+int returnerTimerStatus();
 void setTimer();
 void resetTimer();
 void timerStatus();
