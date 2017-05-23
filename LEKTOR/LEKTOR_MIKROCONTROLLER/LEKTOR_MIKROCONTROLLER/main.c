@@ -34,7 +34,7 @@ int main(void)
 	//------------------------------------//
 	//			Variables(in scope)		  //
 	//------------------------------------//
-	unsigned char streng[3] = 0;
+	unsigned char streng[3];
 	
 	//------------------------------------//
 	//			 interrupt test			  //
