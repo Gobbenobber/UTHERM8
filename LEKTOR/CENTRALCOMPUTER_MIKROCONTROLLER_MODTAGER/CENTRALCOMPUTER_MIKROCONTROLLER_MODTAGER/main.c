@@ -31,7 +31,7 @@ int main(void)
 	//			Variables(in scope)		  //
 	//------------------------------------//
 
-	//unsigned char streng[3] = "";
+	unsigned char streng[3] = "";
 	
 	//------------------------------------//
 	//			 interrupt test			  //
@@ -61,20 +61,25 @@ int main(void)
 
 	while(1)
 	{
-		//switch (index)
+		//if (karakter == 'a' || streng[0] == 'a')
 		//{
-			//case 1:
-			//streng[0] = karakter;
-			//break;
-			//case 2:
-			//streng[1] = karakter;
-			//break;
-			//case 3:
-			//streng[2] = karakter;
-			//index = 0;
-			//break;
+			//switch (index)
+			//{
+				//case 1:
+				//streng[0] = karakter;
+				//break;
+				//case 2:
+				//streng[1] = karakter;
+				//break;
+				//case 3:
+				//streng[2] = karakter;
+				//break;
+				//default:
+				//break;
+			//}
 		//}
-		//if ((streng[0] == 'a') && (streng[1] == 'b') && (streng[2] == 'c'))
+		
+		//if ((streng[0] == 'a') && (streng[1] == 'a') && (streng[2] == 'a'))
 		//{
 			//PORTC |= 1 << 5;
 		//}
@@ -98,10 +103,7 @@ int main(void)
 // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
 ISR (INT0_vect)
 {
-	// Test Write
-	//sendCharSW('a');
-
-	// Test Read
+	//Read
 	karakter = readCharSW();
-	//index++;
+	index++;
 }

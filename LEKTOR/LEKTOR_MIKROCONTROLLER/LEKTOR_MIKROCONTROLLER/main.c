@@ -39,6 +39,7 @@ int main(void)
 	EIMSK |= (1 << INT0);
 	//------------------------------------//
 
+	//Making the zero-cross
 	DDRC |= (1 << 0);
 
 	//Initializing
@@ -55,30 +56,28 @@ int main(void)
 		_delay_ms(1);
 		PORTC &= ~(1 << 0);
 		_delay_ms(1);
-		
-
 	}
 }
 
 // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
 ISR (INT0_vect)
 {
-	// Test Write
-	//if (index == 0)
-	//{
-		//sendCharSW('a');
-		//index++;
-	//}
-	//if (index == 1)
-	//{
-		//sendCharSW('b');
-		//index++;
-	//}
-	//if (index == 2)
-	//{
-		//sendCharSW('c');
-		//index = 0;
-	//}
-	sendCharSW('a');
+	 //Write
+	 if (index == 0)
+	 {
+		 sendCharSW('a');
+		 index++;
+	 }
+	 if (index == 1)
+	 {
+		 sendCharSW('b');
+		 index++;
+	 }
+	 if (index == 2)
+	 {
+		 sendCharSW('b');
+		 index = 0;
+	 }
+	//sendCharSW('a');
 	
 }
