@@ -5,11 +5,11 @@
 #include <util/delay.h>
 
 //Local Constants
-#define NO_us 80000/BAUD
+#define NO_us 70000/BAUD
 #define DDR   DDRB
 #define PORT  PORTB
 #define PINNR 0
-#define PINNR_2 1
+#define PINNR_2 0
 #define BAUD  9600
 
 // 8 data bit, no parity, 1 stop bit

@@ -7,13 +7,13 @@
 #include "SendOgModtag.h"
 
 #define PINNR 0
-#define PINNR_2 1
+#define PINNR_2 0
 
 //------------------------------------//
 //				 Variables			  //
 //------------------------------------//
 volatile static int outputShizzle = 1;
-volatile static char karakter = '0';
+volatile unsigned char karakter = '\0';
 
 /*
 //------------------------------------//
@@ -26,14 +26,14 @@ int main(void)
 	//------------------------------------//
 	//			Variables(in scope)		  //
 	//------------------------------------//
-	unsigned char streng[3] = "000";
+	//unsigned char streng[3] = "000";
 	
 	//------------------------------------//
 	//			 interrupt test			  //
 	//------------------------------------//
-	DDRD &= ~(1 << DDD2);
+	DDRD &= ~(1 << DDD0);
 	// PD2 (PCINT0 pin) is now an input
-	PORTD |= (1 << PORTD2);
+	PORTD |= (1 << PORTD0);
 	// PD2 is now an input with pull-up enabled
 	//EICRA |= (1 << ISC11) | (1 << ISC10);   // set INT0 to trigger on ANY logic change
 	EICRA = 0b00000011;
@@ -49,7 +49,7 @@ int main(void)
 	//Initializing
 	UCSR0B = 0;
 	DDRB |= (1 << PINNR);			//OUTPUT 
-	DDRB |= (1 << PINNR_2);		//INPUT
+	DDRA &= ~(1 << PINNR_2);			//INPUT
 
 	// Global interrupt enable
 	sei();
@@ -57,10 +57,10 @@ int main(void)
 	while(1)
 	{
 		//ZEROCROSS TEST
-		PORTC |= 1 << 0;
-		_delay_ms(1);
-		PORTC &= ~(1 << 0);
-		_delay_ms(1);
+		//PORTC |= 1 << 0;
+		//_delay_ms(1);
+		//PORTC &= ~(1 << 0);
+		//_delay_ms(1);
 		
 		//test LED
 		//PORTC |= 1 << 5; Redundant
@@ -68,13 +68,17 @@ int main(void)
 		for (int i = 0; i < 3; i++)
 		{
 			//Receive
-			streng[i] = karakter;
+			//streng[i] = karakter;
 		}
 
 		//testOutput
-		if ((streng[0] == 'a') && (streng[1] == 'a') && (streng[2] == 'a'))
+		if (karakter == 'a')
 		{
-			PORTB = 255;
+			PORTC |= 1 << 5;
+		}
+		else
+		{
+			PORTC &= ~(1 << 5);
 		}
 
 	}
