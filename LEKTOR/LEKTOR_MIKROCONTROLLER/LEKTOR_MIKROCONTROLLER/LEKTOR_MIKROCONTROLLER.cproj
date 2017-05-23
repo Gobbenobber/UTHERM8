@@ -144,6 +144,12 @@
     <Compile Include="RegistrerLektor_PaaKontor.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="SendOgModtag.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SendOgModtag.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Sensor.c">
       <SubType>compile</SubType>
     </Compile>

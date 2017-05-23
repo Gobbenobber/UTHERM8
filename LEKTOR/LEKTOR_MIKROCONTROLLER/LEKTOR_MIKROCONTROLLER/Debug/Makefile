@@ -42,6 +42,7 @@ C_SRCS +=  \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
 ../RegistrerLektor_PaaKontor.c \
+../SendOgModtag.c \
 ../Sensor.c \
 ../switch.c \
 ../Timer.c \
@@ -63,6 +64,7 @@ main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
+SendOgModtag.o \
 Sensor.o \
 switch.o \
 Timer.o \
@@ -77,6 +79,7 @@ main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
+SendOgModtag.o \
 Sensor.o \
 switch.o \
 Timer.o \
@@ -91,6 +94,7 @@ main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
+SendOgModtag.d \
 Sensor.d \
 switch.d \
 Timer.d \
@@ -105,6 +109,7 @@ main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
+SendOgModtag.d \
 Sensor.d \
 switch.d \
 Timer.d \
@@ -127,6 +132,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
