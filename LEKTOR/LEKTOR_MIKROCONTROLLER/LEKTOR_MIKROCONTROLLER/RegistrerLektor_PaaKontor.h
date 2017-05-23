@@ -5,11 +5,10 @@
 ///		status til paa Kontor								///
 ///////////////////////////////////////////////////////////////
 
-#ifndef REGISTRERLEKTOR_PAAKONTOR_H_
-#define REGISTRERLEKTOR_PAAKONTOR_H_
+#pragma once
+#include "ToggleSwitch.h"
+#include "Sensor.h"
 
 //Functions
 void skiftLEDTilstand_PaaKontor(char);
 void lektorStatus_PaaKontor(char*);
-
-#endif /* REGISTRERLEKTOR_PAAKONTOR_H_ */

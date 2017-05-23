@@ -75,30 +75,36 @@
 		if (bool_ == '0')
 		{
 			PORTB &= ~(1 << port__);
+			LED_ON = bool_;
 		}
 		else
 		{
 			PORTB |= (1 << port__);
+			LED_ON = bool_;
 		}
 		break;
 		case 'C':
 		if (bool_ == '0')
 		{
 			PORTC &= ~(1 << port__);
+			LED_ON = bool_;
 		}
 		else
 		{
 			PORTC |= (1 << port__);
+			LED_ON = bool_;
 		}
 		break;
 		case 'D':
 		if (bool_ == '0')
 		{
 			PORTD &= ~(1 << port__);
+			LED_ON = bool_;
 		}
 		else
 		{
 			PORTD |= (1 << port__);
+			LED_ON = bool_;
 		}
 		break;
 		//case 'E':
