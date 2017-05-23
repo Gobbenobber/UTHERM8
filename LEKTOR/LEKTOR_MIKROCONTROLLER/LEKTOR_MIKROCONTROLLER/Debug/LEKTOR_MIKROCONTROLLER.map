@@ -5,7 +5,7 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
                               C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o (exit)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                              ToggleSwitch.o (__tablejump2__)
+                              Sensor.o (__tablejump2__)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
                               main.o (__do_copy_data)
 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
@@ -27,8 +27,8 @@ Allocating common symbols
 Common symbol       size              file
 
 __brkval            0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-register__          0x1               ToggleSwitch.o
-port__              0x2               ToggleSwitch.o
+register__          0x1               Sensor.o
+port__              0x2               Sensor.o
 LED_ON              0x1               ToggleSwitchLED.o
 __flp               0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
 
@@ -81,9 +81,27 @@ Discarded input sections
  .text          0x00000000        0x0 Sensor.o
  .data          0x00000000        0x0 Sensor.o
  .bss           0x00000000        0x0 Sensor.o
- .debug_line    0x00000000        0x0 Sensor.o
- .debug_str     0x00000000      0x125 Sensor.o
+ .text.initSensor
+                0x00000000      0x166 Sensor.o
+ .progmem.gcc_sw_table.initSensor
+                0x00000000       0x18 Sensor.o
+ .text.kontorStatus
+                0x00000000      0x226 Sensor.o
+ .progmem.gcc_sw_table.kontorStatus
+                0x00000000       0x18 Sensor.o
+ .data.lektorDetected_
+                0x00000000        0x1 Sensor.o
+ .debug_info    0x00000000      0x10b Sensor.o
+ .debug_abbrev  0x00000000       0xa1 Sensor.o
+ .debug_loc     0x00000000       0x3a Sensor.o
+ .debug_aranges
+                0x00000000       0x28 Sensor.o
+ .debug_ranges  0x00000000       0x18 Sensor.o
+ .debug_line    0x00000000      0x2b7 Sensor.o
+ .debug_str     0x00000000      0x1ec Sensor.o
  .comment       0x00000000       0x31 Sensor.o
+ .debug_frame   0x00000000       0x34 Sensor.o
+ COMMON         0x00000000        0x3 Sensor.o
  .text          0x00000000        0x0 Timer.o
  .data          0x00000000        0x0 Timer.o
  .bss           0x00000000        0x0 Timer.o
@@ -116,7 +134,6 @@ Discarded input sections
  .debug_str     0x00000000      0x1f8 ToggleSwitch.o
  .comment       0x00000000       0x31 ToggleSwitch.o
  .debug_frame   0x00000000       0x34 ToggleSwitch.o
- COMMON         0x00000000        0x3 ToggleSwitch.o
  .text          0x00000000        0x0 ToggleSwitchLED.o
  .data          0x00000000        0x0 ToggleSwitchLED.o
  .bss           0x00000000        0x0 ToggleSwitchLED.o

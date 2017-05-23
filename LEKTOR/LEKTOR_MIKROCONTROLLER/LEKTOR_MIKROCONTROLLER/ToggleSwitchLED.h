@@ -14,6 +14,6 @@ char register__;
 short int port__;
 
 //Functions
-void initToggleSwitchLED(char register_, int port);
+void initToggleSwitchLED(char register_, short int port);
 void setToggleSwitchLED(char bool_);
 

@@ -4,7 +4,7 @@
 
  #include "ToggleSwitch.h"
 
-void initToggleSwitch(char register_, int port)
+void initToggleSwitch(char register_, short int port)
 
 {
  	if (register_ > 'L' || register_ < 'A' || register_ == 'I')

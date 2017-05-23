@@ -13,5 +13,5 @@ char register__;
 short int port__;
 
 //Functions
-void initToggleSwitch(char register_, int port);
+void initToggleSwitch(char register_, short int port);
 char toggleSwitchStatus();
