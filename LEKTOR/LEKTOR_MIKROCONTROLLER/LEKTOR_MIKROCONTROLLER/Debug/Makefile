@@ -37,7 +37,6 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../LEKTOR_MIKROCONTROLLER.c \
 ../main.c \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
@@ -57,7 +56,6 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-LEKTOR_MIKROCONTROLLER.o \
 main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
@@ -70,7 +68,6 @@ ToggleSwitchLED.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
-LEKTOR_MIKROCONTROLLER.o \
 main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
@@ -83,7 +80,6 @@ ToggleSwitchLED.o \
 uart.o
 
 C_DEPS +=  \
-LEKTOR_MIKROCONTROLLER.d \
 main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
@@ -96,7 +92,6 @@ ToggleSwitchLED.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
-LEKTOR_MIKROCONTROLLER.d \
 main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
@@ -143,8 +138,11 @@ LINKER_SCRIPT_DEP+=
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/master
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0

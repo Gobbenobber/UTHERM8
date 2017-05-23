@@ -26,7 +26,11 @@ int main(void)
 	//------------------------------------//
 	//			Variables(in scope)		  //
 	//------------------------------------//
+<<<<<<< HEAD
 	//unsigned char streng[3] = "000";
+=======
+	unsigned char streng[3];
+>>>>>>> origin/master
 	
 	//------------------------------------//
 	//			 interrupt test			  //

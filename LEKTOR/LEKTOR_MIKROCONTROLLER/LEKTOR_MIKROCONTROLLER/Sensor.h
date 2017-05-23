@@ -5,13 +5,16 @@
 ///		status via sensor									///
 ///////////////////////////////////////////////////////////////
 
-#ifndef SENSOR_H_
-#define SENSOR_H_
+#pragma once
+#include "avr/io.h"
 
 //Variables
 volatile char lektorDetected_ = '0';
+char register__;
+short int port__;
 
 //Functions
+
+void initSensor(char register_, short int port);
 char kontorStatus();
 
-#endif /* SENSOR_H_ */

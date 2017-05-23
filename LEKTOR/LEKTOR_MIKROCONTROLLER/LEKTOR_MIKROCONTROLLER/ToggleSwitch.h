@@ -1,11 +1,17 @@
-#ifndef TOGGLESWITCH_H_
-#define TOGGLESWITCH_H_
+///////////////////////////////////////////////////////////////////////
+///						- ToggleSwitch -							///
+///				 Af Susanne, Patrick og Kasper						///
+///	  Denne klasse initierer ToggleSwitch og overvåger dens status	///
+///////////////////////////////////////////////////////////////////////
+#pragma once
+#include "avr/io.h"
 
 //Variables
-volatile char tilstand;
+volatile char tilstand_ = 0;
+
+char register__;
+short int port__;
 
 //Functions
-void initToggleSwitch(int port, char register_);
+void initToggleSwitch(char register_, short int port);
 char toggleSwitchStatus();
-
-#endif /* TOGGLESWITCH_H_ */
