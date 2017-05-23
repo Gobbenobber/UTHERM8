@@ -5,7 +5,7 @@
 volatile char tilstand;
 
 //Functions
-void initToggleSwitch(int port, char register);
+void initToggleSwitch(int port, char register_);
 char toggleSwitchStatus();
 
 #endif /* TOGGLESWITCH_H_ */
