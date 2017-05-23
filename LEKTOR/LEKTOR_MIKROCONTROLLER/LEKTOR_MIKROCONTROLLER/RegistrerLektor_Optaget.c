@@ -5,7 +5,6 @@
 
  // Global interrupt enable
  
-
   void initTimer0()
   {
 
@@ -27,20 +26,11 @@ void resetTimer()
  TCCR1B = 0b00000101;
  // Enable Timer0 overflow interrupt
  TIMSK1 |= 0b00000001;
- TCNT1 = (0xFFFF);
+ TCNT1 = (0xFFFF-15625);
 
  sei();
 
- ISR(TIMER1_OVF_vect)
-  {
-	  // Tæller ctr_ op hvert sekund.
-	  ctr_++;
-	  if (ctr_ == 1800) //overflow 1 gang i sekundet
-	  {
-		  ctr_ = 0;
-		  //TCNT1 = (0xFFFF-15625);
-	  }
-  }
+
  
 	 //while (ctr_ < 1800)
 	 //{
@@ -65,4 +55,13 @@ void resetTimer()
 		 //TIFR1 = 1<<0;
 	 //}
  }
- 
+   ISR(TIMER1_OVF_vect)
+   {
+	   // Tæller ctr_ op hvert sekund.
+	   ctr_++;
+	   if (ctr_ == 1800) //overflow 1 gang i sekundet
+	   {
+		   ctr_ = 0;
+		   TCNT1 = (0xFFFF-15625);
+	   }
+   }

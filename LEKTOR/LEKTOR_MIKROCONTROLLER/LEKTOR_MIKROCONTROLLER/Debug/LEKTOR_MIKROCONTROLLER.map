@@ -699,11 +699,11 @@ END GROUP
  .debug_abbrev  0x00000b1a      0x1f1 main.o
  .debug_abbrev  0x00000d0b       0x7f RegistrerLektor_Optaget.o
 
-.debug_line     0x00000000      0x58d
+.debug_line     0x00000000      0x58b
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_line    0x000001f9      0x252 main.o
- .debug_line    0x0000044b      0x142 RegistrerLektor_Optaget.o
+ .debug_line    0x0000044b      0x140 RegistrerLektor_Optaget.o
 
 .debug_frame    0x00000000      0x10c
  *(.debug_frame)
