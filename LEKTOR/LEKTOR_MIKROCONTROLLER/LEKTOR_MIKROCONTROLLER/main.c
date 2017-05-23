@@ -30,37 +30,6 @@ volatile static unsigned char karakter = '0';
 //------------------------------------//
 //Enable interrupt (disabled)
 
-/*
-void initExtInt(int interruptnr)
-{
-	// INT2:Rising edge
-	if (interruptnr==0)
-	{
-		EICRA=0b00000011;
-		EIMSK |= 0b00000001;
-	}
-	
-	else if(interruptnr==1)
-	{
-		EICRA=0b00001100;
-		EIMSK |= 0b00000010;
-	}
-	
-	else if (interruptnr==2)
-	{
-		EICRA=0b00110000;
-		EIMSK |= 0b00000100;
-	}
-	
-	else if(interruptnr==3)
-	{
-		EICRA=0b11000000;
-		EIMSK |= 0b00001000;
-	}
-	
-}
-*/
-
 int main(void)
 {
 	//------------------------------------//
@@ -120,5 +89,5 @@ ISR (INT0_vect)
 	SendCharSW('a');
 
 	// Test Read
-	karakter = ReadCharSW();
+	//karakter = ReadCharSW();
 }
