@@ -4,6 +4,8 @@
 
 LEKTOR_MIKROCONTROLLER.c
 
+main.c
+
 Manchester.c
 
 RegistrerLektor_Optaget.c
@@ -15,6 +17,8 @@ Sensor.c
 switch.c
 
 Timer.c
+
+Timer1.c
 
 ToggleSwitch.c
 

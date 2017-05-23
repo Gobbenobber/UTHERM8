@@ -38,12 +38,14 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../LEKTOR_MIKROCONTROLLER.c \
+../main.c \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
 ../RegistrerLektor_PaaKontor.c \
 ../Sensor.c \
 ../switch.c \
 ../Timer.c \
+../Timer1.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
 ../uart.c
@@ -57,48 +59,56 @@ ASM_SRCS +=
 
 OBJS +=  \
 LEKTOR_MIKROCONTROLLER.o \
+main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
 Sensor.o \
 switch.o \
 Timer.o \
+Timer1.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 uart.o
 
 OBJS_AS_ARGS +=  \
 LEKTOR_MIKROCONTROLLER.o \
+main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
 Sensor.o \
 switch.o \
 Timer.o \
+Timer1.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 uart.o
 
 C_DEPS +=  \
 LEKTOR_MIKROCONTROLLER.d \
+main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
 Sensor.d \
 switch.d \
 Timer.d \
+Timer1.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 uart.d
 
 C_DEPS_AS_ARGS +=  \
 LEKTOR_MIKROCONTROLLER.d \
+main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
 Sensor.d \
 switch.d \
 Timer.d \
+Timer1.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 uart.d
@@ -117,6 +127,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 

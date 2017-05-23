@@ -1,5 +1,5 @@
 ///////////////////////////////////////////////////////////////
-///							- Sensor -						///
+///							- Timer -						///
 ///				 Af Susanne, Patrick og Kasper				///
 ///		Denne klasse har til opgave at lave en timer		///
 ///////////////////////////////////////////////////////////////
@@ -11,6 +11,6 @@
 volatile int ctr_ = 0;
 
 //Functions
-int returnerTimerStatus(char);
+int returnerTimerStatus();
 
 #endif /* TIMER_H_ */

@@ -1,1 +1,3 @@
-Timer.d Timer.o: .././Timer.c
+Timer.d Timer.o: .././Timer.c .././Timer.h
+
+.././Timer.h:
