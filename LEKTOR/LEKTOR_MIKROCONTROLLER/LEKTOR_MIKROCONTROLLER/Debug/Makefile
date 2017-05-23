@@ -44,7 +44,6 @@ C_SRCS +=  \
 ../RegistrerLektor_PaaKontor.c \
 ../SendOgModtag.c \
 ../Sensor.c \
-../switch.c \
 ../Timer.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
@@ -65,7 +64,6 @@ RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
 SendOgModtag.o \
 Sensor.o \
-switch.o \
 Timer.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
@@ -79,7 +77,6 @@ RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
 SendOgModtag.o \
 Sensor.o \
-switch.o \
 Timer.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
@@ -93,7 +90,6 @@ RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
 SendOgModtag.d \
 Sensor.d \
-switch.d \
 Timer.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
@@ -107,7 +103,6 @@ RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
 SendOgModtag.d \
 Sensor.d \
-switch.d \
 Timer.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
@@ -127,8 +122,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-
-
 
 
 

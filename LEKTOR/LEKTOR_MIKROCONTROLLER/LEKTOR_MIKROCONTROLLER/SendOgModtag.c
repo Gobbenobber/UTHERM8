@@ -29,17 +29,15 @@ void sendCharSW(char Tegn)
 char readCharSW()
 {
 	unsigned char i;
-	unsigned char x = PINNR_2;
 	unsigned char out = '0';
 
 	_delay_us(NO_us);
 	//STARTBIT
-	if (PINNR_2 != 0);
+	if (PINNR_2 == 0);
 	{
 		//Data
 		for (i = 8; i > 0; --i)
 		{
-			x = PINNR_2;
 			if (PINNR_2 != 0)
 			{
 				out |= 1 << i;

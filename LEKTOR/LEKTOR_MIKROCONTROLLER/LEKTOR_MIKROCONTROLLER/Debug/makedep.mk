@@ -16,8 +16,6 @@ SendOgModtag.c
 
 Sensor.c
 
-switch.c
-
 Timer.c
 
 ToggleSwitch.c

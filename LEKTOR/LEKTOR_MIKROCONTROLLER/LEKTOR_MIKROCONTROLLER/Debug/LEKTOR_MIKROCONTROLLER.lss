@@ -3,31 +3,31 @@ LEKTOR_MIKROCONTROLLER.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800200  00800200  000002ce  2**0
+  0 .data         00000002  00800200  00000268  000002fc  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         0000025a  00000000  00000000  00000074  2**1
+  1 .text         00000268  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000004  00800200  00800200  000002ce  2**0
+  2 .bss          00000004  00800202  00800202  000002fe  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  000002ce  2**0
+  3 .comment      00000030  00000000  00000000  000002fe  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000300  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000330  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000088  00000000  00000000  00000340  2**0
+  5 .debug_aranges 00000088  00000000  00000000  00000370  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   000010f4  00000000  00000000  000003c8  2**0
+  6 .debug_info   00001127  00000000  00000000  000003f8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000de8  00000000  00000000  000014bc  2**0
+  7 .debug_abbrev 00000ddf  00000000  00000000  0000151f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000064c  00000000  00000000  000022a4  2**0
+  8 .debug_line   00000683  00000000  00000000  000022fe  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000128  00000000  00000000  000028f0  2**2
+  9 .debug_frame  00000128  00000000  00000000  00002984  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000006ab  00000000  00000000  00002a18  2**0
+ 10 .debug_str    00000657  00000000  00000000  00002aac  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000426  00000000  00000000  000030c3  2**0
+ 11 .debug_loc    0000045e  00000000  00000000  00003103  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000058  00000000  00000000  000034e9  2**0
+ 12 .debug_ranges 00000058  00000000  00000000  00003561  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -35,7 +35,7 @@ Disassembly of section .text:
 00000000 <__vectors>:
    0:	71 c0       	rjmp	.+226    	; 0xe4 <__ctors_end>
    2:	00 00       	nop
-   4:	ab c0       	rjmp	.+342    	; 0x15c <__vector_1>
+   4:	b9 c0       	rjmp	.+370    	; 0x178 <__vector_1>
    6:	00 00       	nop
    8:	8c c0       	rjmp	.+280    	; 0x122 <__bad_interrupt>
    a:	00 00       	nop
@@ -73,7 +73,7 @@ Disassembly of section .text:
   4a:	00 00       	nop
   4c:	6a c0       	rjmp	.+212    	; 0x122 <__bad_interrupt>
   4e:	00 00       	nop
-  50:	c6 c0       	rjmp	.+396    	; 0x1de <__vector_20>
+  50:	cd c0       	rjmp	.+410    	; 0x1ec <__vector_20>
   52:	00 00       	nop
   54:	66 c0       	rjmp	.+204    	; 0x122 <__bad_interrupt>
   56:	00 00       	nop
@@ -162,20 +162,20 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	ea e5       	ldi	r30, 0x5A	; 90
+  fa:	e8 e6       	ldi	r30, 0x68	; 104
   fc:	f2 e0       	ldi	r31, 0x02	; 2
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
  102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
  104:	07 90       	elpm	r0, Z+
  106:	0d 92       	st	X+, r0
- 108:	a0 30       	cpi	r26, 0x00	; 0
+ 108:	a2 30       	cpi	r26, 0x02	; 2
  10a:	b1 07       	cpc	r27, r17
  10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
 
 0000010e <__do_clear_bss>:
  10e:	22 e0       	ldi	r18, 0x02	; 2
- 110:	a0 e0       	ldi	r26, 0x00	; 0
+ 110:	a2 e0       	ldi	r26, 0x02	; 2
  112:	b2 e0       	ldi	r27, 0x02	; 2
  114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
 
@@ -183,34 +183,32 @@ Disassembly of section .text:
  116:	1d 92       	st	X+, r1
 
 00000118 <.do_clear_bss_start>:
- 118:	a4 30       	cpi	r26, 0x04	; 4
+ 118:	a6 30       	cpi	r26, 0x06	; 6
  11a:	b2 07       	cpc	r27, r18
  11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
  11e:	02 d0       	rcall	.+4      	; 0x124 <main>
- 120:	9a c0       	rjmp	.+308    	; 0x256 <_exit>
+ 120:	a1 c0       	rjmp	.+322    	; 0x264 <_exit>
 
 00000122 <__bad_interrupt>:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
 
 00000124 <main>:
-int main(void)
-{
+	unsigned char streng[3] = "000";
+	
 	//------------------------------------//
 	//			 interrupt test			  //
 	//------------------------------------//
-	DDRD &= ~(1 << DDD2);     // Clear the PD2 pin (Nr. 2)
+	DDRD &= ~(1 << DDD2);
  124:	52 98       	cbi	0x0a, 2	; 10
 	// PD2 (PCINT0 pin) is now an input
-
-	PORTD |= (1 << PORTD2);    // turn On the Pull-up
+	PORTD |= (1 << PORTD2);
  126:	5a 9a       	sbi	0x0b, 2	; 11
 	// PD2 is now an input with pull-up enabled
-
 	//EICRA |= (1 << ISC11) | (1 << ISC10);   // set INT0 to trigger on ANY logic change
 	EICRA = 0b00000011;
  128:	83 e0       	ldi	r24, 0x03	; 3
  12a:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x700069>
-	EIMSK |= (1 << INT0);     // Turns on INT0
+	EIMSK |= (1 << INT0);
  12e:	e8 9a       	sbi	0x1d, 0	; 29
 	//------------------------------------//
 
@@ -218,203 +216,239 @@ int main(void)
 	DDRC |= 1 << 0;
  130:	38 9a       	sbi	0x07, 0	; 7
 
+	//Test LED
+	DDRC |= 1 << 5;
+ 132:	3d 9a       	sbi	0x07, 5	; 7
+
 	//Initializing
-	//unsigned char* streng = "000";
 	UCSR0B = 0;
- 132:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7000c1>
-	DDR |= (1<<PINNR);
- 136:	20 9a       	sbi	0x04, 0	; 4
-	DDR |= (1 << PINNR_2);
- 138:	84 b1       	in	r24, 0x04	; 4
- 13a:	84 b9       	out	0x04, r24	; 4
+ 134:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7000c1>
+	DDRB |= (1 << PINNR);			//OUTPUT 
+ 138:	20 9a       	sbi	0x04, 0	; 4
+	DDRB |= (1 << PINNR_2);		//INPUT
+ 13a:	21 9a       	sbi	0x04, 1	; 4
 
 	// Global interrupt enable
 	sei();
  13c:	78 94       	sei
+		}
+
+		//testOutput
+		if ((streng[0] == 'a') && (streng[1] == 'a') && (streng[2] == 'a'))
+		{
+			PORTB = 255;
+ 13e:	3f ef       	ldi	r19, 0xFF	; 255
+	sei();
 
 	while(1)
 	{
 		//ZEROCROSS TEST
 		PORTC |= 1 << 0;
- 13e:	40 9a       	sbi	0x08, 0	; 8
+ 140:	40 9a       	sbi	0x08, 0	; 8
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 140:	8f e9       	ldi	r24, 0x9F	; 159
- 142:	9f e0       	ldi	r25, 0x0F	; 15
- 144:	01 97       	sbiw	r24, 0x01	; 1
- 146:	f1 f7       	brne	.-4      	; 0x144 <main+0x20>
- 148:	00 c0       	rjmp	.+0      	; 0x14a <main+0x26>
- 14a:	00 00       	nop
+ 142:	8f e9       	ldi	r24, 0x9F	; 159
+ 144:	9f e0       	ldi	r25, 0x0F	; 15
+ 146:	01 97       	sbiw	r24, 0x01	; 1
+ 148:	f1 f7       	brne	.-4      	; 0x146 <main+0x22>
+ 14a:	00 c0       	rjmp	.+0      	; 0x14c <main+0x28>
+ 14c:	00 00       	nop
 		_delay_ms(1);
 		PORTC &= ~(1 << 0);
- 14c:	40 98       	cbi	0x08, 0	; 8
- 14e:	8f e9       	ldi	r24, 0x9F	; 159
- 150:	9f e0       	ldi	r25, 0x0F	; 15
- 152:	01 97       	sbiw	r24, 0x01	; 1
- 154:	f1 f7       	brne	.-4      	; 0x152 <main+0x2e>
- 156:	00 c0       	rjmp	.+0      	; 0x158 <main+0x34>
- 158:	00 00       	nop
- 15a:	f1 cf       	rjmp	.-30     	; 0x13e <main+0x1a>
+ 14e:	40 98       	cbi	0x08, 0	; 8
+ 150:	8f e9       	ldi	r24, 0x9F	; 159
+ 152:	9f e0       	ldi	r25, 0x0F	; 15
+ 154:	01 97       	sbiw	r24, 0x01	; 1
+ 156:	f1 f7       	brne	.-4      	; 0x154 <main+0x30>
+ 158:	00 c0       	rjmp	.+0      	; 0x15a <main+0x36>
+ 15a:	00 00       	nop
+		//PORTC |= 1 << 5; Redundant
 
-0000015c <__vector_1>:
+		for (int i = 0; i < 3; i++)
+		{
+			//Receive
+			streng[i] = karakter;
+ 15c:	80 91 00 02 	lds	r24, 0x0200	; 0x800200 <__data_start>
+ 160:	90 91 00 02 	lds	r25, 0x0200	; 0x800200 <__data_start>
+ 164:	20 91 00 02 	lds	r18, 0x0200	; 0x800200 <__data_start>
+		}
+
+		//testOutput
+		if ((streng[0] == 'a') && (streng[1] == 'a') && (streng[2] == 'a'))
+ 168:	81 36       	cpi	r24, 0x61	; 97
+ 16a:	51 f7       	brne	.-44     	; 0x140 <main+0x1c>
+ 16c:	91 36       	cpi	r25, 0x61	; 97
+ 16e:	41 f7       	brne	.-48     	; 0x140 <main+0x1c>
+ 170:	21 36       	cpi	r18, 0x61	; 97
+ 172:	31 f7       	brne	.-52     	; 0x140 <main+0x1c>
+		{
+			PORTB = 255;
+ 174:	35 b9       	out	0x05, r19	; 5
+ 176:	e4 cf       	rjmp	.-56     	; 0x140 <main+0x1c>
+
+00000178 <__vector_1>:
 	}
 }
 
 // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
 ISR (INT0_vect)
 {
- 15c:	1f 92       	push	r1
- 15e:	0f 92       	push	r0
- 160:	0f b6       	in	r0, 0x3f	; 63
- 162:	0f 92       	push	r0
- 164:	11 24       	eor	r1, r1
- 166:	0b b6       	in	r0, 0x3b	; 59
- 168:	0f 92       	push	r0
- 16a:	2f 93       	push	r18
- 16c:	3f 93       	push	r19
- 16e:	4f 93       	push	r20
- 170:	5f 93       	push	r21
- 172:	6f 93       	push	r22
- 174:	7f 93       	push	r23
- 176:	8f 93       	push	r24
- 178:	9f 93       	push	r25
- 17a:	af 93       	push	r26
- 17c:	bf 93       	push	r27
- 17e:	ef 93       	push	r30
- 180:	ff 93       	push	r31
+ 178:	1f 92       	push	r1
+ 17a:	0f 92       	push	r0
+ 17c:	0f b6       	in	r0, 0x3f	; 63
+ 17e:	0f 92       	push	r0
+ 180:	11 24       	eor	r1, r1
+ 182:	0b b6       	in	r0, 0x3b	; 59
+ 184:	0f 92       	push	r0
+ 186:	2f 93       	push	r18
+ 188:	3f 93       	push	r19
+ 18a:	4f 93       	push	r20
+ 18c:	5f 93       	push	r21
+ 18e:	6f 93       	push	r22
+ 190:	7f 93       	push	r23
+ 192:	8f 93       	push	r24
+ 194:	9f 93       	push	r25
+ 196:	af 93       	push	r26
+ 198:	bf 93       	push	r27
+ 19a:	ef 93       	push	r30
 	// Test Write
-	SendCharSW('a');
- 182:	81 e6       	ldi	r24, 0x61	; 97
- 184:	13 d0       	rcall	.+38     	; 0x1ac <SendCharSW>
+	//sendCharSW('a');
 
 	// Test Read
-	//karakter = ReadCharSW();
- 186:	ff 91       	pop	r31
- 188:	ef 91       	pop	r30
- 18a:	bf 91       	pop	r27
- 18c:	af 91       	pop	r26
- 18e:	9f 91       	pop	r25
- 190:	8f 91       	pop	r24
- 192:	7f 91       	pop	r23
- 194:	6f 91       	pop	r22
- 196:	5f 91       	pop	r21
- 198:	4f 91       	pop	r20
- 19a:	3f 91       	pop	r19
- 19c:	2f 91       	pop	r18
- 19e:	0f 90       	pop	r0
- 1a0:	0b be       	out	0x3b, r0	; 59
- 1a2:	0f 90       	pop	r0
- 1a4:	0f be       	out	0x3f, r0	; 63
- 1a6:	0f 90       	pop	r0
- 1a8:	1f 90       	pop	r1
- 1aa:	18 95       	reti
+	karakter = readCharSW();
+ 19c:	ff 93       	push	r31
+ 19e:	15 d0       	rcall	.+42     	; 0x1ca <readCharSW>
+ 1a0:	80 93 00 02 	sts	0x0200, r24	; 0x800200 <__data_start>
+ 1a4:	ff 91       	pop	r31
+ 1a6:	ef 91       	pop	r30
+ 1a8:	bf 91       	pop	r27
+ 1aa:	af 91       	pop	r26
+ 1ac:	9f 91       	pop	r25
+ 1ae:	8f 91       	pop	r24
+ 1b0:	7f 91       	pop	r23
+ 1b2:	6f 91       	pop	r22
+ 1b4:	5f 91       	pop	r21
+ 1b6:	4f 91       	pop	r20
+ 1b8:	3f 91       	pop	r19
+ 1ba:	2f 91       	pop	r18
+ 1bc:	0f 90       	pop	r0
+ 1be:	0b be       	out	0x3b, r0	; 59
+ 1c0:	0f 90       	pop	r0
+ 1c2:	0f be       	out	0x3f, r0	; 63
+ 1c4:	0f 90       	pop	r0
+ 1c6:	1f 90       	pop	r1
+ 1c8:	18 95       	reti
 
-000001ac <SendCharSW>:
- 1ac:	28 98       	cbi	0x05, 0	; 5
+000001ca <readCharSW>:
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
- 1ae:	2a e2       	ldi	r18, 0x2A	; 42
- 1b0:	2a 95       	dec	r18
- 1b2:	f1 f7       	brne	.-4      	; 0x1b0 <SendCharSW+0x4>
- 1b4:	00 c0       	rjmp	.+0      	; 0x1b6 <SendCharSW+0xa>
- 1b6:	98 e0       	ldi	r25, 0x08	; 8
- 1b8:	80 ff       	sbrs	r24, 0
- 1ba:	02 c0       	rjmp	.+4      	; 0x1c0 <SendCharSW+0x14>
- 1bc:	28 9a       	sbi	0x05, 0	; 5
- 1be:	01 c0       	rjmp	.+2      	; 0x1c2 <SendCharSW+0x16>
- 1c0:	28 98       	cbi	0x05, 0	; 5
- 1c2:	2a e2       	ldi	r18, 0x2A	; 42
- 1c4:	2a 95       	dec	r18
- 1c6:	f1 f7       	brne	.-4      	; 0x1c4 <SendCharSW+0x18>
- 1c8:	00 c0       	rjmp	.+0      	; 0x1ca <SendCharSW+0x1e>
- 1ca:	86 95       	lsr	r24
- 1cc:	91 50       	subi	r25, 0x01	; 1
- 1ce:	a1 f7       	brne	.-24     	; 0x1b8 <SendCharSW+0xc>
- 1d0:	28 9a       	sbi	0x05, 0	; 5
- 1d2:	8a e2       	ldi	r24, 0x2A	; 42
- 1d4:	8a 95       	dec	r24
- 1d6:	f1 f7       	brne	.-4      	; 0x1d4 <SendCharSW+0x28>
- 1d8:	00 c0       	rjmp	.+0      	; 0x1da <SendCharSW+0x2e>
- 1da:	28 98       	cbi	0x05, 0	; 5
- 1dc:	08 95       	ret
+ 1ca:	8a e2       	ldi	r24, 0x2A	; 42
+ 1cc:	8a 95       	dec	r24
+ 1ce:	f1 f7       	brne	.-4      	; 0x1cc <readCharSW+0x2>
+ 1d0:	00 c0       	rjmp	.+0      	; 0x1d2 <readCharSW+0x8>
+ 1d2:	88 e0       	ldi	r24, 0x08	; 8
+ 1d4:	9a e2       	ldi	r25, 0x2A	; 42
+ 1d6:	9a 95       	dec	r25
+ 1d8:	f1 f7       	brne	.-4      	; 0x1d6 <readCharSW+0xc>
+ 1da:	00 c0       	rjmp	.+0      	; 0x1dc <readCharSW+0x12>
+ 1dc:	81 50       	subi	r24, 0x01	; 1
+	_delay_us(NO_us);
+	//STARTBIT
+	if (PINNR_2 == 0);
+	{
+		//Data
+		for (i = 8; i > 0; --i)
+ 1de:	d1 f7       	brne	.-12     	; 0x1d4 <readCharSW+0xa>
+ 1e0:	8a e2       	ldi	r24, 0x2A	; 42
+ 1e2:	8a 95       	dec	r24
+ 1e4:	f1 f7       	brne	.-4      	; 0x1e2 <readCharSW+0x18>
+ 1e6:	00 c0       	rjmp	.+0      	; 0x1e8 <readCharSW+0x1e>
+	else
+	{
+		_delay_us(NO_us);
+		return '0';
+	}
+}
+ 1e8:	80 e3       	ldi	r24, 0x30	; 48
+ 1ea:	08 95       	ret
 
-000001de <__vector_20>:
+000001ec <__vector_20>:
 	  TCNT1 = (0xFFFF-15625);
 	  TIMSK1 |= 0b00000001;
 }
 
  ISR(TIMER1_OVF_vect)
  {
- 1de:	1f 92       	push	r1
- 1e0:	0f 92       	push	r0
- 1e2:	0f b6       	in	r0, 0x3f	; 63
- 1e4:	0f 92       	push	r0
- 1e6:	11 24       	eor	r1, r1
- 1e8:	0b b6       	in	r0, 0x3b	; 59
- 1ea:	0f 92       	push	r0
- 1ec:	2f 93       	push	r18
- 1ee:	8f 93       	push	r24
- 1f0:	9f 93       	push	r25
- 1f2:	ef 93       	push	r30
- 1f4:	ff 93       	push	r31
+ 1ec:	1f 92       	push	r1
+ 1ee:	0f 92       	push	r0
+ 1f0:	0f b6       	in	r0, 0x3f	; 63
+ 1f2:	0f 92       	push	r0
+ 1f4:	11 24       	eor	r1, r1
+ 1f6:	0b b6       	in	r0, 0x3b	; 59
+ 1f8:	0f 92       	push	r0
+ 1fa:	2f 93       	push	r18
+ 1fc:	8f 93       	push	r24
+ 1fe:	9f 93       	push	r25
+ 200:	ef 93       	push	r30
+ 202:	ff 93       	push	r31
 	 // Tæller ctr_ op hvert sekund.
 	 ctr_++;
- 1f6:	80 91 02 02 	lds	r24, 0x0202	; 0x800202 <ctr_>
- 1fa:	90 91 03 02 	lds	r25, 0x0203	; 0x800203 <ctr_+0x1>
- 1fe:	01 96       	adiw	r24, 0x01	; 1
- 200:	90 93 03 02 	sts	0x0203, r25	; 0x800203 <ctr_+0x1>
- 204:	80 93 02 02 	sts	0x0202, r24	; 0x800202 <ctr_>
+ 204:	80 91 04 02 	lds	r24, 0x0204	; 0x800204 <ctr_>
+ 208:	90 91 05 02 	lds	r25, 0x0205	; 0x800205 <ctr_+0x1>
+ 20c:	01 96       	adiw	r24, 0x01	; 1
+ 20e:	90 93 05 02 	sts	0x0205, r25	; 0x800205 <ctr_+0x1>
+ 212:	80 93 04 02 	sts	0x0204, r24	; 0x800204 <ctr_>
 	 //sætter tcnt1 til krævet værdi for 1s delay
 	 TCNT1 = (0xFFFF-15625);
- 208:	86 ef       	ldi	r24, 0xF6	; 246
- 20a:	92 ec       	ldi	r25, 0xC2	; 194
- 20c:	90 93 85 00 	sts	0x0085, r25	; 0x800085 <__TEXT_REGION_LENGTH__+0x700085>
- 210:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x700084>
+ 216:	86 ef       	ldi	r24, 0xF6	; 246
+ 218:	92 ec       	ldi	r25, 0xC2	; 194
+ 21a:	90 93 85 00 	sts	0x0085, r25	; 0x800085 <__TEXT_REGION_LENGTH__+0x700085>
+ 21e:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x700084>
 
 	 if (ctr_ == 1800) //overflow 1 gang i sekundet
- 214:	80 91 02 02 	lds	r24, 0x0202	; 0x800202 <ctr_>
- 218:	90 91 03 02 	lds	r25, 0x0203	; 0x800203 <ctr_+0x1>
- 21c:	88 30       	cpi	r24, 0x08	; 8
- 21e:	97 40       	sbci	r25, 0x07	; 7
- 220:	71 f4       	brne	.+28     	; 0x23e <__vector_20+0x60>
+ 222:	80 91 04 02 	lds	r24, 0x0204	; 0x800204 <ctr_>
+ 226:	90 91 05 02 	lds	r25, 0x0205	; 0x800205 <ctr_+0x1>
+ 22a:	88 30       	cpi	r24, 0x08	; 8
+ 22c:	97 40       	sbci	r25, 0x07	; 7
+ 22e:	71 f4       	brne	.+28     	; 0x24c <__vector_20+0x60>
 	 {
 		timerStatus_ = '1';
- 222:	81 e3       	ldi	r24, 0x31	; 49
- 224:	90 e0       	ldi	r25, 0x00	; 0
- 226:	90 93 01 02 	sts	0x0201, r25	; 0x800201 <__data_end+0x1>
- 22a:	80 93 00 02 	sts	0x0200, r24	; 0x800200 <__data_end>
+ 230:	81 e3       	ldi	r24, 0x31	; 49
+ 232:	90 e0       	ldi	r25, 0x00	; 0
+ 234:	90 93 03 02 	sts	0x0203, r25	; 0x800203 <__data_end+0x1>
+ 238:	80 93 02 02 	sts	0x0202, r24	; 0x800202 <__data_end>
 		ctr_ = 0;
- 22e:	10 92 03 02 	sts	0x0203, r1	; 0x800203 <ctr_+0x1>
- 232:	10 92 02 02 	sts	0x0202, r1	; 0x800202 <ctr_>
+ 23c:	10 92 05 02 	sts	0x0205, r1	; 0x800205 <ctr_+0x1>
+ 240:	10 92 04 02 	sts	0x0204, r1	; 0x800204 <ctr_>
 		TIMSK1 &= 0;
- 236:	ef e6       	ldi	r30, 0x6F	; 111
- 238:	f0 e0       	ldi	r31, 0x00	; 0
- 23a:	80 81       	ld	r24, Z
- 23c:	10 82       	st	Z, r1
+ 244:	ef e6       	ldi	r30, 0x6F	; 111
+ 246:	f0 e0       	ldi	r31, 0x00	; 0
+ 248:	80 81       	ld	r24, Z
+ 24a:	10 82       	st	Z, r1
 	 }
- 23e:	ff 91       	pop	r31
- 240:	ef 91       	pop	r30
- 242:	9f 91       	pop	r25
- 244:	8f 91       	pop	r24
- 246:	2f 91       	pop	r18
- 248:	0f 90       	pop	r0
- 24a:	0b be       	out	0x3b, r0	; 59
- 24c:	0f 90       	pop	r0
- 24e:	0f be       	out	0x3f, r0	; 63
- 250:	0f 90       	pop	r0
- 252:	1f 90       	pop	r1
- 254:	18 95       	reti
+ 24c:	ff 91       	pop	r31
+ 24e:	ef 91       	pop	r30
+ 250:	9f 91       	pop	r25
+ 252:	8f 91       	pop	r24
+ 254:	2f 91       	pop	r18
+ 256:	0f 90       	pop	r0
+ 258:	0b be       	out	0x3b, r0	; 59
+ 25a:	0f 90       	pop	r0
+ 25c:	0f be       	out	0x3f, r0	; 63
+ 25e:	0f 90       	pop	r0
+ 260:	1f 90       	pop	r1
+ 262:	18 95       	reti
 
-00000256 <_exit>:
- 256:	f8 94       	cli
+00000264 <_exit>:
+ 264:	f8 94       	cli
 
-00000258 <__stop_program>:
- 258:	ff cf       	rjmp	.-2      	; 0x258 <__stop_program>
+00000266 <__stop_program>:
+ 266:	ff cf       	rjmp	.-2      	; 0x266 <__stop_program>
