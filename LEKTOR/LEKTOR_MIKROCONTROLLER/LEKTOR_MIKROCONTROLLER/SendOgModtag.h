@@ -5,7 +5,7 @@
 #include <util/delay.h>
 
 //Local Constants
-#define NO_us 80000/BAUD
+#define NO_us 70000/BAUD
 #define DDR   DDRB
 #define PORT  PORTB
 #define PINNR 0

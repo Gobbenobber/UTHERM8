@@ -6,16 +6,14 @@
 ///		længere er optaget.									///
 ///////////////////////////////////////////////////////////////
 
-
-#pragma once
-#include "ToggleSwitch.h"
-#include "Timer.h"
+#ifndef REGISTRERLEKTOR_OPTAGET_H_
+#define REGISTRERLEKTOR_OPTAGET_H_
 
 //Variables
-volatile char lektorOptaget_ = '0';
+volatile char lektorOptaget = '0';
 
 //Functions
-void skiftLEDTilstand_Optaget(char bool_);
+void skiftLEDTilstand_Optaget(char);
 void lektorStatus_Optaget(char*);
 
-
+#endif /* REGISTRERLEKTOR_OPTAGET_H_ */

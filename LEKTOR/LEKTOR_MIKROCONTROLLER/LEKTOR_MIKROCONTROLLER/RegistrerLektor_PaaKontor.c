@@ -1,21 +1,6 @@
 /*
-DONT KNOW MAN. THIS IS GETTING REALLY FUNKY NOW.
+ * RegistrerLektor_PaaKontor.c
+ *
+ * Created: 22-05-2017 10:49:42
+ *  Author: Kasper
  */ 
-
-
- skiftLEDTilstand_PaaKontor(char tilstede_)
- {
-
-	if (tilstede_ == '1')
-	{
-
-	}
-	setToggleSwitchLED(char '0')
-	tilstand_ = 0;
- }
-
- void lektorStatus_PaaKontor(char*)
- {
-	
-
- }

@@ -7,11 +7,12 @@
 #include "SendOgModtag.h"
 
 #define PINNR 0
+#define PINNR_2 0
 
 //------------------------------------//
 //				 Variables			  //
 //------------------------------------//
-volatile static int index = 0;
+volatile static int outputShizzle = 1;
 volatile unsigned char karakter = '\0';
 
 /*
@@ -25,7 +26,11 @@ int main(void)
 	//------------------------------------//
 	//			Variables(in scope)		  //
 	//------------------------------------//
-
+<<<<<<< HEAD
+	//unsigned char streng[3] = "000";
+=======
+	unsigned char streng[3];
+>>>>>>> origin/master
 	
 	//------------------------------------//
 	//			 interrupt test			  //
@@ -39,12 +44,16 @@ int main(void)
 	EIMSK |= (1 << INT0);
 	//------------------------------------//
 
-	//Making the zero-cross
-	DDRC |= (1 << 0);
+	//TEST AF PIN
+	DDRC |= 1 << 0;
+
+	//Test LED
+	DDRC |= 1 << 5;
 
 	//Initializing
 	UCSR0B = 0;
 	DDRB |= (1 << PINNR);			//OUTPUT 
+	DDRA &= ~(1 << PINNR_2);			//INPUT
 
 	// Global interrupt enable
 	sei();
@@ -52,32 +61,39 @@ int main(void)
 	while(1)
 	{
 		//ZEROCROSS TEST
-		PORTC |= 1 << 0;
-		_delay_ms(1);
-		PORTC &= ~(1 << 0);
-		_delay_ms(1);
+		//PORTC |= 1 << 0;
+		//_delay_ms(1);
+		//PORTC &= ~(1 << 0);
+		//_delay_ms(1);
+		
+		//test LED
+		//PORTC |= 1 << 5; Redundant
+
+		for (int i = 0; i < 3; i++)
+		{
+			//Receive
+			//streng[i] = karakter;
+		}
+
+		//testOutput
+		if (karakter == 'a')
+		{
+			PORTC |= 1 << 5;
+		}
+		else
+		{
+			PORTC &= ~(1 << 5);
+		}
+
 	}
 }
 
 // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
 ISR (INT0_vect)
 {
-	 //Write
-	 if (index == 0)
-	 {
-		 sendCharSW('a');
-		 index++;
-	 }
-	 if (index == 1)
-	 {
-		 sendCharSW('b');
-		 index++;
-	 }
-	 if (index == 2)
-	 {
-		 sendCharSW('b');
-		 index = 0;
-	 }
+	// Test Write
 	//sendCharSW('a');
-	
+
+	// Test Read
+	karakter = readCharSW();
 }

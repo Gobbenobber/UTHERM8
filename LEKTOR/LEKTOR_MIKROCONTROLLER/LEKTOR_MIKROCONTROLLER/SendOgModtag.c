@@ -25,7 +25,6 @@ void sendCharSW(char Tegn)
 	//Test ###DUNNO what the stopbit is###
 	PORT &= ~(1<<PINNR);
 }
-/*
 // 8 data bit, no parity, 1 stop bit
 char readCharSW()
 {
@@ -63,4 +62,3 @@ char readCharSW()
 		//return '0';
 	//}
 }
-*/
