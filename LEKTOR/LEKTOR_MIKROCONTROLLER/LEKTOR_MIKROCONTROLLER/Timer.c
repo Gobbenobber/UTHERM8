@@ -13,7 +13,6 @@
  }
 
 
-
  void resetTimer()
  {
 	ctr_ = 0;
