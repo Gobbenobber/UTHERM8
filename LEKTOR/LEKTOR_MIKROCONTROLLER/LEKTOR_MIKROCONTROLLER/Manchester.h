@@ -1,7 +1,3 @@
-#pragma once
-#include <string.h>
-#include <stdlib.h>
-#include "Manchester.h"
 //..................................................................................................................................
 //.MMMMMM...MMMMMM....AAAAA.....NNNN...NNNN....CCCCCCCC...HHHH...HHHH..EEEEEEEEEEE..SSSSSSSS..TTTTTTTTTTT.EEEEEEEEEEEE.RRRRRRRRRR....
 //.MMMMMM...MMMMMM...AAAAAA.....NNNNN..NNNN...CCCCCCCCCC..HHHH...HHHH..EEEEEEEEEEE.SSSSSSSSSS.TTTTTTTTTTT.EEEEEEEEEEEE.RRRRRRRRRRR...
@@ -20,6 +16,11 @@
 // Skrevet af Patrick Bjerregaard og Kasper Hermansen.
 // Version: 1.01RC
 // De to nedenstående funktioner kan benyttes til at kovertere en given tekststreng til Manchester kode og benytter dynamisk hukommelse til at opnå dette.
+
+#pragma once
+#include <string.h>
+#include <stdlib.h>
+#include "Manchester.h"
 
 const unsigned char* stringToManchester(const unsigned char* toBeConverted);
 unsigned char* mancesterToString(const unsigned char* toBeConverted);
