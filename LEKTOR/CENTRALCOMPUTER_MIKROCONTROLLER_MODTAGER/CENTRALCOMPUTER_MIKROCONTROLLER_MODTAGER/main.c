@@ -9,6 +9,7 @@
 
 //Drivers
 #include "SendOgModtag.h"
+#include "uart.h"
 
 #define PINNR 0
 #define PINNR_2 0
@@ -38,7 +39,7 @@ int main(void)
 	//------------------------------------//
 	DDRD &= ~(1 << DDD0);
 	// PD2 (PCINT0 pin) is now an input
-	PORTD |= (1 << PORTD0);
+	PORTD |= (1 << 0);
 	// PD2 is now an input with pull-up enabled
 	//EICRA |= (1 << ISC11) | (1 << ISC10);   // set INT0 to trigger on ANY logic change
 	EICRA = 0b00000011;
@@ -54,32 +55,27 @@ int main(void)
 	//Initializing
 	UCSR0B = 0;
 	DDRB |= (1 << PINNR);			//OUTPUT 
-	DDRA &= ~(1 << PINNR_2);			//INPUT
+	DDRA &= ~(1 << PINNR_2);		//INPUT
 
 	// Global interrupt enable
 	sei();
 
 	while(1)
 	{
-		//if (karakter == 'a' || streng[0] == 'a')
+		//switch (index)
 		//{
-			//switch (index)
-			//{
-				//case 1:
-				//streng[0] = karakter;
-				//break;
-				//case 2:
-				//streng[1] = karakter;
-				//break;
-				//case 3:
-				//streng[2] = karakter;
-				//break;
-				//default:
-				//break;
-			//}
+			//case 1:
+			//streng[0] = karakter;
+			//break;
+			//case 2:
+			//streng[1] = karakter;
+			//break;
+			//case 3:
+			//streng[2] = karakter;
+			//index = 0;
+			//break;
 		//}
-		
-		//if ((streng[0] == 'a') && (streng[1] == 'a') && (streng[2] == 'a'))
+		//if ((streng[0] == 'a') && (streng[1] == 'b') && (streng[2] == 'c'))
 		//{
 			//PORTC |= 1 << 5;
 		//}
@@ -97,13 +93,18 @@ int main(void)
 			PORTC &= ~(1 << 5);
 		}
 
+		SendString(streng);
+
 	}
 }
 
 // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
 ISR (INT0_vect)
 {
-	//Read
+	// Test Write
+	//sendCharSW('a');
+
+	// Test Read
 	karakter = readCharSW();
-	index++;
+	//index++;
 }

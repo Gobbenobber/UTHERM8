@@ -38,7 +38,8 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../main.c \
-../SendOgModtag.c
+../SendOgModtag.c \
+../uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,19 +50,23 @@ ASM_SRCS +=
 
 OBJS +=  \
 main.o \
-SendOgModtag.o
+SendOgModtag.o \
+uart.o
 
 OBJS_AS_ARGS +=  \
 main.o \
-SendOgModtag.o
+SendOgModtag.o \
+uart.o
 
 C_DEPS +=  \
 main.d \
-SendOgModtag.d
+SendOgModtag.d \
+uart.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
-SendOgModtag.d
+SendOgModtag.d \
+uart.d
 
 OUTPUT_FILE_PATH +=CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.elf
 
@@ -77,6 +82,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
