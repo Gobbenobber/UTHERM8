@@ -148,7 +148,7 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="main.c">
+    <Compile Include="LEKTOR_MIKROCONTROLLER.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Manchester.c">

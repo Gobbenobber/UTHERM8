@@ -37,7 +37,7 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c \
+../LEKTOR_MIKROCONTROLLER.c \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
 ../RegistrerLektor_PaaKontor.c \
@@ -57,7 +57,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o \
+LEKTOR_MIKROCONTROLLER.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
@@ -70,7 +70,7 @@ ToggleSwitchLED.o \
 zeroCrossDetector.o
 
 OBJS_AS_ARGS +=  \
-main.o \
+LEKTOR_MIKROCONTROLLER.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
@@ -83,7 +83,7 @@ ToggleSwitchLED.o \
 zeroCrossDetector.o
 
 C_DEPS +=  \
-main.d \
+LEKTOR_MIKROCONTROLLER.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
@@ -96,7 +96,7 @@ ToggleSwitchLED.d \
 zeroCrossDetector.d
 
 C_DEPS_AS_ARGS +=  \
-main.d \
+LEKTOR_MIKROCONTROLLER.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
