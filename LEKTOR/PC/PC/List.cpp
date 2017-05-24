@@ -4,7 +4,7 @@
 
 List::List()
 {
-	size_ = 100; //100 lektorKontorer.
+	size_ = 255; //255 lektorKontorer.
 	storage_ = new std::string[size_];
 	initializeSpaces(size_);
 	printAll();
@@ -13,7 +13,7 @@ List::List()
 
 List::~List()
 {
-
+	delete storage_;
 }
 
 void List::setSize(int size)
@@ -54,12 +54,18 @@ void List::initializeSpaces(int size)
 		{
 			if (i < 10)
 			{
-				myFile_ << "a0" << i << "-\n";
+				myFile_ << "a00" << i;
+			}
+			else if (i >= 10 && i < 100)
+			{
+				myFile_ << "a0" << i;
 			}
 			else
 			{
-				myFile_ << "a" << i << "-\n";
+				myFile_ << "a" << i;
 			}
+
+			myFile_ << "_\n";
 		}
 		std::cout << "Path has been prepared and path is open" << std::endl;
 	}
@@ -70,12 +76,27 @@ void List::initializeSpaces(int size)
 	myFile_.close();
 }
 
-void List::printAll() const
+void List::printAll()
 {
+	std::cout << "Printing the text from the file\n";
+	std::ifstream myFile_("Text.txt");
+	int location = 0;
+	std::string holder;	//temp
+	if (myFile_.is_open())
+	{
+		while (getline(myFile_, holder))
+		{
+			std::cout << "Test: " << holder << "\n";
+			storage_[location] = holder;
+			location++;
+		}
+	}
+	myFile_.close();
 }
 
 void List::validation() const
 {
+
 }
 
 void List::inputText()

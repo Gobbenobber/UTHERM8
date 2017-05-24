@@ -21,7 +21,7 @@ public:
 
 	//Methods
 	void initializeSpaces(int size);
-	void printAll() const;
+	void printAll();
 	void validation() const;
 	void inputText();
 	void textToInt();

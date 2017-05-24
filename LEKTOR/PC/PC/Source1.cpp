@@ -3,9 +3,12 @@
 #include "Header.h"	// Library described above
 #include <string>
 
+#include "List.h";
+
 // application reads from the specified serial port and reports the collected data
 int main()
 {
+	/*
 	printf("Welcome to the serial test app!\n\n");
 
 	Serial* SP = new Serial("COM3");			// adjust as needed
@@ -28,5 +31,10 @@ int main()
 
 		Sleep(500);
 	}
+	*/
+	List l_1;
+	l_1.printAll();
+
+
 	return 0;
 }
