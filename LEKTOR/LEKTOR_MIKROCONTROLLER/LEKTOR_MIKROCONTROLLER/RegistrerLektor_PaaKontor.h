@@ -9,6 +9,9 @@
 #include "ToggleSwitch.h"
 #include "Sensor.h"
 
+//Variables
+char tilStede_ = 'a';
+
 //Functions
 void skiftLEDTilstand_PaaKontor(char);
 void lektorStatus_PaaKontor(char*);
