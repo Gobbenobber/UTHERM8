@@ -1,4 +1,5 @@
 
+#include "RegistrerLektor_Optaget.h"
 
  // Global interrupt enable
  
@@ -12,14 +13,14 @@
 	else 	
 	{
 	lektorOptaget_ = '1';
-	setToggleSwitchLED('1')
+	setToggleSwitchLED('1');
 	}
 
 }
 
-void lektorStatus_Optaget(char* notSure)
+void lektorStatus_Optaget(char* modtagetStreng)
 {
-	if (notSure[2] == 'P')
+	if (modtagetStreng[2] == 'P')
 	{
 	lektorOptaget_ = '1';
 	}

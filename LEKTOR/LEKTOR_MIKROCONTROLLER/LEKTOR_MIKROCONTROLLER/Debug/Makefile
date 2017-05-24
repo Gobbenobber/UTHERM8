@@ -138,11 +138,6 @@ LINKER_SCRIPT_DEP+=
 
 
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> origin/master
 ./%.o: .././%.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0

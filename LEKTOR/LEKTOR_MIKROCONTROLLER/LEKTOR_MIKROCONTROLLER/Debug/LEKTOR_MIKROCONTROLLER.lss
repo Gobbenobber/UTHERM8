@@ -3,7 +3,6 @@ LEKTOR_MIKROCONTROLLER.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-<<<<<<< HEAD
   0 .data         00000000  00800200  00800200  000002ec  2**0
                   CONTENTS, ALLOC, LOAD, DATA
   1 .text         00000278  00000000  00000000  00000074  2**1
@@ -16,46 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000088  00000000  00000000  0000035c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000105f  00000000  00000000  000003e4  2**0
+  6 .debug_info   00001086  00000000  00000000  000003e4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000d65  00000000  00000000  00001443  2**0
+  7 .debug_abbrev 00000d86  00000000  00000000  0000146a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000060f  00000000  00000000  000021a8  2**0
+  8 .debug_line   0000060f  00000000  00000000  000021f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000128  00000000  00000000  000027b8  2**2
+  9 .debug_frame  00000128  00000000  00000000  00002800  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000638  00000000  00000000  000028e0  2**0
+ 10 .debug_str    000006ac  00000000  00000000  00002928  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000003e9  00000000  00000000  00002f18  2**0
+ 11 .debug_loc    000003e9  00000000  00000000  00002fd4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000058  00000000  00000000  00003301  2**0
-=======
-  0 .data         0000000a  00800200  000002ca  0000035e  2**0
-                  CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000002ca  00000000  00000000  00000094  2**1
-                  CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000004  0080020a  0080020a  00000368  2**0
-                  ALLOC
-  3 .comment      00000030  00000000  00000000  00000368  2**0
-                  CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000398  2**2
-                  CONTENTS, READONLY
-  5 .debug_aranges 00000088  00000000  00000000  000003d8  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001151  00000000  00000000  00000460  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000e1f  00000000  00000000  000015b1  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000068f  00000000  00000000  000023d0  2**0
-                  CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000138  00000000  00000000  00002a60  2**2
-                  CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000657  00000000  00000000  00002b98  2**0
-                  CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000492  00000000  00000000  000031ef  2**0
-                  CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000070  00000000  00000000  00003681  2**0
->>>>>>> origin/master
+ 12 .debug_ranges 00000058  00000000  00000000  000033bd  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -63,11 +35,7 @@ Disassembly of section .text:
 00000000 <__vectors>:
    0:	71 c0       	rjmp	.+226    	; 0xe4 <__ctors_end>
    2:	00 00       	nop
-<<<<<<< HEAD
    4:	a4 c0       	rjmp	.+328    	; 0x14e <__vector_1>
-=======
-   4:	cf c0       	rjmp	.+414    	; 0x1a4 <__vector_1>
->>>>>>> origin/master
    6:	00 00       	nop
    8:	8c c0       	rjmp	.+280    	; 0x122 <__bad_interrupt>
    a:	00 00       	nop
@@ -105,11 +73,7 @@ Disassembly of section .text:
   4a:	00 00       	nop
   4c:	6a c0       	rjmp	.+212    	; 0x122 <__bad_interrupt>
   4e:	00 00       	nop
-<<<<<<< HEAD
   50:	d5 c0       	rjmp	.+426    	; 0x1fc <__vector_20>
-=======
-  50:	fe c0       	rjmp	.+508    	; 0x24e <__vector_20>
->>>>>>> origin/master
   52:	00 00       	nop
   54:	66 c0       	rjmp	.+204    	; 0x122 <__bad_interrupt>
   56:	00 00       	nop
@@ -198,24 +162,20 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-<<<<<<< HEAD
   fa:	e8 e7       	ldi	r30, 0x78	; 120
-=======
-  fa:	ea ec       	ldi	r30, 0xCA	; 202
->>>>>>> origin/master
   fc:	f2 e0       	ldi	r31, 0x02	; 2
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
  102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
  104:	07 90       	elpm	r0, Z+
  106:	0d 92       	st	X+, r0
- 108:	aa 30       	cpi	r26, 0x0A	; 10
+ 108:	a0 30       	cpi	r26, 0x00	; 0
  10a:	b1 07       	cpc	r27, r17
  10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
 
 0000010e <__do_clear_bss>:
  10e:	22 e0       	ldi	r18, 0x02	; 2
- 110:	aa e0       	ldi	r26, 0x0A	; 10
+ 110:	a0 e0       	ldi	r26, 0x00	; 0
  112:	b2 e0       	ldi	r27, 0x02	; 2
  114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
 
@@ -223,77 +183,38 @@ Disassembly of section .text:
  116:	1d 92       	st	X+, r1
 
 00000118 <.do_clear_bss_start>:
-<<<<<<< HEAD
  118:	a5 30       	cpi	r26, 0x05	; 5
  11a:	b2 07       	cpc	r27, r18
  11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
  11e:	02 d0       	rcall	.+4      	; 0x124 <main>
  120:	a9 c0       	rjmp	.+338    	; 0x274 <_exit>
-=======
- 118:	ae 30       	cpi	r26, 0x0E	; 14
- 11a:	b2 07       	cpc	r27, r18
- 11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
- 11e:	02 d0       	rcall	.+4      	; 0x124 <main>
- 120:	d2 c0       	rjmp	.+420    	; 0x2c6 <_exit>
->>>>>>> origin/master
 
 00000122 <__bad_interrupt>:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
 
 00000124 <main>:
-<<<<<<< HEAD
-	//unsigned char streng[3] = "000";
-=======
-//				 Functions			  //
-//------------------------------------//
-*/
-
-int main(void)
-{
- 124:	cf 93       	push	r28
- 126:	df 93       	push	r29
- 128:	00 d0       	rcall	.+0      	; 0x12a <main+0x6>
- 12a:	cd b7       	in	r28, 0x3d	; 61
- 12c:	de b7       	in	r29, 0x3e	; 62
 	unsigned char streng[3];
->>>>>>> origin/master
-	
+
 	//------------------------------------//
 	//			 interrupt test			  //
 	//------------------------------------//
-<<<<<<< HEAD
 	DDRD &= ~(1 << DDD0);
  124:	50 98       	cbi	0x0a, 0	; 10
 	// PD2 (PCINT0 pin) is now an input
 	PORTD |= (1 << PORTD0);
  126:	58 9a       	sbi	0x0b, 0	; 11
-=======
-	DDRD &= ~(1 << DDD2);     // Clear the PD2 pin (Nr. 2)
- 12e:	52 98       	cbi	0x0a, 2	; 10
-	// PD2 (PCINT0 pin) is now an input
-
-	PORTD |= (1 << PORTD2);    // turn On the Pull-up
- 130:	5a 9a       	sbi	0x0b, 2	; 11
->>>>>>> origin/master
 	// PD2 is now an input with pull-up enabled
 	//EICRA |= (1 << ISC11) | (1 << ISC10);   // set INT0 to trigger on ANY logic change
 	EICRA = 0b00000011;
-<<<<<<< HEAD
  128:	83 e0       	ldi	r24, 0x03	; 3
  12a:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x700069>
 	EIMSK |= (1 << INT0);
  12e:	e8 9a       	sbi	0x1d, 0	; 29
-=======
- 132:	83 e0       	ldi	r24, 0x03	; 3
- 134:	80 93 69 00 	sts	0x0069, r24	; 0x800069 <__TEXT_REGION_LENGTH__+0x700069>
-	EIMSK |= (1 << INT0);     // Turns on INT0
- 138:	e8 9a       	sbi	0x1d, 0	; 29
->>>>>>> origin/master
 	//------------------------------------//
 
 	//TEST AF PIN
 	DDRC |= 1 << 0;
- 13a:	38 9a       	sbi	0x07, 0	; 7
+ 130:	38 9a       	sbi	0x07, 0	; 7
 
 	//Test LED
 	DDRC |= 1 << 5;
@@ -301,7 +222,6 @@ int main(void)
 
 	//Initializing
 	UCSR0B = 0;
-<<<<<<< HEAD
  134:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7000c1>
 	DDRB |= (1 << PINNR);			//OUTPUT 
  138:	20 9a       	sbi	0x04, 0	; 4
@@ -332,122 +252,12 @@ int main(void)
  14c:	f8 cf       	rjmp	.-16     	; 0x13e <main+0x1a>
 
 0000014e <__vector_1>:
-=======
- 13c:	10 92 c1 00 	sts	0x00C1, r1	; 0x8000c1 <__TEXT_REGION_LENGTH__+0x7000c1>
-	DDR |= (1<<PINNR);
- 140:	20 9a       	sbi	0x04, 0	; 4
-	DDR |= (1 << PINNR_2);
- 142:	84 b1       	in	r24, 0x04	; 4
- 144:	84 b9       	out	0x04, r24	; 4
-
-	// Global interrupt enable
-	sei();
- 146:	78 94       	sei
-		_delay_ms(1);
-
-		for (int i = 0; i < 3; i++)
-		{
-			//Receive
-			streng[i] = karakter;
- 148:	ae 01       	movw	r20, r28
- 14a:	4f 5f       	subi	r20, 0xFF	; 255
- 14c:	5f 4f       	sbci	r21, 0xFF	; 255
-
-			if (streng[0] = "000")
- 14e:	61 e0       	ldi	r22, 0x01	; 1
- 150:	72 e0       	ldi	r23, 0x02	; 2
- 152:	db 01       	movw	r26, r22
- 154:	bb 27       	eor	r27, r27
-		}
-
-		//testOutput
-		if (streng == "aaa")
-		{
-			PORTB = 255;
- 156:	3f ef       	ldi	r19, 0xFF	; 255
-	sei();
-
-	while(1)
-	{
-		//ZEROCROSS TEST
-		PORTC |= 1 << 0;
- 158:	40 9a       	sbi	0x08, 0	; 8
-	#else
-		//round up by default
-		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
-	#endif
-
-	__builtin_avr_delay_cycles(__ticks_dc);
- 15a:	8f e9       	ldi	r24, 0x9F	; 159
- 15c:	9f e0       	ldi	r25, 0x0F	; 15
- 15e:	01 97       	sbiw	r24, 0x01	; 1
- 160:	f1 f7       	brne	.-4      	; 0x15e <main+0x3a>
- 162:	00 c0       	rjmp	.+0      	; 0x164 <main+0x40>
- 164:	00 00       	nop
-		_delay_ms(1);
-		PORTC &= ~(1 << 0);
- 166:	40 98       	cbi	0x08, 0	; 8
- 168:	8f e9       	ldi	r24, 0x9F	; 159
- 16a:	9f e0       	ldi	r25, 0x0F	; 15
- 16c:	01 97       	sbiw	r24, 0x01	; 1
- 16e:	f1 f7       	brne	.-4      	; 0x16c <main+0x48>
- 170:	00 c0       	rjmp	.+0      	; 0x172 <main+0x4e>
- 172:	00 00       	nop
-		_delay_ms(1);
-
-		for (int i = 0; i < 3; i++)
- 174:	80 e0       	ldi	r24, 0x00	; 0
- 176:	90 e0       	ldi	r25, 0x00	; 0
- 178:	02 c0       	rjmp	.+4      	; 0x17e <main+0x5a>
- 17a:	81 e0       	ldi	r24, 0x01	; 1
- 17c:	90 e0       	ldi	r25, 0x00	; 0
-		{
-			//Receive
-			streng[i] = karakter;
- 17e:	20 91 00 02 	lds	r18, 0x0200	; 0x800200 <__data_start>
- 182:	fa 01       	movw	r30, r20
- 184:	e8 0f       	add	r30, r24
- 186:	f9 1f       	adc	r31, r25
- 188:	20 83       	st	Z, r18
-
-			if (streng[0] = "000")
- 18a:	69 83       	std	Y+1, r22	; 0x01
- 18c:	10 97       	sbiw	r26, 0x00	; 0
- 18e:	a9 f7       	brne	.-22     	; 0x17a <main+0x56>
-		PORTC |= 1 << 0;
-		_delay_ms(1);
-		PORTC &= ~(1 << 0);
-		_delay_ms(1);
-
-		for (int i = 0; i < 3; i++)
- 190:	01 96       	adiw	r24, 0x01	; 1
- 192:	83 30       	cpi	r24, 0x03	; 3
- 194:	91 05       	cpc	r25, r1
- 196:	9c f3       	brlt	.-26     	; 0x17e <main+0x5a>
-				i = 0;
-			}
-		}
-
-		//testOutput
-		if (streng == "aaa")
- 198:	92 e0       	ldi	r25, 0x02	; 2
- 19a:	45 30       	cpi	r20, 0x05	; 5
- 19c:	59 07       	cpc	r21, r25
- 19e:	e1 f6       	brne	.-72     	; 0x158 <main+0x34>
-		{
-			PORTB = 255;
- 1a0:	35 b9       	out	0x05, r19	; 5
- 1a2:	da cf       	rjmp	.-76     	; 0x158 <main+0x34>
-
-000001a4 <__vector_1>:
->>>>>>> origin/master
 	}
 }
 
 // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
 ISR (INT0_vect)
 {
-<<<<<<< HEAD
  14e:	1f 92       	push	r1
  150:	0f 92       	push	r0
  152:	0f b6       	in	r0, 0x3f	; 63
@@ -495,71 +305,12 @@ ISR (INT0_vect)
  19e:	18 95       	reti
 
 000001a0 <readCharSW>:
-=======
- 1a4:	1f 92       	push	r1
- 1a6:	0f 92       	push	r0
- 1a8:	0f b6       	in	r0, 0x3f	; 63
- 1aa:	0f 92       	push	r0
- 1ac:	11 24       	eor	r1, r1
- 1ae:	0b b6       	in	r0, 0x3b	; 59
- 1b0:	0f 92       	push	r0
- 1b2:	2f 93       	push	r18
- 1b4:	3f 93       	push	r19
- 1b6:	4f 93       	push	r20
- 1b8:	5f 93       	push	r21
- 1ba:	6f 93       	push	r22
- 1bc:	7f 93       	push	r23
- 1be:	8f 93       	push	r24
- 1c0:	9f 93       	push	r25
- 1c2:	af 93       	push	r26
- 1c4:	bf 93       	push	r27
- 1c6:	ef 93       	push	r30
- 1c8:	ff 93       	push	r31
-	// Test Write
-	sendCharSW('a');
- 1ca:	81 e6       	ldi	r24, 0x61	; 97
-
-	// Test Read
-	karakter = readCharSW();
- 1cc:	16 d0       	rcall	.+44     	; 0x1fa <sendCharSW>
- 1ce:	2e d0       	rcall	.+92     	; 0x22c <readCharSW>
- 1d0:	80 93 00 02 	sts	0x0200, r24	; 0x800200 <__data_start>
- 1d4:	ff 91       	pop	r31
- 1d6:	ef 91       	pop	r30
- 1d8:	bf 91       	pop	r27
- 1da:	af 91       	pop	r26
- 1dc:	9f 91       	pop	r25
- 1de:	8f 91       	pop	r24
- 1e0:	7f 91       	pop	r23
- 1e2:	6f 91       	pop	r22
- 1e4:	5f 91       	pop	r21
- 1e6:	4f 91       	pop	r20
- 1e8:	3f 91       	pop	r19
- 1ea:	2f 91       	pop	r18
- 1ec:	0f 90       	pop	r0
- 1ee:	0b be       	out	0x3b, r0	; 59
- 1f0:	0f 90       	pop	r0
- 1f2:	0f be       	out	0x3f, r0	; 63
- 1f4:	0f 90       	pop	r0
- 1f6:	1f 90       	pop	r1
- 1f8:	18 95       	reti
-
-000001fa <sendCharSW>:
-{
-	// Main-loop: Toggle LED7 hvert sekund
-	unsigned char i;
-	unsigned char x = Tegn;
-	// Start bit
-	PORT &= ~(1<<PINNR);
- 1fa:	28 98       	cbi	0x05, 0	; 5
->>>>>>> origin/master
 	#else
 		//round up by default
 		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
 	#endif
 
 	__builtin_avr_delay_cycles(__ticks_dc);
-<<<<<<< HEAD
  1a0:	80 e1       	ldi	r24, 0x10	; 16
  1a2:	8a 95       	dec	r24
  1a4:	f1 f7       	brne	.-4      	; 0x1a2 <readCharSW+0x2>
@@ -569,31 +320,11 @@ ISR (INT0_vect)
  1ac:	00 00       	nop
  1ae:	20 e0       	ldi	r18, 0x00	; 0
  1b0:	30 e0       	ldi	r19, 0x00	; 0
-}
-// 8 data bit, no parity, 1 stop bit
-char readCharSW()
-{
-	unsigned char i;
-	unsigned char out = '\0';
  1b2:	80 e0       	ldi	r24, 0x00	; 0
-			{
-				out |= 1 << i;
-			}
-			else
-			{
-				out &= ~(1 << i);
  1b4:	61 e0       	ldi	r22, 0x01	; 1
  1b6:	70 e0       	ldi	r23, 0x00	; 0
-	//{
-		_delay_us(NO_us);
-		//Data
-		for (i = 0; i < 8; i++)
-		{
-			if ((PINA & 0b00000001) == 1)
  1b8:	00 9b       	sbis	0x00, 0	; 0
  1ba:	09 c0       	rjmp	.+18     	; 0x1ce <readCharSW+0x2e>
-			{
-				out |= 1 << i;
  1bc:	ab 01       	movw	r20, r22
  1be:	02 2e       	mov	r0, r18
  1c0:	02 c0       	rjmp	.+4      	; 0x1c6 <readCharSW+0x26>
@@ -603,10 +334,6 @@ char readCharSW()
  1c8:	e2 f7       	brpl	.-8      	; 0x1c2 <readCharSW+0x22>
  1ca:	84 2b       	or	r24, r20
  1cc:	09 c0       	rjmp	.+18     	; 0x1e0 <readCharSW+0x40>
-			}
-			else
-			{
-				out &= ~(1 << i);
  1ce:	ab 01       	movw	r20, r22
  1d0:	02 2e       	mov	r0, r18
  1d2:	02 c0       	rjmp	.+4      	; 0x1d8 <readCharSW+0x38>
@@ -622,12 +349,6 @@ char readCharSW()
  1e6:	00 00       	nop
  1e8:	2f 5f       	subi	r18, 0xFF	; 255
  1ea:	3f 4f       	sbci	r19, 0xFF	; 255
-	//STARTBIT
-	//if (PINNR_2 == 0);
-	//{
-		_delay_us(NO_us);
-		//Data
-		for (i = 0; i < 8; i++)
  1ec:	28 30       	cpi	r18, 0x08	; 8
  1ee:	31 05       	cpc	r19, r1
  1f0:	19 f7       	brne	.-58     	; 0x1b8 <readCharSW+0x18>
@@ -635,106 +356,9 @@ char readCharSW()
  1f4:	9a 95       	dec	r25
  1f6:	f1 f7       	brne	.-4      	; 0x1f4 <readCharSW+0x54>
  1f8:	00 00       	nop
-	//else
-	//{
-		//_delay_us(NO_us);
-		//return '0';
-	//}
-}
  1fa:	08 95       	ret
 
 000001fc <__vector_20>:
-=======
- 1fc:	2a e2       	ldi	r18, 0x2A	; 42
- 1fe:	2a 95       	dec	r18
- 200:	f1 f7       	brne	.-4      	; 0x1fe <sendCharSW+0x4>
- 202:	00 c0       	rjmp	.+0      	; 0x204 <sendCharSW+0xa>
- 204:	98 e0       	ldi	r25, 0x08	; 8
-	_delay_us(NO_us);
-	// 8 data bits (LSB first)
-	for (i = 0; i<8; i++)
-	{
-		if(x & 0b00000001)
- 206:	80 ff       	sbrs	r24, 0
- 208:	02 c0       	rjmp	.+4      	; 0x20e <sendCharSW+0x14>
-		PORT |= (1<<PINNR);
- 20a:	28 9a       	sbi	0x05, 0	; 5
- 20c:	01 c0       	rjmp	.+2      	; 0x210 <sendCharSW+0x16>
-		else
-		PORT &= ~(1<<PINNR);
- 20e:	28 98       	cbi	0x05, 0	; 5
- 210:	2a e2       	ldi	r18, 0x2A	; 42
- 212:	2a 95       	dec	r18
- 214:	f1 f7       	brne	.-4      	; 0x212 <sendCharSW+0x18>
- 216:	00 c0       	rjmp	.+0      	; 0x218 <sendCharSW+0x1e>
-		_delay_us(NO_us);
-		x = x>>1;
- 218:	86 95       	lsr	r24
- 21a:	91 50       	subi	r25, 0x01	; 1
-	unsigned char x = Tegn;
-	// Start bit
-	PORT &= ~(1<<PINNR);
-	_delay_us(NO_us);
-	// 8 data bits (LSB first)
-	for (i = 0; i<8; i++)
- 21c:	a1 f7       	brne	.-24     	; 0x206 <sendCharSW+0xc>
-		else
-		PORT &= ~(1<<PINNR);
-		_delay_us(NO_us);
-		x = x>>1;
-	}
-	PORT |= (1<<PINNR);
- 21e:	28 9a       	sbi	0x05, 0	; 5
- 220:	8a e2       	ldi	r24, 0x2A	; 42
- 222:	8a 95       	dec	r24
- 224:	f1 f7       	brne	.-4      	; 0x222 <sendCharSW+0x28>
- 226:	00 c0       	rjmp	.+0      	; 0x228 <sendCharSW+0x2e>
-	_delay_us(NO_us);
-	//Test ###DUNNO what the stopbit is###
-	PORT &= ~(1<<PINNR);
- 228:	28 98       	cbi	0x05, 0	; 5
- 22a:	08 95       	ret
-
-0000022c <readCharSW>:
- 22c:	8a e2       	ldi	r24, 0x2A	; 42
- 22e:	8a 95       	dec	r24
- 230:	f1 f7       	brne	.-4      	; 0x22e <readCharSW+0x2>
- 232:	00 c0       	rjmp	.+0      	; 0x234 <readCharSW+0x8>
- 234:	88 e0       	ldi	r24, 0x08	; 8
- 236:	9a e2       	ldi	r25, 0x2A	; 42
- 238:	9a 95       	dec	r25
- 23a:	f1 f7       	brne	.-4      	; 0x238 <readCharSW+0xc>
- 23c:	00 c0       	rjmp	.+0      	; 0x23e <readCharSW+0x12>
- 23e:	81 50       	subi	r24, 0x01	; 1
-	_delay_us(NO_us);
-	//STARTBIT
-	if (PINNR_2 != 0);
-	{
-		//Data
-		for (i = 8; i > 0; --i)
- 240:	d1 f7       	brne	.-12     	; 0x236 <readCharSW+0xa>
- 242:	8a e2       	ldi	r24, 0x2A	; 42
- 244:	8a 95       	dec	r24
- 246:	f1 f7       	brne	.-4      	; 0x244 <readCharSW+0x18>
- 248:	00 c0       	rjmp	.+0      	; 0x24a <readCharSW+0x1e>
-	else
-	{
-		_delay_us(NO_us);
-		return '0';
-	}
-}
- 24a:	80 e3       	ldi	r24, 0x30	; 48
- 24c:	08 95       	ret
-
-0000024e <__vector_20>:
->>>>>>> origin/master
-	  TCNT1 = (0xFFFF-15625);
-	  TIMSK1 |= 0b00000001;
-}
-
- ISR(TIMER1_OVF_vect)
- {
-<<<<<<< HEAD
  1fc:	1f 92       	push	r1
  1fe:	0f 92       	push	r0
  200:	0f b6       	in	r0, 0x3f	; 63
@@ -747,41 +371,30 @@ char readCharSW()
  20e:	9f 93       	push	r25
  210:	ef 93       	push	r30
  212:	ff 93       	push	r31
-	 // Tæller ctr_ op hvert sekund.
-	 ctr_++;
  214:	80 91 03 02 	lds	r24, 0x0203	; 0x800203 <ctr_>
  218:	90 91 04 02 	lds	r25, 0x0204	; 0x800204 <ctr_+0x1>
  21c:	01 96       	adiw	r24, 0x01	; 1
  21e:	90 93 04 02 	sts	0x0204, r25	; 0x800204 <ctr_+0x1>
  222:	80 93 03 02 	sts	0x0203, r24	; 0x800203 <ctr_>
-	 //sætter tcnt1 til krævet værdi for 1s delay
-	 TCNT1 = (0xFFFF-15625);
  226:	86 ef       	ldi	r24, 0xF6	; 246
  228:	92 ec       	ldi	r25, 0xC2	; 194
  22a:	90 93 85 00 	sts	0x0085, r25	; 0x800085 <__TEXT_REGION_LENGTH__+0x700085>
  22e:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x700084>
-
-	 if (ctr_ == 1800) //overflow 1 gang i sekundet
  232:	80 91 03 02 	lds	r24, 0x0203	; 0x800203 <ctr_>
  236:	90 91 04 02 	lds	r25, 0x0204	; 0x800204 <ctr_+0x1>
  23a:	88 30       	cpi	r24, 0x08	; 8
  23c:	97 40       	sbci	r25, 0x07	; 7
  23e:	71 f4       	brne	.+28     	; 0x25c <__vector_20+0x60>
-	 {
-		timerStatus_ = '1';
  240:	81 e3       	ldi	r24, 0x31	; 49
  242:	90 e0       	ldi	r25, 0x00	; 0
  244:	90 93 02 02 	sts	0x0202, r25	; 0x800202 <timerStatus_+0x1>
  248:	80 93 01 02 	sts	0x0201, r24	; 0x800201 <timerStatus_>
-		ctr_ = 0;
  24c:	10 92 04 02 	sts	0x0204, r1	; 0x800204 <ctr_+0x1>
  250:	10 92 03 02 	sts	0x0203, r1	; 0x800203 <ctr_>
-		TIMSK1 &= 0;
  254:	ef e6       	ldi	r30, 0x6F	; 111
  256:	f0 e0       	ldi	r31, 0x00	; 0
  258:	80 81       	ld	r24, Z
  25a:	10 82       	st	Z, r1
-	 }
  25c:	ff 91       	pop	r31
  25e:	ef 91       	pop	r30
  260:	9f 91       	pop	r25
@@ -800,70 +413,3 @@ char readCharSW()
 
 00000276 <__stop_program>:
  276:	ff cf       	rjmp	.-2      	; 0x276 <__stop_program>
-=======
- 24e:	1f 92       	push	r1
- 250:	0f 92       	push	r0
- 252:	0f b6       	in	r0, 0x3f	; 63
- 254:	0f 92       	push	r0
- 256:	11 24       	eor	r1, r1
- 258:	0b b6       	in	r0, 0x3b	; 59
- 25a:	0f 92       	push	r0
- 25c:	2f 93       	push	r18
- 25e:	8f 93       	push	r24
- 260:	9f 93       	push	r25
- 262:	ef 93       	push	r30
- 264:	ff 93       	push	r31
-	 // Tæller ctr_ op hvert sekund.
-	 ctr_++;
- 266:	80 91 0c 02 	lds	r24, 0x020C	; 0x80020c <ctr_>
- 26a:	90 91 0d 02 	lds	r25, 0x020D	; 0x80020d <ctr_+0x1>
- 26e:	01 96       	adiw	r24, 0x01	; 1
- 270:	90 93 0d 02 	sts	0x020D, r25	; 0x80020d <ctr_+0x1>
- 274:	80 93 0c 02 	sts	0x020C, r24	; 0x80020c <ctr_>
-	 //sætter tcnt1 til krævet værdi for 1s delay
-	 TCNT1 = (0xFFFF-15625);
- 278:	86 ef       	ldi	r24, 0xF6	; 246
- 27a:	92 ec       	ldi	r25, 0xC2	; 194
- 27c:	90 93 85 00 	sts	0x0085, r25	; 0x800085 <__TEXT_REGION_LENGTH__+0x700085>
- 280:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x700084>
-
-	 if (ctr_ == 1800) //overflow 1 gang i sekundet
- 284:	80 91 0c 02 	lds	r24, 0x020C	; 0x80020c <ctr_>
- 288:	90 91 0d 02 	lds	r25, 0x020D	; 0x80020d <ctr_+0x1>
- 28c:	88 30       	cpi	r24, 0x08	; 8
- 28e:	97 40       	sbci	r25, 0x07	; 7
- 290:	71 f4       	brne	.+28     	; 0x2ae <__vector_20+0x60>
-	 {
-		timerStatus_ = '1';
- 292:	81 e3       	ldi	r24, 0x31	; 49
- 294:	90 e0       	ldi	r25, 0x00	; 0
- 296:	90 93 0b 02 	sts	0x020B, r25	; 0x80020b <__data_end+0x1>
- 29a:	80 93 0a 02 	sts	0x020A, r24	; 0x80020a <__data_end>
-		ctr_ = 0;
- 29e:	10 92 0d 02 	sts	0x020D, r1	; 0x80020d <ctr_+0x1>
- 2a2:	10 92 0c 02 	sts	0x020C, r1	; 0x80020c <ctr_>
-		TIMSK1 &= 0;
- 2a6:	ef e6       	ldi	r30, 0x6F	; 111
- 2a8:	f0 e0       	ldi	r31, 0x00	; 0
- 2aa:	80 81       	ld	r24, Z
- 2ac:	10 82       	st	Z, r1
-	 }
- 2ae:	ff 91       	pop	r31
- 2b0:	ef 91       	pop	r30
- 2b2:	9f 91       	pop	r25
- 2b4:	8f 91       	pop	r24
- 2b6:	2f 91       	pop	r18
- 2b8:	0f 90       	pop	r0
- 2ba:	0b be       	out	0x3b, r0	; 59
- 2bc:	0f 90       	pop	r0
- 2be:	0f be       	out	0x3f, r0	; 63
- 2c0:	0f 90       	pop	r0
- 2c2:	1f 90       	pop	r1
- 2c4:	18 95       	reti
-
-000002c6 <_exit>:
- 2c6:	f8 94       	cli
-
-000002c8 <__stop_program>:
- 2c8:	ff cf       	rjmp	.-2      	; 0x2c8 <__stop_program>
->>>>>>> origin/master
