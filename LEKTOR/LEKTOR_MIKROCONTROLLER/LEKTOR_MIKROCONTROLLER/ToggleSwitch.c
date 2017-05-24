@@ -1,5 +1,5 @@
 /*
-	Implementeringsfil for ToggleSwitch.H
+	Implementeringsfil for ToggleSwitch.h
  */ 
 
  #include "ToggleSwitch.h"

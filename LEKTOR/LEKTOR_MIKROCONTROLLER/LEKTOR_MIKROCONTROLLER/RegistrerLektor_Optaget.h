@@ -8,7 +8,7 @@
 #pragma once
 
 //Variables
-volatile char lektorOptaget_ = '0';
+volatile char lektorOptaget_;
 
 //Functions
 void skiftLEDTilstand_Optaget(char lektorOptaget);

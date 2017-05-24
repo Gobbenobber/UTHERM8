@@ -15,9 +15,9 @@ main.d main.o: .././main.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\util\delay_basic.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h \
- .././Send.h .././Manchester.h .././RegistrerLektor_Optaget.h \
+ .././Manchester.h .././RegistrerLektor_Optaget.h \
  .././RegistrerLektor_PaaKontor.h .././Timer_1.h .././Timer_2.h \
- .././Sensor.h .././ToggleSwitch.h .././ToggleSwitchLED.h \
+ .././Send.h .././Sensor.h .././ToggleSwitch.h .././ToggleSwitchLED.h \
  .././zeroCrossDetector.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
@@ -52,8 +52,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\math.h:
 
-.././Send.h:
-
 .././Manchester.h:
 
 .././RegistrerLektor_Optaget.h:
@@ -63,6 +61,8 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 .././Timer_1.h:
 
 .././Timer_2.h:
+
+.././Send.h:
 
 .././Sensor.h:
 

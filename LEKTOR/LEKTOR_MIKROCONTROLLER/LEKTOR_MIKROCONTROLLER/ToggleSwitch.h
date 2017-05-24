@@ -7,7 +7,7 @@
 #include "avr/io.h"
 
 //Variables
-volatile char tilstand_ = 0;
+volatile char tilstand_;
 
 char register___;
 short int port___;

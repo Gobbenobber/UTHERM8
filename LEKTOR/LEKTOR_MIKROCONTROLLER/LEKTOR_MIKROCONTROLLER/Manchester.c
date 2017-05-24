@@ -1,5 +1,4 @@
 #include "Manchester.h"
-#include "main.c"
 #include <string.h>
 #include <stdlib.h>
 

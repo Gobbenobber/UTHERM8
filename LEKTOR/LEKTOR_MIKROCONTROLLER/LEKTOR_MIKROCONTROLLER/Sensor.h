@@ -9,7 +9,7 @@
 #include "avr/io.h"
 
 //Variables
-volatile char lektorDetected_ = '0';
+volatile char lektorDetected_;
 char register__;
 short int port__;
 

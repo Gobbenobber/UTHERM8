@@ -10,7 +10,6 @@
 #include <util/delay.h>
 
 //Drivers
-#include "Send.h"
 #include "Manchester.h"
 #include "RegistrerLektor_Optaget.h"
 #include "RegistrerLektor_PaaKontor.h"
@@ -28,12 +27,13 @@
 volatile unsigned char karakter = '\0';
 volatile short int currentChar = 0;
 volatile unsigned char COMMAND = '\0';
+unsigned char* konverteretStreng;
 /*
 //------------------------------------//
 //				 Functions			  //
 //------------------------------------//
 */
-unsigned char* konverteretStreng;
+
 int main(void)
 {
 	initSensor('B', 2);
@@ -41,7 +41,10 @@ int main(void)
 	initToggleSwitchLED('B', 4);
 	initZCDetector();
 	
-	unsigned char streng[3] = {LEKTORID1, LEKTORID2, COMMAND};
+	//Streng med data som skal sendes.
+	unsigned char streng[4] = {LEKTORID1, LEKTORID2, COMMAND};
+	
+	// Global interrupt enable
 	sei();
 
 	//TEST AF PIN
@@ -54,7 +57,7 @@ int main(void)
 
 
 
-	// Global interrupt enable
+	
 
 	while(1)
 	{
@@ -87,14 +90,16 @@ int main(void)
 
 		streng[2] = COMMAND;
 
+
 		konverteretStreng = stringToManchester(streng);
 		karakter = konverteretStreng[currentChar];
 		freePtr();
 	}
+	return 0;
 }
 
 // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
-ISR (INT0_vect)
+ISR(INT0_vect)
 {
 	//_delay_ms(2);
 	T2Delay_us(8);
