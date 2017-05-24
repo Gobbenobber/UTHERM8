@@ -27,17 +27,19 @@ public:
 	void textToInt();
 	
 	//Add lector from name
-	void addLector(int id, std::string);
+	void addLector(int id, std::string name);
 	void removeLector(int id);
-	void changeState(int id, char state_1, char state_2);
-	std::string getLector() const;
+	void changeState(int id, char state);
+	std::string getLector(int id) const;
 	void resetAll();
 	void terminateProgram();
+	int returnID(std::string initialer);
 private:
 	int size_; //Changeable
 	std::string* storage_; //Dynamic
 	std::string line_;
 	std::fstream myFile_;
+	int * idArr;
 
 };
 

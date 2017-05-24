@@ -36,6 +36,10 @@ int main()
 	l_1.printAll();
 	l_1.validation();
 	l_1.textToInt();
+	l_1.addLector(10, "HH-HenningHargaad");
+	l_1.printAll();
+	l_1.removeLector(10);
+	l_1.printAll();
 
 	while (true)
 	{

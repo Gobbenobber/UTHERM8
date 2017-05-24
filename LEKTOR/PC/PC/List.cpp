@@ -64,7 +64,7 @@ void List::initializeSpaces(int size)
 			{
 				myFile_ << "a" << i;
 			}
-
+			myFile_ << "-X-";
 			myFile_ << "\n";
 		}
 		std::cout << "Path has been prepared and path is open" << std::endl;
@@ -124,7 +124,6 @@ void List::inputText()
 
 void List::textToInt()
 {
-	int * idArr;
 	idArr = new int[size_];
 	std::string tempStorage;
 	std::string tempStr;
@@ -169,27 +168,83 @@ void List::textToInt()
 	}
 }
 
-void List::addLector(int id, std::string)
+//Name is InitialsFirst + - + Name + Lastname
+void List::addLector(int id, std::string name)
 {
+	std::ofstream myFile_;
+	storage_[id] += name;
+
+	myFile_.open("Text.txt");
+	if (myFile_.is_open())
+	{
+		for (int i = 0; i < size_; i++)
+		{
+			myFile_ << storage_[i] << std::endl;
+		}
+	}
+	myFile_.close();
 }
 
 void List::removeLector(int id)
 {
+	std::ofstream myFile_;
+	storage_[id].resize(7);
+	storage_[id][5] = 'X';
+
+	myFile_.open("Text.txt");
+	if (myFile_.is_open())
+	{
+		for (int i = 0; i < size_; i++)
+		{
+			myFile_ << storage_[i] << std::endl;
+		}
+	}
+	myFile_.close();
 }
 
-void List::changeState(int id, char state_1, char state_2)
+void List::changeState(int id, char state)
 {
+	std::ofstream myFile_;
+	storage_[id][5] = state;
+
+	myFile_.open("Text.txt");
+	if (myFile_.is_open())
+	{
+		for (int i = 0; i < size_; i++)
+		{
+			myFile_ << storage_[i] << std::endl;
+		}
+	}
+	myFile_.close();
 }
 
-std::string List::getLector() const
+std::string List::getLector(int id) const
 {
-	return std::string();
+	return storage_[id];
 }
 
 void List::resetAll()
 {
+	std::ofstream myFile_;
+
+	myFile_.open("Text.txt");
+	if (myFile_.is_open())
+	{
+		for (int i = 0; i < size_; i++)
+		{
+			storage_[i].resize(7);
+			storage_[i][5] = 'X';
+			myFile_ << storage_[i] << std::endl;
+		}
+	}
+	myFile_.close();
 }
 
 void List::terminateProgram()
 {
+}
+
+int List::returnID(std::string initialer)
+{
+	return 0;
 }
