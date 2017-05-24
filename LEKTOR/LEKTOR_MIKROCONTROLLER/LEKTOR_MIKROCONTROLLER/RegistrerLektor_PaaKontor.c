@@ -32,15 +32,15 @@
  }
 
  //Registrér om den afsendte streng indikerer at lektoren er på kontoret.
- void lektorStatus_PaaKontor(char* afsendtStreng)
+ void lektorStatus_PaaKontor(char sensorInput)
  {
-	if (afsendtStreng[2] == 't') //bemærk 't' for 'tilstede'
+	if (sensorInput == '1') 
 	{
-	tilStede_ = '1';
+	lektortilStede_ = '1';
 	}
 	else
 	{
-	tilStede_ = '0';
+	lektortilStede_ = '0';
 	}
 
  }

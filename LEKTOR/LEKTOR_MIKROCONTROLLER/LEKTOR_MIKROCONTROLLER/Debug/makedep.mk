@@ -10,7 +10,7 @@ RegistrerLektor_Optaget.c
 
 RegistrerLektor_PaaKontor.c
 
-SendOgModtag.c
+Send.c
 
 Sensor.c
 
@@ -22,5 +22,5 @@ ToggleSwitch.c
 
 ToggleSwitchLED.c
 
-uart.c
+zeroCrossDetector.c
 

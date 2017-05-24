@@ -11,15 +11,15 @@
 //.MMMM.MMMMM.MMMMAAAAAAAAAAAA..NNNN.NNNNNN.CCCCCC.CCCCCC.HHHH...HHHH..EEEE.......SSSSS..SSSSS....TTTT....EEEE.........RRRR.RRRRRR...
 //.MMMM.MMMMM.MMMMAAAA....AAAAA.NNNN.NNNNNN..CCCCCCCCCCC..HHHH...HHHH..EEEEEEEEEEESSSSSSSSSSSS....TTTT....EEEEEEEEEEE..RRRR..RRRRR...
 //.MMMM.MMMMM.MMMMAAAA....AAAAA.NNNN..NNNNN...CCCCCCCCCC..HHHH...HHHH..EEEEEEEEEEE.SSSSSSSSSS.....TTTT....EEEEEEEEEEE..RRRR...RRRRR..
-//.MMMM.MMMMM.MMMMAAAA.....AAAA.NNNN...NNNN....CCCCCCCC...HHHH...HHHH..EEEEEEEEEEE..SSSSSSSS......TTTT....EEEEEEEEEEE..RRRR...RRRRR..
+//.MMMM.MMMMM.MMMMAAAA.....AAAA.NNNN...NNNN....CCCCCCCC...HHHH...HHHH..EEEEEEEEEEE..SSSSSSSS......TTTT....EEEEEEEEEEE..RRRR...RRRRR...h
 //..................................................................................................................................
 // Skrevet af Patrick Bjerregaard og Kasper Hermansen.
 // Version: 1.01RC
 // De to nedenstående funktioner kan benyttes til at kovertere en given tekststreng til Manchester kode og benytter dynamisk hukommelse til at opnå dette.
+// Fungerer både på MCU og PC.
 
 #pragma once
-#include "Manchester.h"
 
-const unsigned char* stringToManchester(const unsigned char* toBeConverted);
-unsigned char* mancesterToString(const unsigned char* toBeConverted);
+unsigned char* stringToManchester(unsigned char* toBeConverted);
+unsigned char* mancesterToString(unsigned char* toBeConverted);
 void freePtr();

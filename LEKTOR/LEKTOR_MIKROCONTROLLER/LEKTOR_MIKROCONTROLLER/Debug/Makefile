@@ -41,13 +41,13 @@ C_SRCS +=  \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
 ../RegistrerLektor_PaaKontor.c \
-../SendOgModtag.c \
+../Send.c \
 ../Sensor.c \
 ../Timer_1.c \
 ../Timer_2.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
-../uart.c
+../zeroCrossDetector.c
 
 
 PREPROCESSING_SRCS += 
@@ -61,52 +61,52 @@ main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
-SendOgModtag.o \
+Send.o \
 Sensor.o \
 Timer_1.o \
 Timer_2.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
-uart.o
+zeroCrossDetector.o
 
 OBJS_AS_ARGS +=  \
 main.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
-SendOgModtag.o \
+Send.o \
 Sensor.o \
 Timer_1.o \
 Timer_2.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
-uart.o
+zeroCrossDetector.o
 
 C_DEPS +=  \
 main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
-SendOgModtag.d \
+Send.d \
 Sensor.d \
 Timer_1.d \
 Timer_2.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
-uart.d
+zeroCrossDetector.d
 
 C_DEPS_AS_ARGS +=  \
 main.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
-SendOgModtag.d \
+Send.d \
 Sensor.d \
 Timer_1.d \
 Timer_2.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
-uart.d
+zeroCrossDetector.d
 
 OUTPUT_FILE_PATH +=LEKTOR_MIKROCONTROLLER.elf
 

@@ -10,8 +10,8 @@
 
 //Variables
 volatile char LED_ON;
-char register__;
-short int port__;
+char register____;
+short int port____;
 
 //Functions
 void initToggleSwitchLED(char register_, short int port);

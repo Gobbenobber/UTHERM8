@@ -15,7 +15,7 @@
  #include "Timer_2.h"
  #include <avr/io.h>
 
- void T2Delay(int delay_us) // MAX 15 uS DELAY!!!
+ void T2Delay_us(int delay_us) // MAX 15 uS DELAY!!!
  {
 	 int us;
 	 
@@ -29,7 +29,7 @@
 	 {
 		 us = 1;
 	 }
-	 
+	 //x for 1s = 240 v. fravær af PS, derfor 16*us
 	 TCNT2 = (256-(16*us));
 	 
 	 //Prescaler = 0, normal mode.

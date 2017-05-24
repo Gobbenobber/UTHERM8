@@ -9,8 +9,8 @@
 //Variables
 volatile char tilstand_ = 0;
 
-char register__;
-short int port__;
+char register___;
+short int port___;
 
 //Functions
 void initToggleSwitch(char register_, short int port);

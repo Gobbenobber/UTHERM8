@@ -1,27 +1,24 @@
 
 #include "RegistrerLektor_Optaget.h"
 #include "ToggleSwitchLED.h"
-
- // Global interrupt enable
  
  void skiftLEDTilstand_Optaget(char lektorOptaget)
 {
 	if (lektorOptaget == '0')
 	{
-	lektorOptaget_ = '0';
 	setToggleSwitchLED('0');
 	}
+
 	else 	
 	{
-	lektorOptaget_ = '1';
 	setToggleSwitchLED('1');
 	}
 
 }
 
-void lektorStatus_Optaget(char* afsendtStreng)
+void lektorStatus_Optaget(char toggleSwitchInput)
 {
-	if (afsendtStreng[2] == 'o') //bemærk, 'o' for "optaget".
+	if (toggleSwitchInput == '1') //bemærk, '1' for "optaget".
 	{
 	lektorOptaget_ = '1';
 	}

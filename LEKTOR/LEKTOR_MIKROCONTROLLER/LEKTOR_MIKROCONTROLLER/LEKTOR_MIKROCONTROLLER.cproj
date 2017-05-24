@@ -169,10 +169,10 @@
     <Compile Include="RegistrerLektor_PaaKontor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SendOgModtag.c">
+    <Compile Include="Send.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SendOgModtag.h">
+    <Compile Include="Send.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Sensor.c">
@@ -205,10 +205,10 @@
     <Compile Include="ToggleSwitchLED.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="uart.c">
+    <Compile Include="zeroCrossDetector.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="uart.h">
+    <Compile Include="zeroCrossDetector.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

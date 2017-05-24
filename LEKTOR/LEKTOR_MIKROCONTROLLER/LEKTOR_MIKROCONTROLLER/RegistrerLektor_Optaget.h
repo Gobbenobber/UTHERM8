@@ -12,5 +12,5 @@ volatile char lektorOptaget_ = '0';
 
 //Functions
 void skiftLEDTilstand_Optaget(char lektorOptaget);
-void lektorStatus_Optaget(char* afsendtStreng);
+void lektorStatus_Optaget(char toggleSwitchInput);
 

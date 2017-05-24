@@ -5,7 +5,7 @@
 #include <util/delay.h>
 
 //Local Constants
-#define NO_us 70000/BAUD
+#define NO_us 800000/BAUD
 #define DDR   DDRB
 #define PORT  PORTB
 #define PINNR 0
@@ -14,6 +14,3 @@
 
 // 8 data bit, no parity, 1 stop bit
 void sendCharSW(char Tegn);
-
-// 8 data bit, no parity, 1 stop bit
-char readCharSW();

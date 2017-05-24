@@ -1,4 +1,5 @@
 #include "Manchester.h"
+#include "main.c"
 #include <string.h>
 #include <stdlib.h>
 
@@ -8,9 +9,9 @@ void freePtr(){
 	free(manchesterPtr);
 }
 
-const unsigned char* stringToManchester(const unsigned char* toBeConverted)
+unsigned char* stringToManchester(unsigned char* toBeConverted)
 {
-	if (toBeConverted == (const unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
+	if (toBeConverted == (unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
 	int len = strlen((char*)toBeConverted);											// Lav size_t som kan passes til calloc.
 	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);				// Alloker hukommelse
 	int counter = 8;
@@ -47,12 +48,12 @@ const unsigned char* stringToManchester(const unsigned char* toBeConverted)
 	return manchesterPtr;													// Returnér manchesterkoden
 }
 
-unsigned char* mancesterToString(const unsigned char* toBeConverted)
+unsigned char* mancesterToString(unsigned char* toBeConverted)
 {
-	if (toBeConverted == (const unsigned char*)"") return 0;
+	if (toBeConverted == (unsigned char*)"") return 0;
 	int len = ((int)(strlen((char*)toBeConverted)) / 2);
 	manchesterPtr = calloc((len+1), sizeof(unsigned char));
-	if (manchesterPtr == (const unsigned char*)"")
+	if (manchesterPtr == (unsigned char*)"")
 	{
 		return '\0';
 	}
