@@ -9,9 +9,15 @@
 //     \__|   \__|\__| \__| \__| \_______|\__|             \______/       \______|\__|  \__|   \__|
 
  */ 
-
+  #pragma once
  #include "Timer_3_interrupt.h"
+ #include "avr/interrupt.h"
+ #include "avr/io.h"
 
- int returnerTimerStatus();
- void resetTimer();
- void setTimer();
+ //Variables
+ volatile static int ctr_3 = 0;
+ volatile static int timerStatus_3 = 0;
+
+ int returnerTimer3Status();
+ void resetTimer3();
+ void setTimer3();

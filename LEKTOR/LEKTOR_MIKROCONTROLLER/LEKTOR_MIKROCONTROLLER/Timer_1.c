@@ -21,8 +21,8 @@
 
  void resetTimer()
  {
-	ctr_ = 0;
 	timerStatus_ = '0';
+	ctr_ = 0;
  }
 
 
@@ -51,8 +51,7 @@
 
 	 if (ctr_ == 600) //overflow 1 gang i sekundet betyder 600 = 10 min.	 
 	 {
-		timerStatus_ = '0';
-		ctr_ = 0;
+		resetTimer();
 		TIMSK1 &= 0;
 	 }
  }

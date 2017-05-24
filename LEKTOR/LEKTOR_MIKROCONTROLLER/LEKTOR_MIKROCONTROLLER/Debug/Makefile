@@ -45,6 +45,7 @@ C_SRCS +=  \
 ../Sensor.c \
 ../Timer_1.c \
 ../Timer_2.c \
+../Timer_3_interrupt.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
 ../zeroCrossDetector.c
@@ -65,6 +66,7 @@ Send.o \
 Sensor.o \
 Timer_1.o \
 Timer_2.o \
+Timer_3_interrupt.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 zeroCrossDetector.o
@@ -78,6 +80,7 @@ Send.o \
 Sensor.o \
 Timer_1.o \
 Timer_2.o \
+Timer_3_interrupt.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 zeroCrossDetector.o
@@ -91,6 +94,7 @@ Send.d \
 Sensor.d \
 Timer_1.d \
 Timer_2.d \
+Timer_3_interrupt.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 zeroCrossDetector.d
@@ -104,6 +108,7 @@ Send.d \
 Sensor.d \
 Timer_1.d \
 Timer_2.d \
+Timer_3_interrupt.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 zeroCrossDetector.d
@@ -122,6 +127,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
