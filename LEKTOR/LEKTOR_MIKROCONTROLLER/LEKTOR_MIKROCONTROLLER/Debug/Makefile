@@ -43,7 +43,7 @@ C_SRCS +=  \
 ../RegistrerLektor_PaaKontor.c \
 ../SendOgModtag.c \
 ../Sensor.c \
-../Timer.c \
+../Timer_1.c \
 ../Timer_2.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
@@ -63,7 +63,7 @@ RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
 SendOgModtag.o \
 Sensor.o \
-Timer.o \
+Timer_1.o \
 Timer_2.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
@@ -76,7 +76,7 @@ RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
 SendOgModtag.o \
 Sensor.o \
-Timer.o \
+Timer_1.o \
 Timer_2.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
@@ -89,7 +89,7 @@ RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
 SendOgModtag.d \
 Sensor.d \
-Timer.d \
+Timer_1.d \
 Timer_2.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
@@ -102,7 +102,7 @@ RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
 SendOgModtag.d \
 Sensor.d \
-Timer.d \
+Timer_1.d \
 Timer_2.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \

@@ -148,9 +148,6 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="IncFile1.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -184,10 +181,10 @@
     <Compile Include="Sensor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Timer.c">
+    <Compile Include="Timer_1.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Timer.h">
+    <Compile Include="Timer_1.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Timer_2.c">

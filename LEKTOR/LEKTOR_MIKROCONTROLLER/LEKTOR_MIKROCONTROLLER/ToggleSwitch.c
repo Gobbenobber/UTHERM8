@@ -202,5 +202,6 @@ char toggleSwitchStatus()
 			return tilstand_;
 		}
 		break;
+		default: return '0';
 	}
 }

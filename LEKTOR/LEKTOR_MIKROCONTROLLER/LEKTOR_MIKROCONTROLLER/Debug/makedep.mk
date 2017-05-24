@@ -14,7 +14,7 @@ SendOgModtag.c
 
 Sensor.c
 
-Timer.c
+Timer_1.c
 
 Timer_2.c
 

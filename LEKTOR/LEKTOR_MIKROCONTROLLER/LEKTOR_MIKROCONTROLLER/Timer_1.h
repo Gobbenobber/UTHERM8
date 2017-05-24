@@ -9,8 +9,8 @@
 #include "avr/io.h"
 
 //Variables
-volatile int ctr_ = 0;
-volatile int timerStatus_ = 0;
+volatile static int ctr_ = 0;
+volatile static int timerStatus_ = 0;
 
 //Functions
 int returnerTimerStatus();

@@ -10,15 +10,14 @@
  *                                                                                                    $$\   $$ |
  *                                                                                                    \$$$$$$  |
  *                                                                                                     \______/ 
- *								Timer2.h
  *				----------------------------------
  *				Driver til timer 2 delay op til max. 51 us.
  *				----------------------------------
- *
  *				Created: 23-05-2017
  *				Author: Patrick Bjerregaard
- */
+ */						
+ 
 
 #pragma once
 
-void T2Delay(int delay_us); //max 51 uS delay.
+void T2Delay(int delay_us); //max 15 uS delay.

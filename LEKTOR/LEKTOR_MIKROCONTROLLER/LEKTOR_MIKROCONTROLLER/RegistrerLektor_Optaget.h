@@ -5,15 +5,12 @@
 ///		status til optaget og reagere hvis han/hun ikke		///
 ///						længere er optaget.					///
 ///////////////////////////////////////////////////////////////
-
-#ifndef REGISTRERLEKTOR_OPTAGET_H_
-#define REGISTRERLEKTOR_OPTAGET_H_
+#pragma once
 
 //Variables
 volatile char lektorOptaget_ = '0';
 
 //Functions
-void skiftLEDTilstand_Optaget(char);
-void lektorStatus_Optaget(char*);
+void skiftLEDTilstand_Optaget(char lektorOptaget);
+void lektorStatus_Optaget(char* afsendtStreng);
 
-#endif /* REGISTRERLEKTOR_OPTAGET_H_ */

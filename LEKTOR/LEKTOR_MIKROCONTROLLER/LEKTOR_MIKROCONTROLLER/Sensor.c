@@ -205,5 +205,6 @@ char kontorStatus()
 			return lektorDetected_;
 		}
 		break;
+		default: return '0';
 	}
 }

@@ -15,19 +15,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   5 .debug_aranges 00000088  00000000  00000000  0000035c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001086  00000000  00000000  000003e4  2**0
+  6 .debug_info   00001084  00000000  00000000  000003e4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000d86  00000000  00000000  0000146a  2**0
+  7 .debug_abbrev 00000d84  00000000  00000000  00001468  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000060d  00000000  00000000  000021f0  2**0
+  8 .debug_line   00000617  00000000  00000000  000021ec  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000128  00000000  00000000  00002800  2**2
+  9 .debug_frame  00000128  00000000  00000000  00002804  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000006ac  00000000  00000000  00002928  2**0
+ 10 .debug_str    0000064a  00000000  00000000  0000292c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    000003e9  00000000  00000000  00002fd4  2**0
+ 11 .debug_loc    000003e9  00000000  00000000  00002f76  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000058  00000000  00000000  000033bd  2**0
+ 12 .debug_ranges 00000058  00000000  00000000  0000335f  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -320,11 +320,31 @@ ISR (INT0_vect)
  1ac:	00 00       	nop
  1ae:	20 e0       	ldi	r18, 0x00	; 0
  1b0:	30 e0       	ldi	r19, 0x00	; 0
+}
+// 8 data bit, no parity, 1 stop bit
+char readCharSW()
+{
+	unsigned char i;
+	unsigned char out = '\0';
  1b2:	80 e0       	ldi	r24, 0x00	; 0
+			{
+				out |= 1 << i;
+			}
+			else
+			{
+				out &= ~(1 << i);
  1b4:	61 e0       	ldi	r22, 0x01	; 1
  1b6:	70 e0       	ldi	r23, 0x00	; 0
+	//{
+		_delay_us(NO_us);
+		//Data
+		for (i = 0; i < 8; i++)
+		{
+			if ((PINA & 0b00000001) == 1)
  1b8:	00 9b       	sbis	0x00, 0	; 0
  1ba:	09 c0       	rjmp	.+18     	; 0x1ce <readCharSW+0x2e>
+			{
+				out |= 1 << i;
  1bc:	ab 01       	movw	r20, r22
  1be:	02 2e       	mov	r0, r18
  1c0:	02 c0       	rjmp	.+4      	; 0x1c6 <readCharSW+0x26>
@@ -334,6 +354,10 @@ ISR (INT0_vect)
  1c8:	e2 f7       	brpl	.-8      	; 0x1c2 <readCharSW+0x22>
  1ca:	84 2b       	or	r24, r20
  1cc:	09 c0       	rjmp	.+18     	; 0x1e0 <readCharSW+0x40>
+			}
+			else
+			{
+				out &= ~(1 << i);
  1ce:	ab 01       	movw	r20, r22
  1d0:	02 2e       	mov	r0, r18
  1d2:	02 c0       	rjmp	.+4      	; 0x1d8 <readCharSW+0x38>
@@ -349,6 +373,12 @@ ISR (INT0_vect)
  1e6:	00 00       	nop
  1e8:	2f 5f       	subi	r18, 0xFF	; 255
  1ea:	3f 4f       	sbci	r19, 0xFF	; 255
+	//STARTBIT
+	//if (PINNR_2 == 0);
+	//{
+		_delay_us(NO_us);
+		//Data
+		for (i = 0; i < 8; i++)
  1ec:	28 30       	cpi	r18, 0x08	; 8
  1ee:	31 05       	cpc	r19, r1
  1f0:	19 f7       	brne	.-58     	; 0x1b8 <readCharSW+0x18>
@@ -356,11 +386,17 @@ ISR (INT0_vect)
  1f4:	9a 95       	dec	r25
  1f6:	f1 f7       	brne	.-4      	; 0x1f4 <readCharSW+0x54>
  1f8:	00 00       	nop
+	//else
+	//{
+		//_delay_us(NO_us);
+		//return '0';
+	//}
+}
  1fa:	08 95       	ret
 
 000001fc <__vector_20>:
-	  TCNT1 = (0xFFFF-15625);
 	  TIMSK1 |= 0b00000001;
+	  
 }
 
  ISR(TIMER1_OVF_vect)
@@ -391,15 +427,15 @@ ISR (INT0_vect)
  22a:	90 93 85 00 	sts	0x0085, r25	; 0x800085 <__TEXT_REGION_LENGTH__+0x700085>
  22e:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x700084>
 
-	 if (ctr_ == 1800) //overflow 1 gang i sekundet
+	 if (ctr_ == 600) //overflow 1 gang i sekundet betyder 600 = 10 min.	 
  232:	80 91 03 02 	lds	r24, 0x0203	; 0x800203 <ctr_>
  236:	90 91 04 02 	lds	r25, 0x0204	; 0x800204 <ctr_+0x1>
- 23a:	88 30       	cpi	r24, 0x08	; 8
- 23c:	97 40       	sbci	r25, 0x07	; 7
+ 23a:	88 35       	cpi	r24, 0x58	; 88
+ 23c:	92 40       	sbci	r25, 0x02	; 2
  23e:	71 f4       	brne	.+28     	; 0x25c <__vector_20+0x60>
 	 {
-		timerStatus_ = '1';
- 240:	81 e3       	ldi	r24, 0x31	; 49
+		timerStatus_ = '0';
+ 240:	80 e3       	ldi	r24, 0x30	; 48
  242:	90 e0       	ldi	r25, 0x00	; 0
  244:	90 93 02 02 	sts	0x0202, r25	; 0x800202 <timerStatus_+0x1>
  248:	80 93 01 02 	sts	0x0201, r24	; 0x800201 <timerStatus_>

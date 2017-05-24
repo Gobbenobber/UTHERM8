@@ -1,5 +1,4 @@
 /*
-<<<<<<< HEAD
 
 	____    ______           _   __            _
 	\ \ \   | ___ \         | | / /           | |
@@ -13,28 +12,35 @@
 - Skrevet af Kasper, Susanne og Patrick.
 
  */ 
+ #include "RegistrerLektor_PaaKontor.h"
+ #include "ToggleSwitchLED.h"
 
 
- skiftLEDTilstand_PaaKontor(char tilStede_)
+ //Skift LEDTilstand for ToggleSwitchLED baseret på, hvorvidt lektor er til stede (parametiseret)
+ void skiftLEDTilstand_PaaKontor(char tilStede)
  {
 
-	if (tilStede_ == '1')
+	if (tilStede == '1')
 	{
-	setToggleSwitchLED(char '0');
-	tilstand_ = 0;
+	setToggleSwitchLED('0');
 	}
-	
+	else
+	{
+	setToggleSwitchLED('1');
+	}
+
  }
 
- void lektorStatus_PaaKontor(char*)
+ //Registrér om den afsendte streng indikerer at lektoren er på kontoret.
+ void lektorStatus_PaaKontor(char* afsendtStreng)
  {
-	
+	if (afsendtStreng[2] == 't') //bemærk 't' for 'tilstede'
+	{
+	tilStede_ = '1';
+	}
+	else
+	{
+	tilStede_ = '0';
+	}
 
  }
-=======
- * RegistrerLektor_PaaKontor.c
- *
- * Created: 22-05-2017 10:49:42
- *  Author: Kasper
- */ 
->>>>>>> origin/master

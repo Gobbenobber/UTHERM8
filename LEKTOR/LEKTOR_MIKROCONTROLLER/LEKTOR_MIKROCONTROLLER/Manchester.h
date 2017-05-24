@@ -18,8 +18,6 @@
 // De to nedenstående funktioner kan benyttes til at kovertere en given tekststreng til Manchester kode og benytter dynamisk hukommelse til at opnå dette.
 
 #pragma once
-#include <string.h>
-#include <stdlib.h>
 #include "Manchester.h"
 
 const unsigned char* stringToManchester(const unsigned char* toBeConverted);
