@@ -1,8 +1,6 @@
 /*
  * Timer.c
- *
- * Created: 22-05-2017 10:50:20
- *  Author: Kasper
+
  */ 
 
  #include "Timer.h"
@@ -25,10 +23,10 @@
 
  void setTimer()
  {
-	  // Timer0: Normal mode, PS = 1024
+	  // Timer1: Normal mode, PS = 1024
 	  TCCR1A = 0b00000000;
 	  TCCR1B = 0b00000101;
-	  // Enable Timer0 overflow interrupt
+	  // Enable Timer1 overflow interrupt
 	  TCNT1 = (0xFFFF-15625);
 	  TIMSK1 |= 0b00000001;
 }
@@ -37,7 +35,7 @@
  {
 	 // Tæller ctr_ op hvert sekund.
 	 ctr_++;
-	 //sætter tcnt1 til krævet værdi for 1s delay
+	 //	sætter tcnt1 til krævet værdi for 1s delay
 	 TCNT1 = (0xFFFF-15625);
 
 	 if (ctr_ == 1800) //overflow 1 gang i sekundet

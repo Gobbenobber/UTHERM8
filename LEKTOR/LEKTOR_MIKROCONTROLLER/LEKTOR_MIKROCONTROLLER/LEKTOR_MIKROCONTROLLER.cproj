@@ -148,6 +148,9 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IncFile1.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
@@ -185,6 +188,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Timer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Timer_2.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Timer_2.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ToggleSwitch.c">

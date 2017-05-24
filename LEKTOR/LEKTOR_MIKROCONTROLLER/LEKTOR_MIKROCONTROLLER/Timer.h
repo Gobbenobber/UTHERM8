@@ -1,8 +1,9 @@
 ///////////////////////////////////////////////////////////////
-///							- Timer -						///
+///						  - Timer1 -						///
 ///				 Af Susanne, Patrick og Kasper				///
 ///		Denne klasse har til opgave at lave en timer		///
 ///////////////////////////////////////////////////////////////
+
 #pragma once
 #include "avr/interrupt.h"
 #include "avr/io.h"

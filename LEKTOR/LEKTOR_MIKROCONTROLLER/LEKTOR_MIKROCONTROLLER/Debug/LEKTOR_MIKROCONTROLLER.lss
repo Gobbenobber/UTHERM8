@@ -19,7 +19,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 00000d86  00000000  00000000  0000146a  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000060f  00000000  00000000  000021f0  2**0
+  8 .debug_line   0000060d  00000000  00000000  000021f0  2**0
                   CONTENTS, READONLY, DEBUGGING
   9 .debug_frame  00000128  00000000  00000000  00002800  2**2
                   CONTENTS, READONLY, DEBUGGING
@@ -359,6 +359,12 @@ ISR (INT0_vect)
  1fa:	08 95       	ret
 
 000001fc <__vector_20>:
+	  TCNT1 = (0xFFFF-15625);
+	  TIMSK1 |= 0b00000001;
+}
+
+ ISR(TIMER1_OVF_vect)
+ {
  1fc:	1f 92       	push	r1
  1fe:	0f 92       	push	r0
  200:	0f b6       	in	r0, 0x3f	; 63
@@ -371,30 +377,41 @@ ISR (INT0_vect)
  20e:	9f 93       	push	r25
  210:	ef 93       	push	r30
  212:	ff 93       	push	r31
+	 // Tæller ctr_ op hvert sekund.
+	 ctr_++;
  214:	80 91 03 02 	lds	r24, 0x0203	; 0x800203 <ctr_>
  218:	90 91 04 02 	lds	r25, 0x0204	; 0x800204 <ctr_+0x1>
  21c:	01 96       	adiw	r24, 0x01	; 1
  21e:	90 93 04 02 	sts	0x0204, r25	; 0x800204 <ctr_+0x1>
  222:	80 93 03 02 	sts	0x0203, r24	; 0x800203 <ctr_>
+	 //	sætter tcnt1 til krævet værdi for 1s delay
+	 TCNT1 = (0xFFFF-15625);
  226:	86 ef       	ldi	r24, 0xF6	; 246
  228:	92 ec       	ldi	r25, 0xC2	; 194
  22a:	90 93 85 00 	sts	0x0085, r25	; 0x800085 <__TEXT_REGION_LENGTH__+0x700085>
  22e:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x700084>
+
+	 if (ctr_ == 1800) //overflow 1 gang i sekundet
  232:	80 91 03 02 	lds	r24, 0x0203	; 0x800203 <ctr_>
  236:	90 91 04 02 	lds	r25, 0x0204	; 0x800204 <ctr_+0x1>
  23a:	88 30       	cpi	r24, 0x08	; 8
  23c:	97 40       	sbci	r25, 0x07	; 7
  23e:	71 f4       	brne	.+28     	; 0x25c <__vector_20+0x60>
+	 {
+		timerStatus_ = '1';
  240:	81 e3       	ldi	r24, 0x31	; 49
  242:	90 e0       	ldi	r25, 0x00	; 0
  244:	90 93 02 02 	sts	0x0202, r25	; 0x800202 <timerStatus_+0x1>
  248:	80 93 01 02 	sts	0x0201, r24	; 0x800201 <timerStatus_>
+		ctr_ = 0;
  24c:	10 92 04 02 	sts	0x0204, r1	; 0x800204 <ctr_+0x1>
  250:	10 92 03 02 	sts	0x0203, r1	; 0x800203 <ctr_>
+		TIMSK1 &= 0;
  254:	ef e6       	ldi	r30, 0x6F	; 111
  256:	f0 e0       	ldi	r31, 0x00	; 0
  258:	80 81       	ld	r24, Z
  25a:	10 82       	st	Z, r1
+	 }
  25c:	ff 91       	pop	r31
  25e:	ef 91       	pop	r30
  260:	9f 91       	pop	r25

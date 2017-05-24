@@ -16,6 +16,8 @@ Sensor.c
 
 Timer.c
 
+Timer_2.c
+
 ToggleSwitch.c
 
 ToggleSwitchLED.c
