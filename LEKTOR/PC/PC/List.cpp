@@ -4,11 +4,16 @@
 
 List::List()
 {
+	size_ = 100; //100 lektorKontorer.
+	storage_ = new std::string[size_];
+	initializeSpaces(size_);
+
 }
 
 
 List::~List()
 {
+
 }
 
 void List::setSize(int size)
@@ -59,4 +64,9 @@ void List::removeLector(int id)
 
 void List::changeState(int id, char state_1, char state_2)
 {
+}
+
+std::string List::getLector() const
+{
+	return std::string();
 }
