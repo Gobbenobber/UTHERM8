@@ -37,6 +37,8 @@ int main()
 	l_1.validation();
 	l_1.textToInt();
 	l_1.addLector(10, "HH-HenningHargaad");
+	std::cout << std::endl << l_1.returnID("HH") << std::endl;
+	l_1.changeState(10, 'a');
 	l_1.printAll();
 	l_1.removeLector(10);
 	l_1.printAll();

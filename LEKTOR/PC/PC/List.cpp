@@ -246,5 +246,14 @@ void List::terminateProgram()
 
 int List::returnID(std::string initialer)
 {
+	//Finding initials
+	std::cout << "Returning ID\n";
+	for (int i = 0; i < size_; i++)
+	{
+		if ((storage_[i][7] == initialer[0]) && (storage_[i][8] == initialer[1]))
+		{
+			return idArr[i];
+		}
+	}
 	return 0;
 }
