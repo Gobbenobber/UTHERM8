@@ -1,39 +1,45 @@
 /*
- * Timer_1.c
- *
- * Created: 24-05-2017 10:20:40
- *  Author: Batuik
- */ 
+ *    $$$$$$$$\$$\                                       $$$$$$\              $$\         $$\
+ *    \__$$  __\__|                                     $$  __$$\             $$ |        $$ |
+ *       $$ |  $$\$$$$$$\$$$$\  $$$$$$\  $$$$$$\        \__/  $$ |       $$$$$$$ |$$$$$$\ $$ |$$$$$$\ $$\   $$\
+ *       $$ |  $$ $$  _$$  _$$\$$  __$$\$$  __$$\        $$$$$$  |      $$  __$$ $$  __$$\$$ |\____$$\$$ |  $$ |
+ *       $$ |  $$ $$ / $$ / $$ $$$$$$$$ $$ |  \__|      $$  ____/       $$ /  $$ $$$$$$$$ $$ |$$$$$$$ $$ |  $$ |
+ *       $$ |  $$ $$ | $$ | $$ $$   ____$$ |            $$ |            $$ |  $$ $$   ____$$ $$  __$$ $$ |  $$ |
+ *       $$ |  $$ $$ | $$ | $$ \$$$$$$$\$$ |            $$$$$$$$\       \$$$$$$$ \$$$$$$$\$$ \$$$$$$$ \$$$$$$$ |.c
+ *       \__|  \__\__| \__| \__|\_______\__|            \________|       \_______|\_______\__|\_______|\____$$ |
+ *                                                                                                    $$\   $$ |
+ *                                                                                                    \$$$$$$  |
+ *                                                                                                     \______/
+  */ 
 
  #include "Timer_2.h"
+ #include <avr/io.h>
 
-
- void T2Delay(int delay_us) // MAX 51 uS DELAY!!!
+ void T2Delay(int delay_us) // MAX 15 uS DELAY!!!
  {
 	 int us;
 	 
-	 if (delay_us <= 262 && delay_us > 0) //int delay_ms, skal være mellem 0 og 262
+	 if (delay_us <= 15 && delay_us > 0) //int delay_ms, skal være mellem 0 og 15
 	 {
-		 
 		 us = delay_us;
 	 }
 	 
 	 else
 	 
 	 {
-		 us = 8;
+		 us = 1;
 	 }
 	 
-	 TCNT2 = (255-(us*5));
+	 TCNT2 = (256-(16*us));
 	 
-	 //Prescaler = 64, normal mode.
+	 //Prescaler = 0, normal mode.
 	 TCCR2A = 0x00000000;
-	 TCCR2B = 0x00000011;
+	 TCCR2B = 0x00000001;
+
 	 //lav ingenting indtil timer 2 flag register sættes
 	 while ((TIFR2 & (1<<0)) == 0) {}
 
 	 TCCR2B = 0;
 
 	 TIFR2 = 1<<0;
-
  }
