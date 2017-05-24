@@ -34,7 +34,12 @@ int main()
 	*/
 	List l_1;
 	l_1.printAll();
+	l_1.validation();
+	l_1.textToInt();
 
+	while (true)
+	{
 
+	}
 	return 0;
 }
