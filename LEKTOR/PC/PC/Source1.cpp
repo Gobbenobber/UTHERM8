@@ -43,21 +43,21 @@ int main()
 	//Admin controlmenu
 	int tempEdit;
 	int menuIndex = 0;
-	bool edit = false;
+	bool edit = true;
 	std::string tempString = "  ";	//insert two spaces
 	std::string holderString;
 	int tempInt;
 
-	std::cout << "### - Admin menu, choose 1 to edit or 0 to continue - ###" << std::endl;
-	std::cout << "= ";
-	std::cin >> tempEdit;
-	if (tempEdit == 0)
-		edit = false;
-	else if (tempEdit == 1)
-		edit = true;
-
 	while (edit == true)
 	{
+		std::cout << "### - Admin menu, choose 1 to edit or 0 to continue - ###" << std::endl;
+		std::cout << "= ";
+		std::cin >> tempEdit;
+		if (tempEdit == 0)
+			edit = false;
+		else if (tempEdit == 1)
+			edit = true;
+
 		std::cout << "### ----WELCOME TO THE ADMIN MENU--- ###" << std::endl;
 		std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
 		std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
@@ -66,6 +66,7 @@ int main()
 		std::cout << "### - Press '5' print all          - ###" << std::endl;
 		std::cout << "### - Press '6' to resetall (!!!)  - ###" << std::endl;
 		std::cout << "### - Press '7' to terminate       - ###" << std::endl;
+
 		while (menuIndex < 1 || menuIndex > 7)
 		{
 			std::cout << "= ";
@@ -76,6 +77,7 @@ int main()
 			switch (menuIndex)
 			{
 			case 1:
+				std::cout << "########################################" << std::endl;
 				std::cout << "### --------- Create a Lector ------ ###" << std::endl;
 				std::cout << "### ----- Enter a lector in the ---- ###" << std::endl;
 				std::cout << "### ------- following syntax: ------ ###" << std::endl;
@@ -93,42 +95,65 @@ int main()
 				holderString = tempString;	//Copy string
 				tempString = "";
 
-				//Name
+				//First Name
 				std::cout << std::endl;
 				std::cout << "### ----------- First Name --------- ###" << std::endl;
 				std::cout << "### ----------- {Henning} ---------- ###" << std::endl;
 				do
 				{
+					tempString = "";
 					std::cout << "= ";
 					std::cin >> tempString;
-					for (int i = 0; i < tempString.size(); i++)
-					{
-						if (tempString[i] == ' ')
-						{
-							tempString = "";
-						}
-						if ((tempString[i] < 'A' || tempString[i] > 'Z') && (tempString[i] < 'a' || tempString[i] > 'Z'))
-						{
-							tempString = "";
-						}
-					}
 
 				} while (tempString.size() <= 1);
 				std::cout << "& You've entered: " << tempString << std::endl;
 
-				std::cout << "### ------ You've successfully  ---- ###" << std::endl;
-				std::cout << "### -------- entered a lector ------ ###" << std::endl;
+				holderString += '-' + tempString;
+
+				//Last Name
+				std::cout << std::endl;
+				std::cout << "### ----------- Last Name --------- ###" << std::endl;
+				std::cout << "### ---------- {Hermansen} -------- ###" << std::endl;
+				do
+				{
+					tempString = "";
+					std::cout << "= ";
+					std::cin >> tempString;
+
+				} while (tempString.size() <= 1);
+				std::cout << "& You've entered: " << tempString << std::endl;
+
+				//ID
+				std::cout << std::endl;
 				std::cout << "### --- Now enter the correct ID --- ###" << std::endl;
 				std::cout << "### --------- Between 0-255 -------- ###" << std::endl;
 				std::cout << "### --- Only enter whole numbers --- ###" << std::endl;
-
 				do
 				{
 					std::cout << "= ";
 					std::cin >> tempInt;
-				} while (tempInt < 0 || tempInt > 255);
 
-				//adminSys.addLector();
+				} while (tempInt < 0 || tempInt > 255);
+				std::cout << "& You've entered: " << tempInt << std::endl;
+
+				std::cout << "### ------ You've successfully  ---- ###" << std::endl;
+				std::cout << "### -------- entered a lector ------ ###" << std::endl;
+
+				tempString = holderString + '-' +tempString;
+
+				std::size_t found = tempString.find_first_of(" ");
+				while (found != std::string::npos)
+				{
+					tempString[found] = '-';
+					found = tempString.find_first_of(" ", found + 1);
+				}
+				std::cout << "& You've entered: " << tempString << std::endl;
+				std::cout << "& at number: " << tempInt << std::endl;
+				std::cout << "########################################" << std::endl;
+				std::cout << std::endl << std::endl;
+
+				adminSys.addLector(tempInt,tempString);
+
 			break;
 			}
 		}

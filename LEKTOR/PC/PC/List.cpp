@@ -6,7 +6,7 @@ List::List()
 {
 	size_ = 256; //256 lektorKontorer.
 	storage_ = new std::string[size_];
-	initializeSpaces(size_);
+	//initializeSpaces(size_);
 	printAll();
 }
 
@@ -227,7 +227,7 @@ void List::resetAll()
 {
 	std::ofstream myFile_;
 
-	myFile_.open("Text.txt");
+	myFile_.open("test.txt", std::ofstream::out | std::ofstream::trunc);	//Might need further testing
 	if (myFile_.is_open())
 	{
 		for (int i = 0; i < size_; i++)
