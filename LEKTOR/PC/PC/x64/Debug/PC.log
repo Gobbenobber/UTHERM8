@@ -1,3 +1,11 @@
 ﻿  Source1.cpp
-  PC.vcxproj -> D:\UNI\2.SEMESTER\PROJEKT\UTHERM8 Rep\UTHERM8\LEKTOR\PC\x64\Debug\PC.exe
-  PC.vcxproj -> D:\UNI\2.SEMESTER\PROJEKT\UTHERM8 Rep\UTHERM8\LEKTOR\PC\x64\Debug\PC.pdb (Full PDB)
+  Source.cpp
+  List.cpp
+  lectorMenu.cpp
+g:\git\utherm8\lektor\pc\pc\lectormenu.cpp(41): warning C4996: 'getch': The POSIX name for this item is deprecated. Instead, use the ISO C and C++ conformant name: _getch. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\conio.h(452): note: see declaration of 'getch'
+  Running Code Analysis for C/C++...
+  Generating Code...
+  PC.vcxproj -> G:\Git\UTHERM8\LEKTOR\PC\x64\Debug\PC.exe
+  PC.vcxproj -> G:\Git\UTHERM8\LEKTOR\PC\x64\Debug\PC.pdb (Full PDB)
+g:\git\utherm8\lektor\pc\pc\lectormenu.cpp(41): warning C6031: Return value ignored: 'getch'.

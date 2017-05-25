@@ -3,17 +3,16 @@
 #include "Header.h"	// Library described above
 #include <string>
 #include "List.h"
+#include "lectorMenu.h"
 
 // application reads from the specified serial port and reports the collected data
 int main()
 {
 	//Receiver
 	const std::string COMPort_1 = "COM3";
-
-	std::cout << "Seriel kommunikation ### - 1 - ###\n\n" << std::endl;
+	std::cout << "Seriel kommunikation ### - 1 - ###" << std::endl;
 	Serial* arduinoPtr_1 = new Serial("COM3");			// adjust as needed
-
-	std::cout << "Arduino_1 Receiver on the " << COMPort_1 << " port"<< std::endl;
+	std::cout << "Arduino_1 Receiver on the " << COMPort_1 << " port"<< std::endl << std::endl;
 
 	if (arduinoPtr_1->IsConnected())
 		printf("Arduino_1 fundet!\n");
@@ -21,10 +20,10 @@ int main()
 	//Transmitter
 	const std::string COMPort_2 = "COM4";
 
-	std::cout << "Seriel kommunikation ### - 2 - ###\n\n" << std::endl;
+	std::cout << "Seriel kommunikation ### - 2 - ###" << std::endl;
 	Serial* arduinoPtr_2 = new Serial("COM4");			// adjust as needed
 
-	std::cout << "Arduino_2 Receiver on the " << COMPort_2 << " port" << std::endl;
+	std::cout << "Arduino_2 Receiver on the " << COMPort_2 << " port" << std::endl << std::endl;
 
 	if (arduinoPtr_2->IsConnected())
 		printf("Arduino_2 fundet!\n");
@@ -38,40 +37,50 @@ int main()
 	int dataLength = 8;
 	int readResult = 0;
 
-	List adminSys;	//Using the default 256 spaces. Outputting to "Text.txt"
+	List lectorSys;	//Using the default 256 spaces. Outputting to "Text.txt"
+	lectorMenu adminSys;
 
 	//Admin controlmenu
-	int tempEdit;
-	bool edit = false;
-
-	std::cout << "### - Admin menu, choose 1 to edit or 0 to continue - ###" << std::endl;
-	std::cout << "= ";
-	std::cin >> tempEdit;
-	if (tempEdit == 0)
-		edit = false;
-	else if (tempEdit == 1)
-		edit = true;
+	bool edit;
+	int tempEdit = 0;
+	int menuIndex;
+	edit = adminSys.getEdit();
 
 	while (edit == true)
 	{
-		std::cout << "### -	 WELCOME TO THE ADMIN MENU	 - ###" << std::endl;
-		std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
-		std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
-		std::cout << "### - Press '3' find a lector		 - ###" << std::endl;
-		std::cout << "### - Press '4' change a state	 - ###" << std::endl;
-		std::cout << "### - Press '5' print all			 - ###" << std::endl;
-		std::cout << "### - Press '6' to resetall (!!!)	 - ###" << std::endl;
-		std::cout << "### - Press '7' to terminate		 - ###" << std::endl;
-		std::cin >> edit;
+		adminSys.initMenu();
+		edit = adminSys.getEdit();
+		menuIndex = adminSys.getMenuIndex();
 
-
-
-
-
-
+		if (menuIndex >= 1 && menuIndex <= 7)
+		{
+			switch (menuIndex)
+			{
+			case 1:
+				adminSys.createLector();
+			break;
+			case 2:
+				adminSys.removeLector();
+			break;
+			case 3:
+				adminSys.findLector();
+			break;
+			case 4:
+				adminSys.changeStateOfLector();
+			break;
+			case 5:
+				adminSys.printAllOfLectorSystem();
+			break;
+			case 6:
+				adminSys.resetAllOfLectorSystem();
+			break;
+			case 7:
+				adminSys.terminateTheMenu();
+			break;
+			}
+		}
 	}
 		
-
 
 	while (1)
 	{
@@ -100,17 +109,10 @@ int main()
 			}
 
 			//Implement in List
-			
-
-
-
-
-
-
-
-
-
 		}
+
+		std::cout << "Waiting..." << std::endl;
+		system("cls");
 	}
 	return 0;
 }
