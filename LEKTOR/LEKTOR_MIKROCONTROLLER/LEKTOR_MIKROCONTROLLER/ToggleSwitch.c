@@ -2,21 +2,25 @@
 	Implementeringsfil for ToggleSwitch.h
  */ 
 
- #include "ToggleSwitch.h"
+#include "ToggleSwitch.h"
+//Variables
+volatile char tilstand_;
+char register_;
+short int port_;
 
-void initToggleSwitch(char register_, short int port)
+void initToggleSwitch(char register__, short int port)
 
 {
- 	if (register_ > 'L' || register_ < 'A' || register_ == 'I')
+ 	if (register__ > 'L' || register__ < 'A' || register__ == 'I')
  	{
-	 	register___ = 'A';
+	 	register_ = 'A';
  	}
  	if (port > 7)
  	{
-	 	port___ = 1;
+	 	port_ = 1;
  	}
  	
- 	switch (register___)
+ 	switch (register_)
  	{
 	 	case 'A':
 	 	DDRA &= ~(1 << port);
@@ -57,11 +61,11 @@ void initToggleSwitch(char register_, short int port)
 
 char toggleSwitchStatus()
 {
-	switch (register___)
+	switch (register_)
 	{
 		case 'A':
 		
-		if (PINA & (1 << port___))
+		if (PINA & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -74,7 +78,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'B':
-		if (PINB & (1 << port___))
+		if (PINB & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -87,7 +91,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'C':
-		if (PINC & (1 << port___))
+		if (PINC & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -100,7 +104,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'D':
-		if (PIND & (1 << port___))
+		if (PIND & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -113,7 +117,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'E':
-		if (PINE & (1 << port___))
+		if (PINE & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -126,7 +130,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'F':
-		if (PINF & (1 << port___))
+		if (PINF & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -139,7 +143,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'G':
-		if (PING & (1 << port___))
+		if (PING & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -152,7 +156,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'H':
-		if (PINH & (1 << port___))
+		if (PINH & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -165,7 +169,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'J':
-		if (PINJ & (1 << port___))
+		if (PINJ & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -178,7 +182,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'K':
-		if (PINK & (1 << port___))
+		if (PINK & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;
@@ -191,7 +195,7 @@ char toggleSwitchStatus()
 		break;
 
 		case 'L':
-		if (PINL & (1 << port___))
+		if (PINL & (1 << port_))
 		{
 			tilstand_ = '1';
 			return tilstand_;

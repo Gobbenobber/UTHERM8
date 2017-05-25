@@ -31,3 +31,10 @@
 	 //sei();
 
  }
+
+ // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
+ ISR(INT0_vect)
+ {
+	 ZCDetected_ = 1;
+	 ZCDetected_ = 0;
+ }

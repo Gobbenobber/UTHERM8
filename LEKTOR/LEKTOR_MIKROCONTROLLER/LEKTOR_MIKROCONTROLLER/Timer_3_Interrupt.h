@@ -14,9 +14,10 @@
  #include "avr/io.h"
 
  //Variables
- volatile static int ctr_3 = 0;
+ //volatile static int ctr_3 = 0;
  volatile static int timerStatus_3 = 0;
 
- int returnerTimer3Status();
- void resetTimer3();
+ //int returnerTimer3Status();
+ //void resetTimer3();
  void setTimer3();
+ void T3Delay_1ms();

@@ -19,6 +19,8 @@
 // Fungerer både på MCU og PC.
 
 #pragma once
+#include <string.h>
+#include <stdlib.h>
 
 unsigned char* stringToManchester(unsigned char* toBeConverted);
 unsigned char* mancesterToString(unsigned char* toBeConverted);

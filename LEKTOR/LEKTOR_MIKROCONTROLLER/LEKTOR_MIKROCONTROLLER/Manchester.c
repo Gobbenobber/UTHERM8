@@ -1,6 +1,4 @@
 #include "Manchester.h"
-#include <string.h>
-#include <stdlib.h>
 
 static unsigned char * manchesterPtr = 0;
 

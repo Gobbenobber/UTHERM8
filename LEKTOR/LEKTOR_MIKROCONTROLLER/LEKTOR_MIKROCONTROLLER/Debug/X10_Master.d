@@ -1,5 +1,6 @@
-Timer_3_interrupt.d Timer_3_interrupt.o: .././Timer_3_interrupt.c \
- .././Timer_3_Interrupt.h \
+X10_Master.d X10_Master.o: .././X10_Master.c .././X10_Master.h \
+ .././RegistrerLektor_Optaget.h .././RegistrerLektor_PaaKontor.h \
+ .././Timer_1.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
@@ -14,7 +15,13 @@ Timer_3_interrupt.d Timer_3_interrupt.o: .././Timer_3_interrupt.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h
 
-.././Timer_3_Interrupt.h:
+.././X10_Master.h:
+
+.././RegistrerLektor_Optaget.h:
+
+.././RegistrerLektor_PaaKontor.h:
+
+.././Timer_1.h:
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 

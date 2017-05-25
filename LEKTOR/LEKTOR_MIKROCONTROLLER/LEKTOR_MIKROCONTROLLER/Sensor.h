@@ -8,13 +8,8 @@
 #pragma once
 #include "avr/io.h"
 
-//Variables
-volatile char lektorDetected_;
-char register__;
-short int port__;
-
 //Functions
 
-void initSensor(char register_, short int port);
+void initSensor(char register__, short int port);
 char kontorStatus();
 

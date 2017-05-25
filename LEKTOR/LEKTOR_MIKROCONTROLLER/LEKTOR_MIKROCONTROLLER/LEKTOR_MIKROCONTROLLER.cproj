@@ -148,6 +148,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="X10_Master.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="X10_Master.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LEKTOR_MIKROCONTROLLER.c">
       <SubType>compile</SubType>
     </Compile>
@@ -191,12 +197,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Timer_2.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer_3_interrupt.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer_3_Interrupt.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ToggleSwitch.c">

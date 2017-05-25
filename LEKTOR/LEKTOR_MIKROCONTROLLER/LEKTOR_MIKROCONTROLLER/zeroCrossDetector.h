@@ -13,5 +13,7 @@
 #pragma once
 #define PINNR 0
 
+volatile short int ZCDetected_;
+
 void initZCDetector();
 

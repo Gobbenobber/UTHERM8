@@ -37,6 +37,7 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../X10_Master.c \
 ../LEKTOR_MIKROCONTROLLER.c \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
@@ -45,7 +46,6 @@ C_SRCS +=  \
 ../Sensor.c \
 ../Timer_1.c \
 ../Timer_2.c \
-../Timer_3_interrupt.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
 ../zeroCrossDetector.c
@@ -58,6 +58,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+X10_Master.o \
 LEKTOR_MIKROCONTROLLER.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
@@ -66,12 +67,12 @@ Send.o \
 Sensor.o \
 Timer_1.o \
 Timer_2.o \
-Timer_3_interrupt.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 zeroCrossDetector.o
 
 OBJS_AS_ARGS +=  \
+X10_Master.o \
 LEKTOR_MIKROCONTROLLER.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
@@ -80,12 +81,12 @@ Send.o \
 Sensor.o \
 Timer_1.o \
 Timer_2.o \
-Timer_3_interrupt.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 zeroCrossDetector.o
 
 C_DEPS +=  \
+X10_Master.d \
 LEKTOR_MIKROCONTROLLER.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
@@ -94,12 +95,12 @@ Send.d \
 Sensor.d \
 Timer_1.d \
 Timer_2.d \
-Timer_3_interrupt.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 zeroCrossDetector.d
 
 C_DEPS_AS_ARGS +=  \
+X10_Master.d \
 LEKTOR_MIKROCONTROLLER.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
@@ -108,7 +109,6 @@ Send.d \
 Sensor.d \
 Timer_1.d \
 Timer_2.d \
-Timer_3_interrupt.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 zeroCrossDetector.d
