@@ -21,7 +21,7 @@ void initSensor(char register_, short int port)
 	}
 	if (port > 7)
 	{
-		port__ = 1;
+		port__ = 2;
 	}
 
 	switch (register__)

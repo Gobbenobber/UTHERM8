@@ -1,6 +1,3 @@
-
-//
-//
 //  UUUUUUUU     UUUUUUUUTTTTTTTTTTTTTTTTTTTTTTTHHHHHHHHH     HHHHHHHHHEEEEEEEEEEEEEEEEEEEEEERRRRRRRRRRRRRRRRR   MMMMMMMM               MMMMMMMM     888888888
 //  U::::::U     U::::::UT:::::::::::::::::::::TH:::::::H     H:::::::HE::::::::::::::::::::ER::::::::::::::::R  M:::::::M             M:::::::M   88:::::::::88
 //  U::::::U     U::::::UT:::::::::::::::::::::TH:::::::H     H:::::::HE::::::::::::::::::::ER::::::RRRRRR:::::R M::::::::M           M::::::::M 88:::::::::::::88
@@ -87,6 +84,9 @@ int main(void)
 	while(1)
 	{
 
+		kontorStatus();
+		toggleSwitchStatus();
+
 		if (lektorOptaget_ == '0' && lektortilStede_ == '0')
 		{
 			skiftLEDTilstand_PaaKontor(kontorStatus());
@@ -130,4 +130,8 @@ ISR(INT0_vect)
 	T2Delay_us(8);
 	sendCharSW(karakter);
 	currentChar++;
+	if (currentChar > 5)
+	{
+		currentChar = 0;
+	}
 }
