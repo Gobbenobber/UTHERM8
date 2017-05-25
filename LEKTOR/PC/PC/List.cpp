@@ -6,14 +6,13 @@ List::List()
 {
 	size_ = 256; //256 lektorKontorer.
 	storage_ = new std::string[size_];
-	initializeSpaces(size_);
-	printAll();
 }
 
 
 List::~List()
 {
-	delete storage_;
+	//delete storage_;
+	myFile_.close();
 }
 
 void List::setSize(int size)
@@ -172,6 +171,7 @@ void List::textToInt()
 void List::addLector(int id, std::string name)
 {
 	std::ofstream myFile_;
+	removeLector(id);
 	storage_[id] += name;
 
 	myFile_.open("Text.txt");
@@ -227,17 +227,11 @@ void List::resetAll()
 {
 	std::ofstream myFile_;
 
-	myFile_.open("Text.txt");
-	if (myFile_.is_open())
-	{
-		for (int i = 0; i < size_; i++)
-		{
-			storage_[i].resize(7);
-			storage_[i][5] = 'X';
-			myFile_ << storage_[i] << std::endl;
-		}
-	}
+	myFile_.open("Text.txt", std::ofstream::out | std::ofstream::trunc);	//Might need further testing
 	myFile_.close();
+	initializeSpaces(size_);
+
+
 }
 
 void List::terminateProgram()
@@ -255,5 +249,22 @@ int List::returnID(std::string initialer)
 			return idArr[i];
 		}
 	}
+	return 0;
+}
+
+std::string List::returnLector(int id)
+{
+	std::string tempString;
+
+	for (size_t i = 7; i < storage_[id].size(); i++)
+	{
+		tempString += storage_[id][i];
+	}
+	std::cout << tempString << std::endl;
+	return tempString;
+}
+
+char List::returnState(int id)
+{
 	return 0;
 }
