@@ -11,5 +11,6 @@
 #define LEKTORID2 'A'
 #define STARTCODE = 0b11101110
 volatile unsigned char COMMAND;
+volatile char aendring_;
 
 void opdaterKommando();

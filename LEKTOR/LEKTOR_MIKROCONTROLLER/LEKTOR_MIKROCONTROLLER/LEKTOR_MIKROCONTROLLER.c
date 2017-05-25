@@ -73,17 +73,18 @@ int main(void)
 		lektorStatus_PaaKontor();
 		lektorStatus_Optaget();
 		opdaterKommando();
-		streng[2] = COMMAND;
 
+		if (aendring_ == 1)
+		{
+		streng[2] = COMMAND;
 		konverteretStreng = stringToManchester(streng);
 		for (size_t i = 0; i >= strlen((const char*)konverteretStreng); i++)
-			
-			 {
-				 karakter = konverteretStreng[i];
-				 sendCharSW(karakter);
-			 }
-			 freePtr();
-
+		{
+			karakter = konverteretStreng[i];
+			sendCharSW(karakter);
+		}
+		freePtr();
+		}
 		
 	}
 }

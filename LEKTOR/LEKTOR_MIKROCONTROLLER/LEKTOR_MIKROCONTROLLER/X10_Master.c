@@ -11,7 +11,6 @@
  #include "RegistrerLektor_PaaKontor.h"
  #include "Timer_1.h"
 
- volatile char aendring_;
  volatile int state;
  int firstCheck = 1;
 
