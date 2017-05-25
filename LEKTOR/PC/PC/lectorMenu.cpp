@@ -6,6 +6,7 @@ lectorMenu::lectorMenu() : lectorSys_()
 {
 	menuIndex_ = 0;
 	edit_ = true;
+	tempEdit_ = true;
 }
 
 lectorMenu::~lectorMenu()
@@ -37,25 +38,30 @@ void lectorMenu::initMenu()
 	std::cout << "### - Admin menu, choose 1 to edit or 0 to continue - ###" << std::endl;
 	std::cout << "= ";
 	std::cin >> tempEdit_;
+
 	if (tempEdit_ == 0)
 		edit_ = false;
 	else if (tempEdit_ == 1)
 		edit_ = true;
 
-	std::cout << "### ----WELCOME TO THE ADMIN MENU--- ###" << std::endl;
-	std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
-	std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
-	std::cout << "### - Press '3' find a lector      - ###" << std::endl;
-	std::cout << "### - Press '4' change a state     - ###" << std::endl;
-	std::cout << "### - Press '5' print all          - ###" << std::endl;
-	std::cout << "### - Press '6' to resetall (!!!)  - ###" << std::endl;
-	std::cout << "### - Press '7' to terminate       - ###" << std::endl;
-
-	while (menuIndex_ < 1 || menuIndex_ > 7)
+	if (edit_)
 	{
-		std::cout << "= ";
-		std::cin >> menuIndex_;
+		std::cout << "### ----WELCOME TO THE ADMIN MENU--- ###" << std::endl;
+		std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
+		std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
+		std::cout << "### - Press '3' find a lector      - ###" << std::endl;
+		std::cout << "### - Press '4' change a state     - ###" << std::endl;
+		std::cout << "### - Press '5' print all          - ###" << std::endl;
+		std::cout << "### - Press '6' to resetall (!!!)  - ###" << std::endl;
+		std::cout << "### - Press '7' to terminate       - ###" << std::endl;
+
+		while (menuIndex_ < 1 || menuIndex_ > 7)
+		{
+			std::cout << "= ";
+			std::cin >> menuIndex_;
+		}
 	}
+	
 }
 
 void lectorMenu::createLector()
@@ -136,6 +142,7 @@ void lectorMenu::createLector()
 	std::cout << std::endl << std::endl;
 
 	lectorSys_.addLector(tempInt_, tempString_);
+	menuIndex_ = 0;
 }
 
 void lectorMenu::removeLector()
@@ -155,11 +162,26 @@ void lectorMenu::removeLector()
 	std::cout << "& You've entered: " << tempInt_ << std::endl;
 	lectorSys_.removeLector(tempInt_);
 	std::cout << "### -- You've succesfully removed -- ###" << std::endl;
+	std::cout << "& { " << tempInt_ << "-" << lectorSys_.returnLector(tempInt_) << std::endl;
 
 }
 
 void lectorMenu::findLector()
 {
+	std::cout << "########################################" << std::endl;
+	std::cout << "### --------- Find a lector -------- ###" << std::endl;
+	std::cout << "### --- Enter the ID of a lector --- ###" << std::endl;
+	do
+	{
+		tempInt_ = -1;
+		std::cout << "= ";
+		std::cin >> tempInt_;
+
+	} while (tempInt_ < 0 || tempInt_ > 255);
+	std::cout << "& You've entered: " << tempInt_ << std::endl;
+	lectorSys_.returnLector(tempInt_);
+	std::cout << "### -- You've succesfully found -- ###" << std::endl;
+	std::cout << "& { " << tempInt_ << "-" << lectorSys_.returnLector(tempInt_) << std::endl;
 }
 
 void lectorMenu::changeStateOfLector()

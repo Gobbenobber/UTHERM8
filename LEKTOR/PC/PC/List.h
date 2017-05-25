@@ -35,6 +35,7 @@ public:
 	void terminateProgram();
 	int returnID(std::string initialer);
 	std::string returnLector(int id);
+	char returnState(int id);
 private:
 	int size_; //Changeable
 	std::string* storage_; //Dynamic

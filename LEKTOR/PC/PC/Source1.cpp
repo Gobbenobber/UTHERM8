@@ -50,15 +50,8 @@ int main()
 
 	while (edit == true)
 	{
-		std::cout << "### - Admin menu, choose 1 to edit or 0 to continue - ###" << std::endl;
-		std::cout << "= ";
-		std::cin >> tempEdit;
-		if (tempEdit == 0)
-			edit = false;
-		else if (tempEdit == 1)
-			edit = true;
-
 		adminSys.initMenu();
+		edit = adminSys.getEdit();
 		menuIndex = adminSys.getMenuIndex();
 
 		if (menuIndex >= 1 && menuIndex <= 7)
@@ -68,21 +61,28 @@ int main()
 			case 1:
 				adminSys.createLector();
 			break;
-			
 			case 2:
 				adminSys.removeLector();
 			break;
+			case 3:
+				adminSys.findLector();
+			break;
+			case 4:
+				adminSys.changeStateOfLector();
+			break;
+			case 5:
+				adminSys.printAllOfLectorSystem();
+			break;
+			case 6:
+				adminSys.resetAllOfLectorSystem();
+			break;
+			case 7:
+				adminSys.terminateTheMenu();
+			break;
 			}
 		}
-
-
-
-
-
-		menuIndex = 0;
 	}
 		
-
 
 	while (1)
 	{
@@ -111,17 +111,9 @@ int main()
 			}
 
 			//Implement in List
-			
-
-
-
-
-
-
-
-
-
 		}
+
+		std::cout << "Waiting..." << std::endl;
 	}
 	return 0;
 }

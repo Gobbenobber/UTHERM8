@@ -14,6 +14,7 @@ List::List()
 List::~List()
 {
 	delete storage_;
+	myFile_.close();
 }
 
 void List::setSize(int size)
@@ -172,6 +173,7 @@ void List::textToInt()
 void List::addLector(int id, std::string name)
 {
 	std::ofstream myFile_;
+	removeLector(id);
 	storage_[id] += name;
 
 	myFile_.open("Text.txt");
@@ -270,4 +272,9 @@ std::string List::returnLector(int id)
 	}
 	std::cout << tempString << std::endl;
 	return tempString;
+}
+
+char List::returnState(int id)
+{
+	return 0;
 }
