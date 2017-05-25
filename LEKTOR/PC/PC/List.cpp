@@ -223,12 +223,12 @@ std::string List::getLector(int id) const
 	return storage_[id];
 }
 
-void List::resetAll()
+void List::resetAll(List l)
 {
 	std::ofstream myFile_;
 
 	myFile_.open("test.txt", std::ofstream::out | std::ofstream::trunc);	//Might need further testing
-	if (myFile_.is_open())
+	/*if (myFile_.is_open())
 	{
 		for (int i = 0; i < size_; i++)
 		{
@@ -236,7 +236,9 @@ void List::resetAll()
 			storage_[i][5] = 'X';
 			myFile_ << storage_[i] << std::endl;
 		}
-	}
+	}*/
+
+	l.initializeSpaces(size_);
 	myFile_.close();
 }
 
@@ -256,4 +258,16 @@ int List::returnID(std::string initialer)
 		}
 	}
 	return 0;
+}
+
+std::string List::returnLector(int id)
+{
+	std::string tempString;
+
+	for (size_t i = 7; i < storage_[id].size(); i++)
+	{
+		tempString += storage_[id][i];
+	}
+	std::cout << tempString << std::endl;
+	return tempString;
 }

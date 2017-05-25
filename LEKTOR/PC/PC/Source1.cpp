@@ -3,6 +3,7 @@
 #include "Header.h"	// Library described above
 #include <string>
 #include "List.h"
+#include "lectorMenu.h"
 
 // application reads from the specified serial port and reports the collected data
 int main()
@@ -38,15 +39,14 @@ int main()
 	int dataLength = 8;
 	int readResult = 0;
 
-	List adminSys;	//Using the default 256 spaces. Outputting to "Text.txt"
+	List lectorSys;	//Using the default 256 spaces. Outputting to "Text.txt"
+	lectorMenu adminSys;
 
 	//Admin controlmenu
-	int tempEdit;
-	int menuIndex = 0;
-	bool edit = true;
-	std::string tempString = "  ";	//insert two spaces
-	std::string holderString;
-	int tempInt;
+	bool edit;
+	int tempEdit = 0;
+	int menuIndex;
+	edit = adminSys.getEdit();
 
 	while (edit == true)
 	{
@@ -58,102 +58,19 @@ int main()
 		else if (tempEdit == 1)
 			edit = true;
 
-		std::cout << "### ----WELCOME TO THE ADMIN MENU--- ###" << std::endl;
-		std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
-		std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
-		std::cout << "### - Press '3' find a lector      - ###" << std::endl;
-		std::cout << "### - Press '4' change a state     - ###" << std::endl;
-		std::cout << "### - Press '5' print all          - ###" << std::endl;
-		std::cout << "### - Press '6' to resetall (!!!)  - ###" << std::endl;
-		std::cout << "### - Press '7' to terminate       - ###" << std::endl;
+		adminSys.initMenu();
+		menuIndex = adminSys.getMenuIndex();
 
-		while (menuIndex < 1 || menuIndex > 7)
-		{
-			std::cout << "= ";
-			std::cin >> menuIndex;
-		}
 		if (menuIndex >= 1 && menuIndex <= 7)
 		{
 			switch (menuIndex)
 			{
 			case 1:
-				std::cout << "########################################" << std::endl;
-				std::cout << "### --------- Create a Lector ------ ###" << std::endl;
-				std::cout << "### ----- Enter a lector in the ---- ###" << std::endl;
-				std::cout << "### ------- following syntax: ------ ###" << std::endl;
-
-				//Initials
-				std::cout << std::endl;
-				std::cout << "### ---------- Initials {XX} ------- ###" << std::endl;
-				do
-				{
-					std::cout << "= ";
-					std::cin >> tempString;
-					tempString.resize(2);
-				} while (tempString[0] < 'A' || tempString[0] > 'Z' || tempString[1] < 'A' || tempString[1] > 'Z' );
-				std::cout << "& You've entered: " << tempString << std::endl;
-				holderString = tempString;	//Copy string
-				tempString = "";
-
-				//First Name
-				std::cout << std::endl;
-				std::cout << "### ----------- First Name --------- ###" << std::endl;
-				std::cout << "### ----------- {Henning} ---------- ###" << std::endl;
-				do
-				{
-					tempString = "";
-					std::cout << "= ";
-					std::cin >> tempString;
-
-				} while (tempString.size() <= 1);
-				std::cout << "& You've entered: " << tempString << std::endl;
-
-				holderString += '-' + tempString;
-
-				//Last Name
-				std::cout << std::endl;
-				std::cout << "### ----------- Last Name --------- ###" << std::endl;
-				std::cout << "### ---------- {Hermansen} -------- ###" << std::endl;
-				do
-				{
-					tempString = "";
-					std::cout << "= ";
-					std::cin >> tempString;
-
-				} while (tempString.size() <= 1);
-				std::cout << "& You've entered: " << tempString << std::endl;
-
-				//ID
-				std::cout << std::endl;
-				std::cout << "### --- Now enter the correct ID --- ###" << std::endl;
-				std::cout << "### --------- Between 0-255 -------- ###" << std::endl;
-				std::cout << "### --- Only enter whole numbers --- ###" << std::endl;
-				do
-				{
-					std::cout << "= ";
-					std::cin >> tempInt;
-
-				} while (tempInt < 0 || tempInt > 255);
-				std::cout << "& You've entered: " << tempInt << std::endl;
-
-				std::cout << "### ------ You've successfully  ---- ###" << std::endl;
-				std::cout << "### -------- entered a lector ------ ###" << std::endl;
-
-				tempString = holderString + '-' +tempString;
-
-				std::size_t found = tempString.find_first_of(" ");
-				while (found != std::string::npos)
-				{
-					tempString[found] = '-';
-					found = tempString.find_first_of(" ", found + 1);
-				}
-				std::cout << "& You've entered: " << tempString << std::endl;
-				std::cout << "& at number: " << tempInt << std::endl;
-				std::cout << "########################################" << std::endl;
-				std::cout << std::endl << std::endl;
-
-				adminSys.addLector(tempInt,tempString);
-
+				adminSys.createLector();
+			break;
+			
+			case 2:
+				adminSys.removeLector();
 			break;
 			}
 		}

@@ -31,9 +31,10 @@ public:
 	void removeLector(int id);
 	void changeState(int id, char state);
 	std::string getLector(int id) const;
-	void resetAll();
+	void resetAll(List l);
 	void terminateProgram();
 	int returnID(std::string initialer);
+	std::string returnLector(int id);
 private:
 	int size_; //Changeable
 	std::string* storage_; //Dynamic
