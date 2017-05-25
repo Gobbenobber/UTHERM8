@@ -1,14 +1,14 @@
-a000-X-XX-XX-XX
+a000-X-
 a001-X-
 a002-X-
 a003-X-
-a004-X-
-a005-X-XX-XX-XX
+a004-X-KK-Hermansen-Kasper
+a005-X-
 a006-X-
 a007-X-
 a008-X-
 a009-X-
-a010-X-DE-Nu-Skal
+a010-X-
 a011-X-
 a012-X-
 a013-X-
@@ -18,7 +18,7 @@ a016-X-
 a017-X-
 a018-X-
 a019-X-
-a020-X-XX-XX-XX
+a020-X-
 a021-X-
 a022-X-
 a023-X-
@@ -253,4 +253,4 @@ a251-X-
 a252-X-
 a253-X-
 a254-X-
-a255-X-abcXX-Kasper-Hermansen
+a255-X-

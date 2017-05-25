@@ -4,6 +4,8 @@
 #include <string>
 #include "List.h"
 #include <iostream>
+#include <stdlib.h>
+#include <conio.h>
 
 
 
@@ -37,5 +39,6 @@ private:
 	std::string holderString_;
 	int tempInt_;
 	List lectorSys_;
+	bool handle_;
 };
 

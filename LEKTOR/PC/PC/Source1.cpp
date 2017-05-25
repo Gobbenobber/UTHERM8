@@ -10,11 +10,9 @@ int main()
 {
 	//Receiver
 	const std::string COMPort_1 = "COM3";
-
-	std::cout << "Seriel kommunikation ### - 1 - ###\n" << std::endl;
+	std::cout << "Seriel kommunikation ### - 1 - ###" << std::endl;
 	Serial* arduinoPtr_1 = new Serial("COM3");			// adjust as needed
-
-	std::cout << "Arduino_1 Receiver on the " << COMPort_1 << " port"<< std::endl;
+	std::cout << "Arduino_1 Receiver on the " << COMPort_1 << " port"<< std::endl << std::endl;
 
 	if (arduinoPtr_1->IsConnected())
 		printf("Arduino_1 fundet!\n");
@@ -22,10 +20,10 @@ int main()
 	//Transmitter
 	const std::string COMPort_2 = "COM4";
 
-	std::cout << "Seriel kommunikation ### - 2 - ###\n" << std::endl;
+	std::cout << "Seriel kommunikation ### - 2 - ###" << std::endl;
 	Serial* arduinoPtr_2 = new Serial("COM4");			// adjust as needed
 
-	std::cout << "Arduino_2 Receiver on the " << COMPort_2 << " port" << std::endl;
+	std::cout << "Arduino_2 Receiver on the " << COMPort_2 << " port" << std::endl << std::endl;
 
 	if (arduinoPtr_2->IsConnected())
 		printf("Arduino_2 fundet!\n");
@@ -114,6 +112,7 @@ int main()
 		}
 
 		std::cout << "Waiting..." << std::endl;
+		system("cls");
 	}
 	return 0;
 }

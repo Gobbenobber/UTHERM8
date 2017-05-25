@@ -6,14 +6,12 @@ List::List()
 {
 	size_ = 256; //256 lektorKontorer.
 	storage_ = new std::string[size_];
-	//initializeSpaces(size_);
-	printAll();
 }
 
 
 List::~List()
 {
-	delete storage_;
+	//delete storage_;
 	myFile_.close();
 }
 
@@ -225,23 +223,15 @@ std::string List::getLector(int id) const
 	return storage_[id];
 }
 
-void List::resetAll(List l)
+void List::resetAll()
 {
 	std::ofstream myFile_;
 
-	myFile_.open("test.txt", std::ofstream::out | std::ofstream::trunc);	//Might need further testing
-	/*if (myFile_.is_open())
-	{
-		for (int i = 0; i < size_; i++)
-		{
-			storage_[i].resize(7);
-			storage_[i][5] = 'X';
-			myFile_ << storage_[i] << std::endl;
-		}
-	}*/
-
-	l.initializeSpaces(size_);
+	myFile_.open("Text.txt", std::ofstream::out | std::ofstream::trunc);	//Might need further testing
 	myFile_.close();
+	initializeSpaces(size_);
+
+
 }
 
 void List::terminateProgram()

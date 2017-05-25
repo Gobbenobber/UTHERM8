@@ -31,7 +31,7 @@ public:
 	void removeLector(int id);
 	void changeState(int id, char state);
 	std::string getLector(int id) const;
-	void resetAll(List l);
+	void resetAll();
 	void terminateProgram();
 	int returnID(std::string initialer);
 	std::string returnLector(int id);
