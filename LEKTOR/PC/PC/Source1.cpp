@@ -42,7 +42,9 @@ int main()
 
 	//Admin controlmenu
 	int tempEdit;
+	int menuIndex = 0;
 	bool edit = false;
+	std::string tempString;
 
 	std::cout << "### - Admin menu, choose 1 to edit or 0 to continue - ###" << std::endl;
 	std::cout << "= ";
@@ -54,21 +56,35 @@ int main()
 
 	while (edit == true)
 	{
-		std::cout << "### -	 WELCOME TO THE ADMIN MENU	 - ###" << std::endl;
+		std::cout << "### ----WELCOME TO THE ADMIN MENU--- ###" << std::endl;
 		std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
 		std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
-		std::cout << "### - Press '3' find a lector		 - ###" << std::endl;
-		std::cout << "### - Press '4' change a state	 - ###" << std::endl;
-		std::cout << "### - Press '5' print all			 - ###" << std::endl;
-		std::cout << "### - Press '6' to resetall (!!!)	 - ###" << std::endl;
-		std::cout << "### - Press '7' to terminate		 - ###" << std::endl;
-		std::cin >> edit;
+		std::cout << "### - Press '3' find a lector      - ###" << std::endl;
+		std::cout << "### - Press '4' change a state     - ###" << std::endl;
+		std::cout << "### - Press '5' print all          - ###" << std::endl;
+		std::cout << "### - Press '6' to resetall (!!!)  - ###" << std::endl;
+		std::cout << "### - Press '7' to terminate       - ###" << std::endl;
+		while (menuIndex < 1 || menuIndex > 7)
+		{
+			std::cout << "= ";
+			std::cin >> menuIndex;
+		}
+		if (menuIndex >= 1 && menuIndex <= 7)
+		{
+			switch (menuIndex)
+			{
+			case 1:
+				//cout << 
+				//adminSys.addLector();
+			break;
+			}
+		}
 
 
 
 
 
-
+		menuIndex = 0;
 	}
 		
 
