@@ -20,21 +20,15 @@
 //					We still need to test it with toggleswitch and sensor.
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-//Globale variable
-#define F_CPU 16000000
-
 //AVR Header files
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 
 //Drivers
 #include "Manchester.h"
 #include "RegistrerLektor_Optaget.h"
 #include "RegistrerLektor_PaaKontor.h"
-#include "Timer_1.h"
-#include "Timer_2.h"
-#include "Send.h"
+#include "Timer.h"
 #include "Sensor.h"
 #include "ToggleSwitch.h"
 #include "ToggleSwitchLED.h"
@@ -58,6 +52,7 @@ int main(void)
 	initToggleSwitch('B', 3);
 	initToggleSwitchLED('B', 4);
 	initZCDetector();
+	initBurst();
 	//Streng med data som skal sendes.
 	
 	// Global interrupt enable
@@ -78,19 +73,12 @@ int main(void)
 		{
 		streng[2] = COMMAND;
 		konverteretStreng = stringToManchester(streng);
-		for (size_t i = 0; i >= strlen((const char*)konverteretStreng); i++)
+		for (size_t i = 0; i > strlen((const char*)konverteretStreng); i++)
 		{
 			karakter = konverteretStreng[i];
-			sendCharSW(karakter);
+			sendCharX10(karakter);
 		}
 		freePtr();
 		}
-		
 	}
 }
-
-//TEST AF PIN
-//DDRC |= 1 << 0;
-
-//Test LED
-//DDRC |= 1 << 5;

@@ -16,7 +16,7 @@
  #include "RegistrerLektor_PaaKontor.h"
  #include "Sensor.h"
  #include "ToggleSwitchLED.h"
- #include "Timer_1.h"
+ #include "Timer.h"
 
  //Skift LEDTilstand for ToggleSwitchLED baseret på, hvorvidt lektor er til stede (parametiseret)
 

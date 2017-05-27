@@ -42,10 +42,8 @@ C_SRCS +=  \
 ../Manchester.c \
 ../RegistrerLektor_Optaget.c \
 ../RegistrerLektor_PaaKontor.c \
-../Send.c \
 ../Sensor.c \
-../Timer_1.c \
-../Timer_2.c \
+../Timer.c \
 ../ToggleSwitch.c \
 ../ToggleSwitchLED.c \
 ../zeroCrossDetector.c
@@ -63,10 +61,8 @@ LEKTOR_MIKROCONTROLLER.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
-Send.o \
 Sensor.o \
-Timer_1.o \
-Timer_2.o \
+Timer.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 zeroCrossDetector.o
@@ -77,10 +73,8 @@ LEKTOR_MIKROCONTROLLER.o \
 Manchester.o \
 RegistrerLektor_Optaget.o \
 RegistrerLektor_PaaKontor.o \
-Send.o \
 Sensor.o \
-Timer_1.o \
-Timer_2.o \
+Timer.o \
 ToggleSwitch.o \
 ToggleSwitchLED.o \
 zeroCrossDetector.o
@@ -91,10 +85,8 @@ LEKTOR_MIKROCONTROLLER.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
-Send.d \
 Sensor.d \
-Timer_1.d \
-Timer_2.d \
+Timer.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 zeroCrossDetector.d
@@ -105,10 +97,8 @@ LEKTOR_MIKROCONTROLLER.d \
 Manchester.d \
 RegistrerLektor_Optaget.d \
 RegistrerLektor_PaaKontor.d \
-Send.d \
 Sensor.d \
-Timer_1.d \
-Timer_2.d \
+Timer.d \
 ToggleSwitch.d \
 ToggleSwitchLED.d \
 zeroCrossDetector.d
@@ -127,10 +117,6 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-
-
-
-
 
 
 
