@@ -119,10 +119,7 @@
 
   void ventPaaZC()
   {
-	  if (ZCDetected_ == 1)
-	  {
-		  ZCDetected_ = 0;
-	  }
+	  ZCDetected_ = 0;
 	  while(ZCDetected_ == 0)	{}
   }
 
@@ -146,20 +143,16 @@
 	  unsigned char i;
 	  unsigned char x = Tegn;
 	  // Start bit
-	  ventPaaZC();
-	  sendBurst();
+	  //ventPaaZC();
+	  //sendBurst();
 	  // 8 data bits (LSB first)
 	  for (i = 0; i<8; i++)
 	  {
+	  ventPaaZC();
 		  if(x & 0b00000001)
 		  {
-			  ventPaaZC();
+			  
 			  sendBurst();
-		  }
-		  else
-		  {
-			  ventPaaZC();
-			  start1msDelay();
 		  }
 		  x = x>>1;
 	  }
