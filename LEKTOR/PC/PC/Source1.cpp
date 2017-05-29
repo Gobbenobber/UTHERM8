@@ -30,9 +30,11 @@ int main()
 
 	// Variables and Buffers
 	unsigned char incomingData[9] = "";			// don't forget to pre-allocate memory
-	unsigned char tempData[9] = "";
-	unsigned char outgoingData[9] = "";
-												// printf("%s\n",incomingData);
+	char tempData[9] = "";
+	char outgoingData[9] = "";
+	// printf("%s\n",incomingData);
+	
+	std::string tempString;
 	// Definer data length
 	int dataLength = 8;
 	int readResult = 0;
@@ -79,13 +81,17 @@ int main()
 			break;
 			}
 		}
+
+		adminSys.printAllOfLectorSystem();
 	}
 		
-
 	while (1)
 	{
+		tempString = "00000000";
+
 		//Receiver
 		//Move data from serial to incomingData
+
 		if (arduinoPtr_1->IsConnected())
 		{
 			//Serial Read
@@ -103,16 +109,34 @@ int main()
 		}
 		if (outgoingData != tempData)
 		{
+			tempString = "";
 			for (size_t i = 0; i < dataLength; i++)
 			{
 				outgoingData[i] = tempData[i];
 			}
-
-			//Implement in List
+			for (size_t i = 0; i < 3; i++)
+			{
+				tempString += outgoingData[i];
+			}
+			int id = tempString[0];
+			lectorSys.changeState(id, tempString[1]);
 		}
-
-		std::cout << "Waiting..." << std::endl;
-		system("cls");
+		else
+		{
+			std::cout << "Waiting..." << std::endl;
+			system("cls");
+		}
+		
+		if (outgoingData == "00000000")
+		{
+			if (arduinoPtr_2->IsConnected())
+			{
+				bool tempBool = false;
+			
+				tempBool = arduinoPtr_2->WriteData(outgoingData, dataLength);
+			}
+		}
+		
 	}
 	return 0;
 }

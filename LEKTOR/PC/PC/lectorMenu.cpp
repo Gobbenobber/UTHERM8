@@ -264,13 +264,3 @@ void lectorMenu::terminateTheMenu()
 {
 	edit_ = false;
 }
-
-int lectorMenu::startOfMenu()
-{
-	return 0;
-}
-
-int lectorMenu::endOfMenu()
-{
-	return 0;
-}
