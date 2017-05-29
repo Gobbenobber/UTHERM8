@@ -14,34 +14,38 @@
  */ 
 
  #include "RegistrerLektor_PaaKontor.h"
+ #include "Sensor.h"
  #include "ToggleSwitchLED.h"
-
+ #include "Timer.h"
 
  //Skift LEDTilstand for ToggleSwitchLED baseret på, hvorvidt lektor er til stede (parametiseret)
- void skiftLEDTilstand_PaaKontor(char tilStede)
- {
 
-	if (tilStede == '1')
-	{
-	setToggleSwitchLED('0');
-	}
-	else
-	{
-	setToggleSwitchLED('1');
-	}
-
- }
 
  //Registrér om den afsendte streng indikerer at lektoren er på kontoret.
- void lektorStatus_PaaKontor(char sensorInput)
+ void lektorStatus_PaaKontor()
  {
-	if (sensorInput == '1') 
+	if (kontorStatus() == '1') 
 	{
-	lektortilStede_ = '1';
+		lektortilStede_ = '1';
+		skiftLEDTilstand_PaaKontor();
 	}
 	else
 	{
-	lektortilStede_ = '0';
+		lektortilStede_ = '0';
+		skiftLEDTilstand_PaaKontor();
 	}
 
  }
+
+
+  void skiftLEDTilstand_PaaKontor()
+  {
+	  if (lektortilStede_ == '1' && returnerTimerStatus() == 0)
+	  {
+		  setToggleSwitchLED('0');
+	  }
+	  else
+	  {
+		  setToggleSwitchLED('1');
+	  }
+  }

@@ -6,25 +6,29 @@
 //   \____$$\ $$$$$$$$ |$$ |  $$ |\$$$$$$\  $$ /  $$ |$$ |  \__|
 //  $$\   $$ |$$   ____|$$ |  $$ | \____$$\ $$ |  $$ |$$ |
 //  \$$$$$$  |\$$$$$$$\ $$ |  $$ |$$$$$$$  |\$$$$$$  |$$ |
-//   \______/  \_______|\__|  \__|\_______/  \______/ \__|.h
+//   \______/  \_______|\__|  \__|\_______/  \______/ \__|.c
  */ 
 
 
 #include "Sensor.h"
+//Variables
+volatile char lektorDetected_;
+static char register_;
+static short int port_;
 
 
-void initSensor(char register_, short int port)
+void initSensor(char register__, short int port)
 {
-	if (register_ > 'L' || register_ < 'A' || register_ == 'I')
+	if (register__ > 'L' || register__ < 'A' || register__ == 'I')
 	{
-		register__ = 'A';
+		register_ = 'A';
 	}
 	if (port > 7)
 	{
-		port__ = 2;
+		port_ = 2;
 	}
 
-	switch (register__)
+	switch (register_)
 	{
 		case 'A':
 		DDRA &= ~(1 << port);
@@ -64,11 +68,11 @@ void initSensor(char register_, short int port)
 
 char kontorStatus()
 {
-	switch (register__)
+	switch (register_)
 	{
 		case 'A':
 	
-		if (PINA & (1 << port__))
+		if (PINA & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -81,7 +85,7 @@ char kontorStatus()
 		break;
 
 		case 'B':
-		if (PINB & (1 << port__))
+		if (PINB & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -94,7 +98,7 @@ char kontorStatus()
 		break;
 
 		case 'C':
-		if (PINC & (1 << port__))
+		if (PINC & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -107,7 +111,7 @@ char kontorStatus()
 		break;
 
 		case 'D':
-		if (PIND & (1 << port__))
+		if (PIND & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -120,7 +124,7 @@ char kontorStatus()
 		break;
 
 		case 'E':
-		if (PINE & (1 << port__))
+		if (PINE & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -133,7 +137,7 @@ char kontorStatus()
 		break;
 
 		case 'F':
-		if (PINF & (1 << port__))
+		if (PINF & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -146,7 +150,7 @@ char kontorStatus()
 		break;
 
 		case 'G':
-		if (PING & (1 << port__))
+		if (PING & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -159,7 +163,7 @@ char kontorStatus()
 		break;
 
 		case 'H':
-		if (PINH & (1 << port__))
+		if (PINH & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -172,7 +176,7 @@ char kontorStatus()
 		break;
 
 		case 'J':
-		if (PINJ & (1 << port__))
+		if (PINJ & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -185,7 +189,7 @@ char kontorStatus()
 		break;
 
 		case 'K':
-		if (PINK & (1 << port__))
+		if (PINK & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;
@@ -198,7 +202,7 @@ char kontorStatus()
 		break;
 
 		case 'L':
-		if (PINL & (1 << port__))
+		if (PINL & (1 << port_))
 		{
 			lektorDetected_ = '1';
 			return lektorDetected_;

@@ -22,12 +22,10 @@
 	 EIMSK |= (1 << 0);
 	 //------------------------------------//
 
-	 //Initializing
-	 UCSR0B = 0;
-	 DDRB |= (1 << PINNR);		//OUTPUT
-	 //DDRA &= ~(1 << PINNR_2);		//INPUT
+ }
 
-	 // Global interrupt enable
-	 //sei();
-
+ // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)
+ ISR(INT0_vect)
+ {
+	 ZCDetected_ = 1;
  }

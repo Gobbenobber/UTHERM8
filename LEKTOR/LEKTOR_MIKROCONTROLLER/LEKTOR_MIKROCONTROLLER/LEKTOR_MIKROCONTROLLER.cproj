@@ -148,6 +148,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="X10_Master.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="X10_Master.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="LEKTOR_MIKROCONTROLLER.c">
       <SubType>compile</SubType>
     </Compile>
@@ -169,34 +175,16 @@
     <Compile Include="RegistrerLektor_PaaKontor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Send.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Send.h">
-      <SubType>compile</SubType>
-    </Compile>
     <Compile Include="Sensor.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="Sensor.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Timer_1.c">
+    <Compile Include="Timer.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Timer_1.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer_2.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer_2.h">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer_3_interrupt.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="Timer_3_Interrupt.h">
+    <Compile Include="Timer.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ToggleSwitch.c">
