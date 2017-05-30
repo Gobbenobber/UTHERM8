@@ -12,6 +12,7 @@
  #include "Timer.h"
  #include "zeroCrossDetector.h"
 
+
  volatile int state;
  int firstCheck = 1;
 
@@ -27,7 +28,8 @@
 		 else
 		 {
 			 aendring_ = 1;
-			 COMMAND = 'V';		// V indikerer at lektor er væk!
+			 COMMAND = 'V';    // V indikerer at lektor er væk!
+			 state = 10;		
 		 }
 		 state = 00;
 	 }
@@ -102,10 +104,10 @@
   {
 	  ZCDetected_ = 0;
 	  //PORTB = OUTPUT -- lad 120kHz signal fra OCRB komme ud.
-	  DDRH = 0xFF;
+	  DDRB |= 1 << 7;
 	  start1msDelay();
 	  //Sæt PORTH til input igen.
-	  DDRH = 0;
+	  DDRB &= ~(1 << 7);
   }
 
   void ventPaaZC()
@@ -121,11 +123,10 @@
 	  // Toggle OC2B on compare match
 	  // Mode = 4 (CTC)
 	  // Clock prescaler = 1
-	  TCCR2A = 0b00010000;
-	  TCCR2B = 0b00000001;
-	  // Frekvens = 120.3 kHz
-	  // 120kHz = 16000000Hz/(2*1*(1+OCR1A))  --> OCR1A = 131.33...
-	  OCR2B = 131;
+	  TCCR0A = 0b01000010;
+	  TCCR0B = 0b00000001;
+	  // 120kHz = 16000000Hz/(2*1*(1+OCR1B))  --> OCR1B = 119kHz...
+	  OCR0A = 66;
   }
 
   void sendCharX10(char Tegn)
@@ -142,6 +143,7 @@
 	  ventPaaZC();
 	  start1msDelay();
 	  start1msDelay();
+	  start400usDelay();
 		  if(x & 0b00000001)
 		  {
 			  sendBurst();
@@ -152,3 +154,19 @@
 	  //sendBurst(); //stopbit
 	  //Test ###DUNNO what the stopbit is###
   }
+
+   void start400usDelay()
+   {
+	   // Timer4: Normal mode, PS = 0
+	   TCCR4A = 0b00000000;
+	   TCCR4B = 0b00000001;
+	   // Overflow hvert MS.
+	   //Sæt timerStatus til '1' (=going)
+	   //timerStatus_3 = '1';
+	   TCNT4 = 63936;
+	   while ((TIFR4 & (1<<0)) == 0)
+	   {}
+	   TCCR4B = 0;
+	   TIFR4 = 1<<0;
+	   //timerStatus_3 = '0';
+   }

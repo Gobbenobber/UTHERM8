@@ -9,7 +9,7 @@
 #include "avr/interrupt.h"
 #include "avr/io.h"
 #define LEKTORID1 'A'
-#define STARTCODE 0b11101110
+#define STARTCODE 0b11101111
 #define PORT  PORTH
 #define PINNR 6
 volatile unsigned char COMMAND;
@@ -22,3 +22,4 @@ void ventPaaZC();
 void initBurst();
 void opdaterKommando();
 void start1msDelay();
+void start400usDelay();

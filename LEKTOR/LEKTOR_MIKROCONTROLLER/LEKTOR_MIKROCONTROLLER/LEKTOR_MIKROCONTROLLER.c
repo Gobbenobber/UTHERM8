@@ -53,30 +53,47 @@ int main(void)
 	unsigned char* konverteretStreng;
 	//Char (fra konverteretStreng) som aktuelt afsendes.
 	volatile unsigned char karakter = '\0';
-
+	int i = 0;
 	while(1)
 	{
-		// Go through UC1 & UC2 -- also changes LED according to actual status.
-		lektorStatus_PaaKontor();
-		lektorStatus_Optaget();
-		// Check om der er sket en ændring, opdatér kommando baseret på dette.
-		opdaterKommando();
-
-		// Hvis der er sket en ændring, send STARTCODE efterfulgt af X10-kommando (bestående af LEKTORID1 og COMMAND).
-		if (aendring_ == 1)
+		//konverteretStreng = stringToManchester((unsigned char*)"TROLDEFAR");
+		//for (i = 0; i <= strlen((const char*)konverteretStreng); i++);
+		//{
+		//sendCharX10(konverteretStreng[i]);
+		//}
+		//freePtr();
+		//sendCharX10(STARTCODE);
+		const unsigned char* klunk = stringToManchester("ABCD");
+		for (i = 0; i < strlen(klunk); i++)
 		{
-		streng[1] = COMMAND;
-		konverteretStreng = stringToManchester(streng);
-		sendCharX10(STARTCODE);
-		for (size_t i = 0; i > strlen((const char*)konverteretStreng); i++)
-		{
-			karakter = konverteretStreng[i];
-			sendCharX10(karakter);
+			sendCharX10(klunk[i]);
 		}
-		// Send stopBit?!
-		ventPaaZC();
-		sendBurst();
 		freePtr();
-		}
+	
+		//// Go through UC1 & UC2 -- also changes LED according to actual status.
+		//lektorStatus_PaaKontor();
+		//lektorStatus_Optaget();
+		//// Check om der er sket en ændring, opdatér kommando baseret på dette.
+		//opdaterKommando();
+//
+		//// Hvis der er sket en ændring, send STARTCODE efterfulgt af X10-kommando (bestående af LEKTORID1 og COMMAND).
+		//if (aendring_ == 1)
+		//{
+		//streng[1] = COMMAND;
+		//konverteretStreng = stringToManchester(streng);
+		//sendCharX10(STARTCODE);
+		//for (size_t i = 0; i > strlen((const char*)konverteretStreng); i++)
+		//{
+			//karakter = konverteretStreng[i];
+			//sendCharX10(karakter);
+		//}
+		//// Send stopBit?!
+		//ventPaaZC();
+		//start1msDelay();
+		//start1msDelay();
+		//start400usDelay();
+		//sendBurst();
+		//freePtr();
+		//}
 	}
 }
