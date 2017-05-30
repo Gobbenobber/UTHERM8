@@ -16,12 +16,12 @@
 #define PINNR 6
 volatile unsigned char COMMAND;
 volatile char aendring_;
-volatile char receive[4] = "";
+volatile char receive[3] = "";
 
 
 // 8 data bit, no parity, 1 stop bit
-void start1msDelay();
-void receiveCharX10(char Tegn);
+char validateStartByte(char val);
+void start500usDelay();
 void receiveBurst();
 void ventPaaZC();
 void initBurst();

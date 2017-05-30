@@ -81,13 +81,11 @@ int main()
 			break;
 			}
 		}
-
-		adminSys.printAllOfLectorSystem();
 	}
 		
 	while (1)
 	{
-		tempString = "00000000";
+		//tempString = "00000000";
 
 		//Receiver
 		//Move data from serial to incomingData
