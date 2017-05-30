@@ -8,12 +8,12 @@
 #pragma once
 #include "avr/interrupt.h"
 #include "avr/io.h"
-#define LEKTORID1 'A'
-#define STARTCODE 0b11101111
 #define PORT  PORTH
 #define PINNR 6
 volatile unsigned char COMMAND;
 volatile char aendring_;
+unsigned char LEKTORID1 = 'A';
+unsigned char STARTCODE = 0b11101110
 
 // 8 data bit, no parity, 1 stop bit
 void sendCharX10(char Tegn);
