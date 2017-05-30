@@ -8,8 +8,6 @@
 #pragma once
 #include "avr/interrupt.h"
 #include "avr/io.h"
-#define LEKTORID1 'A'
-#define STARTCODE 0b11101111
 #define PORT  PORTH
 #define PINNR 6
 volatile unsigned char COMMAND;

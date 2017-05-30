@@ -45,7 +45,7 @@ unsigned char* stringToManchester(unsigned char* toBeConverted)
 	return manchesterPtr;													// Returnér manchesterkoden
 }
 
-unsigned char* mancesterToString(unsigned char* toBeConverted)
+unsigned char* manchesterToString(unsigned char* toBeConverted)
 {
 	if (toBeConverted == (unsigned char*)"") return 0;
 	int len = ((int)(strlen((char*)toBeConverted)) / 2);

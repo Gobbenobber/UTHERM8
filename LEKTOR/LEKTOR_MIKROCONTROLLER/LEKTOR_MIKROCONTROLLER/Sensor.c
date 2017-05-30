@@ -18,13 +18,21 @@ static short int pin_;
 
 void initSensor(char register__, short int pin)
 {
-	if (register__ > 'L' || register__ < 'A' || register__ == 'I')
+	if (register__ > 'L' || register__ < 'A')
 	{
 		register_ = 'A';
 	}
-	if (pin > 7)
+	else
 	{
-		pin_ = 2;
+		register_ = register__;
+	}
+	if (pin > 7 || pin < 0)
+	{
+		pin_ = 1;
+	}
+	else
+	{
+		pin_ = pin;
 	}
 
 	switch (register_)
