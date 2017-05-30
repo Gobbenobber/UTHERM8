@@ -26,14 +26,9 @@
 
 //Drivers
 #include "Manchester.h"
-#include "RegistrerLektor_Optaget.h"
-#include "RegistrerLektor_PaaKontor.h"
-#include "Timer.h"
-#include "Sensor.h"
-#include "ToggleSwitch.h"
-#include "ToggleSwitchLED.h"
 #include "zeroCrossDetector.h"
 #include "X10_Master.h"
+#include "uart.h"
 
 int main(void)
 {
@@ -46,15 +41,13 @@ int main(void)
 	sei();
 	
 	unsigned char* konverteretStreng;
-	volatile unsigned char karakter = '\0';
-	unsigned char streng[3] = {LEKTORID1, LEKTORID2, COMMAND};
 	char* buffer = "";
 
 	InitUART(9600,8, 'N');
 
 	while(1)
 	{
-		buffer = ""
+		buffer = "";
 		receiveBurst(buffer);
 		if (buffer != "")
 		{

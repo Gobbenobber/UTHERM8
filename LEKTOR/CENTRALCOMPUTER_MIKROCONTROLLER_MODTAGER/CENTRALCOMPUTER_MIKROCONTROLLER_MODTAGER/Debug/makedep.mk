@@ -2,9 +2,13 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-main.c
+CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.c
 
-SendOgModtag.c
+Manchester.c
 
 uart.c
+
+X10_Master.c
+
+zeroCrossDetector.c
 

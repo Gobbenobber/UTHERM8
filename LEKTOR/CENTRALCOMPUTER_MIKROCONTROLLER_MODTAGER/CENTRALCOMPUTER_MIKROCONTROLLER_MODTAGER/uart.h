@@ -4,10 +4,11 @@
 * Using UART 0.                         *
 * Henning Hargaard, 4/11 2015           *
 *****************************************/ 
+#pragma once
 void InitUART(unsigned long BaudRate, unsigned char DataBit, char Parity);
 unsigned char CharReady();
 char ReadChar();
 void SendChar(char Tegn);
-void SendString(const unsigned char* Streng);
+void SendString(char* Streng);
 void SendInteger(int Tal);
 /****************************************/

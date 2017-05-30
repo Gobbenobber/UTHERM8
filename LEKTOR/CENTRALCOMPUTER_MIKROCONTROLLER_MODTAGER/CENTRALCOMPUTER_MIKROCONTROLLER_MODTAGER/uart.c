@@ -91,7 +91,7 @@ Sends 0 terminated string.
 Parameter:
    Streng: Pointer to the string. 
 *************************************************************************/
-void SendString(const unsigned char* Streng)
+void SendString(char* Streng)
 {
   // Repeat until zero-termination
   while (*Streng != 0)
@@ -112,7 +112,7 @@ Parameter:
 *************************************************************************/
 void SendInteger(int Tal)
 {
-const unsigned char array[7];
+  char array[7];
   // Convert the integer to an ASCII string (array), radix = 10 
   itoa(Tal, (char*)array, 10);
   // - then send the string

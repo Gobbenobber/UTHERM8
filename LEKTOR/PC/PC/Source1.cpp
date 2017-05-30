@@ -9,7 +9,7 @@
 int main()
 {
 	//Receiver
-	const std::string COMPort_1 = "COM3";
+	const std::string COMPort_1 = "COM4";
 	std::cout << "Seriel kommunikation ### - 1 - ###" << std::endl;
 	Serial* arduinoPtr_1 = new Serial("COM3");			// adjust as needed
 	std::cout << "Arduino_1 Receiver on the " << COMPort_1 << " port"<< std::endl << std::endl;
@@ -18,7 +18,7 @@ int main()
 		printf("Arduino_1 fundet!\n");
 
 	//Transmitter
-	const std::string COMPort_2 = "COM4";
+	const std::string COMPort_2 = "COM3";
 
 	std::cout << "Seriel kommunikation ### - 2 - ###" << std::endl;
 	Serial* arduinoPtr_2 = new Serial("COM4");			// adjust as needed
@@ -87,7 +87,7 @@ int main()
 	{
 		//Receiver
 		//Move data from serial to incomingData
-		system("cls");
+		//system("cls");
 
 		if (arduinoPtr_1->IsConnected())
 		{
@@ -119,7 +119,7 @@ int main()
 			lectorSys.fillStorage();
 			if (tempString[1] == '\0')
 			{
-				tempString[1] = 'X';
+				//tempString[1] = ' ';
 			}
 			std::cout << tempString << std::endl;
 			lectorSys.changeState(id, tempString[1]);
