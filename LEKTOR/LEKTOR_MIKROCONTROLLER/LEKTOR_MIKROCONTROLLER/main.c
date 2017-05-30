@@ -35,6 +35,16 @@
 #include "zeroCrossDetector.h"
 #include "X10_Master.h"
 
+//------------------------------------//
+//				 Variables			  //
+//------------------------------------//
+
+/*
+//------------------------------------//
+//				 Functions			  //
+//------------------------------------//
+*/
+
 int main(void)
 {
 	//Initializing
@@ -43,39 +53,31 @@ int main(void)
 	initToggleSwitchLED('B', 4);
 	initZCDetector();
 	initBurst();
+	//Streng med data som skal sendes.
 	
 	// Global interrupt enable
 	sei();
-
-	//Streng med data som skal sendes.
-	unsigned char streng[2] = {LEKTORID1, COMMAND};
-	//Streng som er manchester-encoded (strengen som egentlig sendes).
+				
 	unsigned char* konverteretStreng;
-	//Char (fra konverteretStreng) som aktuelt afsendes.
 	volatile unsigned char karakter = '\0';
+	unsigned char streng[3] = {LEKTORID1, LEKTORID2, COMMAND};
 
 	while(1)
 	{
-		// Go through UC1 & UC2 -- also changes LED according to actual status.
+		
 		lektorStatus_PaaKontor();
 		lektorStatus_Optaget();
-		// Check om der er sket en ændring, opdatér kommando baseret på dette.
 		opdaterKommando();
 
-		// Hvis der er sket en ændring, send STARTCODE efterfulgt af X10-kommando (bestående af LEKTORID1 og COMMAND).
 		if (aendring_ == 1)
 		{
-		streng[1] = COMMAND;
+		streng[2] = COMMAND;
 		konverteretStreng = stringToManchester(streng);
-		sendCharX10(STARTCODE);
 		for (size_t i = 0; i > strlen((const char*)konverteretStreng); i++)
 		{
 			karakter = konverteretStreng[i];
 			sendCharX10(karakter);
 		}
-		// Send stopBit?!
-		ventPaaZC();
-		sendBurst();
 		freePtr();
 		}
 	}

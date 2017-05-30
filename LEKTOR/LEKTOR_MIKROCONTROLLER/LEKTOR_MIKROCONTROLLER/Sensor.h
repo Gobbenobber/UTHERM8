@@ -7,9 +7,8 @@
 
 #pragma once
 #include "avr/io.h"
-
 //Functions
 
-void initSensor(char register__, short int port);
+void initSensor(char register__, short int pin);
 char kontorStatus();
 

@@ -7,11 +7,14 @@
  *       $$ |   $$ |$$ | $$ | $$ |$$   ____|$$ |      
  *       $$ |   $$ |$$ | $$ | $$ |\$$$$$$$\ $$ |      
  *       \__|   \__|\__| \__| \__| \_______|\__|      
-------------------------------------------------                        
+		----------------------------------------                       
 Using timer 1, provides a 10 minute timer.              
  */
 
  #include "Timer.h"
+ //Variables
+ volatile static int ctr_ = 0;
+ volatile static int timerStatus_ = 0;
 
  int returnerTimerStatus()
  {

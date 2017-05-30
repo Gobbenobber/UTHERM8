@@ -9,6 +9,6 @@
 #include "avr/io.h"
 
 //Functions
-void initToggleSwitchLED(char register__, short int port);
+void initToggleSwitchLED(char register__, short int pin);
 void setToggleSwitchLED(char bool_);
 

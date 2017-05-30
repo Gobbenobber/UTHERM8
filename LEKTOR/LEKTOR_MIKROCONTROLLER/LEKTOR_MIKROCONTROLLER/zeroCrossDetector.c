@@ -21,7 +21,6 @@
 	 EICRA = 0b00000011;
 	 EIMSK |= (1 << 0);
 	 //------------------------------------//
-
  }
 
  // Interrupt service routine for INT0 (Er INT3 for Atmega 2560)

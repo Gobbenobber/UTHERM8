@@ -82,11 +82,6 @@
 
  }
 
-
-
-
-
-
   void start1msDelay()
   {
 	  // Timer3: Normal mode, PS = 0
@@ -105,11 +100,7 @@
 
   void sendBurst()
   {
-	  //sæt ZDDetected til 0 hvis der er ZeroCross.
-	  if (ZCDetected_ == 1)
-	  {
-		  ZCDetected_ = 0;
-	  }
+	  ZCDetected_ = 0;
 	  //PORTB = OUTPUT -- lad 120kHz signal fra OCRB komme ud.
 	  DDRH = 0xFF;
 	  start1msDelay();
@@ -151,13 +142,11 @@
 	  ventPaaZC();
 		  if(x & 0b00000001)
 		  {
-			  
 			  sendBurst();
 		  }
 		  x = x>>1;
 	  }
-	  ventPaaZC();
-	  sendBurst(); //stopbit
+	  //ventPaaZC();
+	  //sendBurst(); //stopbit
 	  //Test ###DUNNO what the stopbit is###
-	  //PORT &= ~(1<<PINNR);
   }
