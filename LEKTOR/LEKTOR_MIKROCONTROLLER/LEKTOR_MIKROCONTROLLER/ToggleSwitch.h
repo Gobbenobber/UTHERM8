@@ -7,5 +7,5 @@
 #include "avr/io.h"
 
 //Functions
-void initToggleSwitch(char register__, short int port);
+void initToggleSwitch(char register__, short int pin);
 char toggleSwitchStatus();
