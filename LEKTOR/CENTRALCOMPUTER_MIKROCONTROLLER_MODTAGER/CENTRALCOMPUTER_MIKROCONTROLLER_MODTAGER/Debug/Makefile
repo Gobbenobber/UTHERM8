@@ -37,9 +37,12 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c \
-../SendOgModtag.c \
-../uart.c
+../CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.c \
+../Manchester.c \
+../Timer_3_interrupt.c \
+../uart.c \
+../X10_Master.c \
+../zeroCrossDetector.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,24 +52,36 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o \
-SendOgModtag.o \
-uart.o
+CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o \
+Manchester.o \
+Timer_3_interrupt.o \
+uart.o \
+X10_Master.o \
+zeroCrossDetector.o
 
 OBJS_AS_ARGS +=  \
-main.o \
-SendOgModtag.o \
-uart.o
+CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o \
+Manchester.o \
+Timer_3_interrupt.o \
+uart.o \
+X10_Master.o \
+zeroCrossDetector.o
 
 C_DEPS +=  \
-main.d \
-SendOgModtag.d \
-uart.d
+CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.d \
+Manchester.d \
+Timer_3_interrupt.d \
+uart.d \
+X10_Master.d \
+zeroCrossDetector.d
 
 C_DEPS_AS_ARGS +=  \
-main.d \
-SendOgModtag.d \
-uart.d
+CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.d \
+Manchester.d \
+Timer_3_interrupt.d \
+uart.d \
+X10_Master.d \
+zeroCrossDetector.d
 
 OUTPUT_FILE_PATH +=CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.elf
 
@@ -82,6 +97,12 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
+
+
 
 
 
