@@ -85,10 +85,9 @@ int main()
 		
 	while (1)
 	{
-		//tempString = "00000000";
-
 		//Receiver
 		//Move data from serial to incomingData
+		system("cls");
 
 		if (arduinoPtr_1->IsConnected())
 		{
@@ -117,6 +116,12 @@ int main()
 				tempString += outgoingData[i];
 			}
 			int id = tempString[0];
+			lectorSys.fillStorage();
+			if (tempString[1] == '\0')
+			{
+				tempString[1] = 'X';
+			}
+			std::cout << tempString << std::endl;
 			lectorSys.changeState(id, tempString[1]);
 		}
 		else

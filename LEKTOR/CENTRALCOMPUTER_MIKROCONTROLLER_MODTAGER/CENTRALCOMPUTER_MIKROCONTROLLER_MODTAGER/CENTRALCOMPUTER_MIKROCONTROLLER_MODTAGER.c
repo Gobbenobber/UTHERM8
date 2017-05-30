@@ -38,9 +38,6 @@
 int main(void)
 {
 	//Initializing
-	initSensor('B', 2);
-	initToggleSwitch('B', 3);
-	initToggleSwitchLED('B', 4);
 	initZCDetector();
 	initBurst();
 	//Streng med data som skal sendes.

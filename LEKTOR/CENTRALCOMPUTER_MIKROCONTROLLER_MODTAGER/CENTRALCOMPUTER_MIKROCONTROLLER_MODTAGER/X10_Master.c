@@ -44,10 +44,18 @@ void receiveBurst(char* buffer)
 	{
 		if (validateStartByte(receive[0]) == 't')
 		{
-			for (int j = 0; j < 8; j++)
+			for (int j = 0; j < 9; j++)
 			{
 				ventPaaZC();
 				start500usDelay();
+				if ((j == 8) && (PORT & 1))
+				{
+					
+				}
+				else
+				{
+					i--;
+				}
 				if (PORT & 1)
 				{
 					receive[i] |= 1 << j;
