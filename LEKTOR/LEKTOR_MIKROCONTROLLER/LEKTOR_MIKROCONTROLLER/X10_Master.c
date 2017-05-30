@@ -140,6 +140,8 @@
 	  for (i = 0; i<8; i++)
 	  {
 	  ventPaaZC();
+	  start1msDelay();
+	  start1msDelay();
 		  if(x & 0b00000001)
 		  {
 			  sendBurst();
