@@ -51,24 +51,17 @@ int main(void)
 	unsigned char* konverteretStreng;
 	volatile unsigned char karakter = '\0';
 	unsigned char streng[3] = {LEKTORID1, LEKTORID2, COMMAND};
+	char* buffer = "";
+
+	InitUART(9600,8, 'N');
 
 	while(1)
 	{
-		
-		lektorStatus_PaaKontor();
-		lektorStatus_Optaget();
-		opdaterKommando();
-
-		if (aendring_ == 1)
+		buffer = ""
+		receiveBurst(buffer);
+		if (buffer != "")
 		{
-			streng[2] = COMMAND;
-			konverteretStreng = stringToManchester(streng);
-			for (size_t i = 0; i > strlen((const char*)konverteretStreng); i++)
-			{
-				karakter = konverteretStreng[i];
-				sendCharX10(karakter);
-			}
-			freePtr();
+			SendString(buffer);
 		}
 	}
 }

@@ -32,7 +32,7 @@ void start500usDelay()
 	//timerStatus_3 = '0';
 }
 
-void receiveBurst()
+void receiveBurst(char* buffer)
 {
 	//sæt ZDDetected til 0 hvis der er ZeroCross.
 	if (ZCDetected_ == 1)

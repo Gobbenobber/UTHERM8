@@ -22,6 +22,6 @@ volatile char receive[3] = "";
 // 8 data bit, no parity, 1 stop bit
 char validateStartByte(char val);
 void start500usDelay();
-void receiveBurst();
+void receiveBurst(char* buffer);
 void ventPaaZC();
 void initBurst();
