@@ -48,52 +48,50 @@ int main(void)
 	sei();
 
 	//Streng med data som skal sendes.
-	unsigned char streng[2] = {LEKTORID1, COMMAND};
+	unsigned char streng[3];
 	//Streng som er manchester-encoded (strengen som egentlig sendes).
-	unsigned char* konverteretStreng;
-	//Char (fra konverteretStreng) som aktuelt afsendes.
-	volatile unsigned char karakter = '\0';
 	int i = 0;
 	while(1)
-	{
-		//konverteretStreng = stringToManchester((unsigned char*)"TROLDEFAR");
-		//for (i = 0; i <= strlen((const char*)konverteretStreng); i++);
-		//{
-		//sendCharX10(konverteretStreng[i]);
-		//}
-		//freePtr();
-		//sendCharX10(STARTCODE);
-		const unsigned char* klunk = stringToManchester("ABCD");
-		for (i = 0; i < strlen(klunk); i++)
+	{	
+		// Go through UC1 & UC2 -- also changes LED according to actual status.
+		lektorStatus_PaaKontor();
+		lektorStatus_Optaget();
+		// Check om der er sket en ændring, opdatér kommando baseret på dette.
+		opdaterKommando(); //Returnerer umiddelbart 'V' for 'Væk'.
+
+		// Hvis der er sket en ændring, send STARTCODE efterfulgt af X10-kommando (bestående af LEKTORID1 og COMMAND).
+		if (aendring_ == 1)
 		{
-			sendCharX10(klunk[i]);
+			//COMMAND = 'c';
+			streng[0] = LEKTORID1;
+			streng[1] = COMMAND;
+			streng[2] = '\0';
+			unsigned char* konverteretStreng = stringToManchester(streng);
+			SendChar(STARTCODE);
+			for (i = 0; i < strlen((char*)konverteretStreng); i++)
+			{
+				sendCharX10(konverteretStreng[i]);
+			}
+
+			/*
+			For testing -- Above and below both work.
+			+ DO NOT use #define for chars unless typecast is used!
+			+ STARTCODE, LEKTORID1, COMMAND now all declared as variables.
+			---------------------------------------------------------------
+			unsigned char* tilbageTilNormal = manchesterToString(konverteretStreng);
+			for (i = 0; i < strlen((char*)kll); i++)
+			{
+				sendCharX10(tilbageTilNormal[i]);
+			}
+			*/
+			// Send stopBit?!
+			ventPaaZC();
+			start1msDelay();
+			start1msDelay();
+			start400usDelay();
+			sendBurst();
+			freePtr();
+			free(konverteretStreng);
 		}
-		freePtr();
-	
-		//// Go through UC1 & UC2 -- also changes LED according to actual status.
-		//lektorStatus_PaaKontor();
-		//lektorStatus_Optaget();
-		//// Check om der er sket en ændring, opdatér kommando baseret på dette.
-		//opdaterKommando();
-//
-		//// Hvis der er sket en ændring, send STARTCODE efterfulgt af X10-kommando (bestående af LEKTORID1 og COMMAND).
-		//if (aendring_ == 1)
-		//{
-		//streng[1] = COMMAND;
-		//konverteretStreng = stringToManchester(streng);
-		//sendCharX10(STARTCODE);
-		//for (size_t i = 0; i > strlen((const char*)konverteretStreng); i++)
-		//{
-			//karakter = konverteretStreng[i];
-			//sendCharX10(karakter);
-		//}
-		//// Send stopBit?!
-		//ventPaaZC();
-		//start1msDelay();
-		//start1msDelay();
-		//start400usDelay();
-		//sendBurst();
-		//freePtr();
-		//}
 	}
 }
