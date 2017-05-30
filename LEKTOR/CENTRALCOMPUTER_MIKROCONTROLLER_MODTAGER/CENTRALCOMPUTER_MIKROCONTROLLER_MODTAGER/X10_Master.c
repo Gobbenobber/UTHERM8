@@ -1,7 +1,4 @@
  #include "X10_Master.h"
- #include "RegistrerLektor_Optaget.h"
- #include "RegistrerLektor_PaaKontor.h"
- #include "Timer.h"
  #include "zeroCrossDetector.h"
 
  volatile int state;
