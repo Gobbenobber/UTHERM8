@@ -44,6 +44,9 @@ int main(void)
 	initZCDetector();
 	initBurst();
 	
+	unsigned char LEKTORID1 = 'A';
+	unsigned char STARTCODE = 0b11101110;
+
 	// Global interrupt enable
 	sei();
 
@@ -67,7 +70,7 @@ int main(void)
 			streng[1] = COMMAND;
 			streng[2] = '\0';
 			unsigned char* konverteretStreng = stringToManchester(streng);
-			SendChar(STARTCODE);
+			sendCharX10(STARTCODE);
 			for (i = 0; i < strlen((char*)konverteretStreng); i++)
 			{
 				sendCharX10(konverteretStreng[i]);

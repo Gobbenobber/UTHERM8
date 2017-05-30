@@ -12,35 +12,32 @@
  #include "Timer.h"
  #include "zeroCrossDetector.h"
 
-
  volatile int state;
- int firstCheck = 1;
-
-
+ volatile int firstCheck = 1;
  void opdaterKommando()
  {
 	 if (lektorOptaget_ == '0' && lektortilStede_ == '0')
 	 {
-		 if ((state = 00) && (firstCheck != 1))
+		 if ((state == 00) && (firstCheck != 1))
 		 {
 			 aendring_ = 0;
 		 }
 		 else
 		 {
 			 aendring_ = 1;
-			 COMMAND = 'V';    // V indikerer at lektor er væk!
-			 state = 10;		
+			 COMMAND = 'V'; // V indikerer at lektor er væk!	
+			 state = 00;   
 		 }
-		 state = 00;
 	 }
 	 else if ((lektorOptaget_ == '0') && (lektortilStede_ == '1'))
 	 {
-		 if ((state = 01) && (firstCheck != 1))
+		 if ((state == 01) && (firstCheck != 1))
 		 {
 			 aendring_ = 0;
 		 }
 		 else
 		 {
+			 resetTimer();
 			 aendring_ = 1;
 			 COMMAND = 'T';		// T Indikerer at lektor er tilstede
 			 state = 01;
@@ -48,7 +45,7 @@
 	 }
 	 else if ((lektorOptaget_ == '1') && (lektortilStede_ == '0'))
 	 {
-		 if ((state = 10) && (firstCheck != 1))
+		 if ((state == 10) && (firstCheck != 1))
 		 {
 			 aendring_ = 0;
 		 }
@@ -61,7 +58,7 @@
 	 }
 	 else if ((lektorOptaget_ == '1') && (lektortilStede_ == '1'))
 	 {
-		 if ((state = 11) && (firstCheck != 1))
+		 if ((state == 11) && (firstCheck != 1))
 		 {
 			 aendring_ = 0;
 		 }

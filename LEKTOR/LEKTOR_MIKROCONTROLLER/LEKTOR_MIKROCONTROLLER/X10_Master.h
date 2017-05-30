@@ -12,8 +12,6 @@
 #define PINNR 6
 volatile unsigned char COMMAND;
 volatile char aendring_;
-unsigned char LEKTORID1 = 'A';
-unsigned char STARTCODE = 0b11101110
 
 // 8 data bit, no parity, 1 stop bit
 void sendCharX10(char Tegn);

@@ -20,7 +20,7 @@ void initToggleSwitch(char register__, short int pin)
 	}
  	if (pin > 7)
  	{
-	 	pin_ = 1;
+	 	pin_ = 5;
  	}
 	else
 	{
