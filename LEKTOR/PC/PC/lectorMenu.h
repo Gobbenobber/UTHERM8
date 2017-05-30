@@ -14,13 +14,10 @@ class lectorMenu
 public:
 	lectorMenu();
 	~lectorMenu();
-	//Mutators
 	void setMenuIndex(int menuIndex);
 	int getMenuIndex();
 	void setEdit(bool edit);
 	bool getEdit();
-
-	//Methods
 	void initMenu();
 	void createLector();
 	void removeLector();
@@ -29,8 +26,6 @@ public:
 	void printAllOfLectorSystem();
 	void resetAllOfLectorSystem();
 	void terminateTheMenu();
-	int startOfMenu();
-	int endOfMenu();
 private:
 	bool edit_;
 	int menuIndex_;

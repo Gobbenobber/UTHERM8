@@ -268,3 +268,19 @@ char List::returnState(int id)
 {
 	return 0;
 }
+
+void List::fillStorage()
+{
+	std::ifstream myFile_("Text.txt");
+	int location = 0;
+	std::string holder;	//temp
+	if (myFile_.is_open())
+	{
+		while (getline(myFile_, holder))
+		{
+			location++;
+			storage_[location - 1] = holder;
+		}
+	}
+	myFile_.close();
+}
