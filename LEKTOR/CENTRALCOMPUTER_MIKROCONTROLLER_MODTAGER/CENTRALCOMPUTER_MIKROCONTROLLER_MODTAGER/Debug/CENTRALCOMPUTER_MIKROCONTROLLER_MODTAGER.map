@@ -58,7 +58,7 @@ Discarded input sections
                 0x00000000       0x30 Manchester.o
  .debug_ranges  0x00000000       0x90 Manchester.o
  .debug_line    0x00000000      0x22b Manchester.o
- .debug_str     0x00000000      0x1e0 Manchester.o
+ .debug_str     0x00000000      0x1db Manchester.o
  .comment       0x00000000       0x31 Manchester.o
  .debug_frame   0x00000000       0xc8 Manchester.o
  .text          0x00000000        0x0 uart.o
@@ -624,17 +624,17 @@ END GROUP
  .debug_frame   0x000000c0       0x98 X10_Master.o
  .debug_frame   0x00000158       0x48 zeroCrossDetector.o
 
-.debug_str      0x00000000      0x718
+.debug_str      0x00000000      0x713
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x229 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
-                                0x262 (size before relaxing)
- .debug_str     0x0000060f       0x96 uart.o
-                                0x260 (size before relaxing)
- .debug_str     0x000006a5       0x4f X10_Master.o
-                                0x263 (size before relaxing)
- .debug_str     0x000006f4       0x24 zeroCrossDetector.o
-                                0x1f8 (size before relaxing)
+ .debug_str     0x000003e6      0x224 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
+                                0x25d (size before relaxing)
+ .debug_str     0x0000060a       0x96 uart.o
+                                0x25b (size before relaxing)
+ .debug_str     0x000006a0       0x4f X10_Master.o
+                                0x25e (size before relaxing)
+ .debug_str     0x000006ef       0x24 zeroCrossDetector.o
+                                0x1f3 (size before relaxing)
 
 .debug_loc      0x00000000      0x3c0
  *(.debug_loc)
