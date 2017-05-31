@@ -18,6 +18,8 @@
 //					MAIN PROGRAM
 //	- 20/05/2017:	The program has been written anf compiles just fine
 //					We still need to test it with toggleswitch and sensor.
+//	- 31/05/2017:	[Check GitHub log for changes]
+//					TODAY THIS PROGRAM HAS BEEN TESTED AND IT WORKS FOR SENDING ONE FULL X10 COMMAND AT A TIME. TIMER NOT IMPLEMENTED YET.			
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //AVR Header files
@@ -54,6 +56,17 @@ int main(void)
 	unsigned char streng[3];
 	//Streng som er manchester-encoded (strengen som egentlig sendes).
 	int i = 0;
+		/*
+		For testing -- Above and below both work.
+		+ DO NOT use #define for chars unless typecast is used!
+		+ STARTCODE, LEKTORID1, COMMAND now all declared as variables.
+		---------------------------------------------------------------
+		unsigned char* tilbageTilNormal = manchesterToString(konverteretStreng);
+		for (i = 0; i < strlen((char*)kll); i++)
+		{
+			sendCharX10(tilbageTilNormal[i]);
+		}
+		*/
 	while(1)
 	{	
 		// Go through UC1 & UC2 -- also changes LED according to actual status.
@@ -75,26 +88,14 @@ int main(void)
 			{
 				sendCharX10(konverteretStreng[i]);
 			}
-
-			/*
-			For testing -- Above and below both work.
-			+ DO NOT use #define for chars unless typecast is used!
-			+ STARTCODE, LEKTORID1, COMMAND now all declared as variables.
-			---------------------------------------------------------------
-			unsigned char* tilbageTilNormal = manchesterToString(konverteretStreng);
-			for (i = 0; i < strlen((char*)kll); i++)
-			{
-				sendCharX10(tilbageTilNormal[i]);
-			}
-			*/
-			// Send stopBit?!
-			ventPaaZC();
-			start1msDelay();
-			start1msDelay();
-			start400usDelay();
-			sendBurst();
-			freePtr();
-			free(konverteretStreng);
+			// Send stopBit?!  
+			//ventPaaZC();
+			//start1msDelay();
+			//start1msDelay();
+			//start400usDelay();
+			//sendBurst();
+			//freePtr();
+			//free(konverteretStreng);
 		}
 	}
 }
