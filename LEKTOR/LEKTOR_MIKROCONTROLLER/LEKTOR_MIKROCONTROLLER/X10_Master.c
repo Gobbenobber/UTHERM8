@@ -134,18 +134,18 @@
 	  // Start bit
 	  //ventPaaZC();
 	  //sendBurst();
-	  // 8 data bits (LSB first)
+	  // 8 data bits (LSB first)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	  for (i = 0; i<8; i++)
 	  {
 	  ventPaaZC();
 	  start1msDelay();
 	  start1msDelay();
 	  start400usDelay();
-		  if(x & 0b00000001)
+		  if(x & 0b10000000)
 		  {
 			  sendBurst();
 		  }
-		  x = x>>1;
+		  x = x<<1;
 	  }
 	  //ventPaaZC();
 	  //sendBurst(); //stopbit

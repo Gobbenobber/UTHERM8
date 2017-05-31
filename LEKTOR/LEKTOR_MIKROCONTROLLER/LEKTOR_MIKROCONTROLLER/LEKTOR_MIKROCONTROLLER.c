@@ -82,22 +82,20 @@ int main(void)
 			streng[0] = LEKTORID1;
 			streng[1] = COMMAND;
 			streng[2] = '\0';
-			sendCharX10(streng[1]);
 			unsigned char* konverteretStreng = stringToManchester(streng);
-			//sendCharX10(STARTCODE);
+			sendCharX10(STARTCODE);
 			for (i = 0; i < strlen((char*)konverteretStreng); i++)
 			{
 				sendCharX10(konverteretStreng[i]);
 			}
-									// Send stopBit?!
-									/* ventPaaZC();
-									start1msDelay();
-									start1msDelay();
-									start400usDelay();
-									sendBurst();
-									*/
-			freePtr();
-			free(konverteretStreng);
+			// Send stopBit?!  
+			//ventPaaZC();
+			//start1msDelay();
+			//start1msDelay();
+			//start400usDelay();
+			//sendBurst();
+			//freePtr();
+			//free(konverteretStreng);
 		}
 	}
 }

@@ -39,7 +39,7 @@ void receiveBurst(char* buffer)
 	//PORTB = OUTPUT -- lad 120kHz signal fra OCRB komme ud.
 	for (int i = 0; i < 3; i++)
 	{
-		if (validateStartByte(receive[0]) == 't')
+		if (validateStartByte(receive[0]) == 0b11101110)
 		{
 			for (int j = 0; j < 9; j++)
 			{
