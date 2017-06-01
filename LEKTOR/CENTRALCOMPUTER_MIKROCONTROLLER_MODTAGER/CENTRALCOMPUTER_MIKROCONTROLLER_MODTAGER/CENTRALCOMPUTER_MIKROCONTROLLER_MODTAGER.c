@@ -32,24 +32,26 @@
 
 int main(void)
 {
-	//Initiér UART og ZCDetector.
-	InitUART(9600,8, 'N');
+	//Initializing
 	initZCDetector();
-
-	//PINA7 = INPUTS!
-	DDRA &= ~(1 << 7);
-	// ^ Hvis det ikke virker, prøv evt: DDRA = 0; 
-
-
-	//// Global interrupt enable
+	initBurst();
+	//Streng med data som skal sendes.
+	
+	// Global interrupt enable
 	sei();
+	
+	unsigned char* konverteretStreng;
+	char* buffer = "";
 
-	//unsigned char* konverteretStreng;
-	//char* buffer = "";
+	InitUART(9600,8, 'N');
 
 	while(1)
 	{
-		receiveBurst();
-		SendString((char*)receive);
+		buffer = "";
+		receiveBurst(buffer);
+		if (buffer != "")
+		{
+			SendString(buffer);
+		}
 	}
 }

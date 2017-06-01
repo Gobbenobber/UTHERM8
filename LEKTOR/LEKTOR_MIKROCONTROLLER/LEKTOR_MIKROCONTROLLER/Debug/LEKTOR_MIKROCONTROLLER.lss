@@ -566,7 +566,7 @@ Disassembly of section .text:
      36e:	cf 93       	push	r28
      370:	df 93       	push	r29
      372:	d8 2f       	mov	r29, r24
-	  // 8 data bits (LSB first)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	  // 8 data bits (LSB first)
 	  for (i = 0; i<8; i++)
 	  {
 	  ventPaaZC();
@@ -590,7 +590,7 @@ Disassembly of section .text:
 	  // Start bit
 	  //ventPaaZC();
 	  //sendBurst();
-	  // 8 data bits (LSB first)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	  // 8 data bits (LSB first)
 	  for (i = 0; i<8; i++)
      384:	dd 0f       	add	r29, r29
 		  x = x<<1;

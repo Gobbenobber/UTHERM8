@@ -3,8 +3,6 @@
 
  volatile int state;
  int firstCheck = 1;
- int i;
- int j;
 
 char validateStartByte(char val)
 {
@@ -31,70 +29,31 @@ void start500usDelay()
 	//timerStatus_3 = '0';
 }
 
-void start1msDelay()
+void receiveBurst(char* buffer)
 {
-	// Timer3: Normal mode, PS = 0
-	TCCR3A = 0b00000000;
-	TCCR3B = 0b00000001;
-	// Overflow hvert MS.
-	//Sæt timerStatus til '1' (=going)
-	//timerStatus_3 = '1';
-	TCNT3 = (0xFFFF-16000);
-	while ((TIFR3 & (1<<0)) == 0)
-	{}
-	TCCR3B = 0;
-	TIFR3 = 1<<0;
-	//timerStatus_3 = '0';
-}
-
-void start400usDelay()
-{
-	// Timer4: Normal mode, PS = 0
-	TCCR4A = 0b00000000;
-	TCCR4B = 0b00000001;
-	// Overflow hvert MS.
-	//Sæt timerStatus til '1' (=going)
-	//timerStatus_3 = '1';
-	TCNT4 = 63936;
-	while ((TIFR4 & (1<<0)) == 0)
-	{}
-	TCCR4B = 0;
-	TIFR4 = 1<<0;
-	//timerStatus_3 = '0';
-}
-
-unsigned char* receiveBurst()
-{
-	while (!(PINA & (1 << 7)))
-	{}
-
-	for (j = 0; j < 8; j++)
+	//sæt ZDDetected til 0 hvis der er ZeroCross.
+	if (ZCDetected_ == 1)
 	{
-		if (PINA & (1 << 7))
-		{
-			receive[0] |= 1 << j;
-		}
-		else
-		{
-			receive[0] &= ~(1 << j);
-		}
-		ventPaaZC();
-		start1msDelay();
-		start1msDelay();
-		start400usDelay();
+		ZCDetected_ = 0;
 	}
-
-	if (receive[0] == 0b11101110)
+	//PORTB = OUTPUT -- lad 120kHz signal fra OCRB komme ud.
+	for (int i = 0; i < 3; i++)
 	{
-		for (i = 1; i < 6; i++)
+		if (validateStartByte(receive[0]) == 't')
 		{
-			if (i == 6)
+			for (int j = 0; j < 9; j++)
 			{
-				receive[i] = '\0';
-			}
-			for (j = 0; j < 8; j++)
-			{
-				if (PINA & (1 << 7))
+				ventPaaZC();
+				start500usDelay();
+				if ((j == 8) && (PORT & 1))
+				{
+					
+				}
+				else
+				{
+					i--;
+				}
+				if (PORT & 1)
 				{
 					receive[i] |= 1 << j;
 				}
@@ -102,14 +61,29 @@ unsigned char* receiveBurst()
 				{
 					receive[i] &= ~(1 << j);
 				}
-				ventPaaZC();
-				start1msDelay();
-				start1msDelay();
-				start400usDelay();
 			}
 		}
+		else
+		{
+			for (int j = 0; j < 8; j++)
+			{
+				ventPaaZC();
+				start500usDelay();
+				if (PORT & 1)
+				{
+					receive[0] |= 1 << j;
+				}
+				else
+				{
+					receive[0] &= ~(1 << j);
+				}
+			}
+			i = 0;
+		}
 	}
-return receive;
+
+	//Sæt PORTH til input igen.
+	DDR = 0;
 }
 
 void ventPaaZC()
@@ -130,8 +104,4 @@ void initBurst()
 	// Frekvens = 120.3 kHz
 	// 120kHz = 16000000Hz/(2*1*(1+OCR1A))  --> OCR1A = 131.33...
 	OCR2B = 131;
-}
-
-int pinStatus(){
-	return PORT << PINNR;
 }

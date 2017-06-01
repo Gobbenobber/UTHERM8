@@ -11,18 +11,17 @@
 #define LEKTORID1 'A'
 #define LEKTORID2 'A'
 #define STARTCODE = 0b11101110
-#define DDR   DDRH
+#define DDR   DDRB
 #define PORT  PORTH
 #define PINNR 6
 volatile unsigned char COMMAND;
 volatile char aendring_;
-unsigned char receive[6];
+volatile static char receive[3] = "";
+
 
 // 8 data bit, no parity, 1 stop bit
 char validateStartByte(char val);
 void start500usDelay();
-void start1msDelay();
-void start400usDelay();
-unsigned char* receiveBurst();
+void receiveBurst(char* buffer);
 void ventPaaZC();
 void initBurst();
