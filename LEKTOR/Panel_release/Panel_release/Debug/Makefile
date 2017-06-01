@@ -38,7 +38,8 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../Panel_release.c \
-../Panel.c
+../Panel.c \
+../uart.c
 
 
 PREPROCESSING_SRCS += 
@@ -49,19 +50,23 @@ ASM_SRCS +=
 
 OBJS +=  \
 Panel_release.o \
-Panel.o
+Panel.o \
+uart.o
 
 OBJS_AS_ARGS +=  \
 Panel_release.o \
-Panel.o
+Panel.o \
+uart.o
 
 C_DEPS +=  \
 Panel_release.d \
-Panel.d
+Panel.d \
+uart.d
 
 C_DEPS_AS_ARGS +=  \
 Panel_release.d \
-Panel.d
+Panel.d \
+uart.d
 
 OUTPUT_FILE_PATH +=Panel_release.elf
 
@@ -77,6 +82,8 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
 
 
 
