@@ -2,10 +2,12 @@
 
 void initPorts()
 {
-	DDRB |= (1 << PINB0) | (1 << PINB1);	//Using portB {0,1}
+	DDRB |= (1 << PINB0) | (1 << PINB1) | (1 << PINB2) | (1 << PINB3);	//Using portB {0,1}
 	DDRA = 0xFF;
 	DDRC = 0xFF;
-	DDRD |= (1 << PIND0) | (1 << PIND1);	//Using portD {0,1}
+	//DDRH |= (1 << PINH0);	//Using portD {0,1}
+	//DDRH |= (1 << PINH1);
+
 }
 
 void setLED(char input)
@@ -13,16 +15,16 @@ void setLED(char input)
 	switch (input)
 	{
 		case 'A':
-		PORTD &= ~(1 << PIND0);
-		PORTD &= ~(1 << PIND1);
+		PORTB &= ~(1 << 2);
+		PORTB &= ~(1 << 3);
 		break;
 		case 'B':
-		PORTD |= (1 << PIND0);
-		PORTD |= (1 << PIND1);
+		PORTB |= (1 << 2);
+		PORTB |= (1 << 3);
 		break;
 		case 'F':
-		PORTD &= ~(1 << PIND0);
-		PORTD |= (1 << PIND1);
+		PORTB &= ~(1 << 2);
+		PORTB |= (1 << 3);
 		break;
 		default:
 		break;
@@ -52,137 +54,138 @@ void initInterrupt()
 
 void setInitials(char* fN, char* lN, char portLetter)
 {
+	condition = '1';
 	do{
 		if (portLetter == 'A') //Hvis man ønsker at ændre navnet på første initial på en lektor connected til portA
 		{
-			PORTB |= 0b11111101; 
+			PORTB |= 0b11111101;
 			switch(fN[0]) //Hvis det første bogstav i fornavnet er:
 			{
 				case 'A':		//A
-					PORTA |= 0b11111010;
+				PORTA |= 0b11111010;
 				break;
 				case 'B':		//b
-					PORTA |= 0b00111110;
+				PORTA |= 0b00111110;
 				break;
 				case 'C':		//C
-					PORTA |= 0b01100110;
+				PORTA |= 0b01100110;
 				break;
-				case 'D': 
-					PORTA |= 0b11101110; 
-				break; 
+				case 'D':
+				PORTA |= 0b11101110;
+				break;
 				case 'E':
-					PORTA |= 0b11101110;
-				break; 
+				PORTA |= 0b11101110;
+				break;
 				case 'F':
-					PORTA |= 0b01110010;
+				PORTA |= 0b01110010;
 				break;
 				case 'G':
-					PORTA |= 0b11111100;
-				break; 
+				PORTA |= 0b11111100;
+				break;
 				case 'H':
-					PORTA |= 0b10111010;
-				break; 
-			} 
-		
+				PORTA |= 0b10111010;
+				break;
+			}
+			
 			_delay_us(10);		// Delay på 10us
 			PORTA = 0b00000000; // Reset PORTA
 			PORTB &= 0b0000100; // Reset PORTB
 			PORTB |= 0b1111110; // Sætter pin 3 til udgang
-		
+			
 			switch(lN[0])
 			{
 				case 'A':
-					PORTA |= 0b11111010;
-				break; 
+				PORTA |= 0b11111010;
+				break;
 				case 'B':
-					PORTA |= 0b00111110;
+				PORTA |= 0b00111110;
 				break;
 				case 'C':
-					PORTA |= 0b01100110;
-				break; 
+				PORTA |= 0b01100110;
+				break;
 				case 'D':
-					PORTA |= 0b11101110;
+				PORTA |= 0b11101110;
 				break;
 				case 'E':
-					PORTA |= 0b01110110;
+				PORTA |= 0b01110110;
 				break;
 				case 'F':
-					PORTA |= 0b01110010;
+				PORTA |= 0b01110010;
 				break;
 				case 'G':
-					PORTA |= 0b11111100;
+				PORTA |= 0b11111100;
 				break;
 				case 'H':
-					PORTA |= 0b10111010;
+				PORTA |= 0b10111010;
 				break;
-			}	
-		
+			}
+			
 			_delay_us(10);
 			PORTA = 0b00000000; // Reset PORTA
-			PORTB &= 0b0001000; // Reset PORTB	
-		}				
+			PORTB &= 0b0001000; // Reset PORTB
+		}
 		else if (portLetter == 'C')
 		{
 			PORTB |= 0b11110111;
 			switch(fN[0])
 			{
 				case 'A':
-					PORTC |= 0b11111010;
+				PORTC |= 0b11111010;
 				break;
 				case 'B':
-					PORTC |= 0b00111110;
+				PORTC |= 0b00111110;
 				break;
 				case 'C':
-					PORTC |= 0b01100110;
+				PORTC |= 0b01100110;
 				break;
 				case 'D':
-					PORTC |= 0b11101110;
+				PORTC |= 0b11101110;
 				break;
 				case 'E':
-					PORTC |= 0b11101110;
+				PORTC |= 0b11101110;
 				break;
 				case 'F':
-					PORTC |= 0b01110010;
+				PORTC |= 0b01110010;
 				break;
 				case 'G':
-					PORTC |= 0b11111100;
+				PORTC |= 0b11111100;
 				break;
 				case 'H':
-					PORTC |= 0b10111010;
+				PORTC |= 0b10111010;
 				break;
-			}		
+			}
 			_delay_us(10);
 			PORTC = 0b00000000; // Reset PORTA
 			PORTB &= 0b0001000; // Reset PORTB
 			PORTB |= 0b1111011; // Sætter PORTB som udgang
-		
+			
 			switch(lN[0])
 			{
 				case 'A':
-					PORTC |= 0b11111010;
+				PORTC |= 0b11111010;
 				break;
 				case 'B':
-					PORTC |= 0b00111110;
+				PORTC |= 0b00111110;
 				break;
 				case 'C':
-					PORTC |= 0b01100110;
+				PORTC |= 0b01100110;
 				break;
 				case 'D':
-					PORTC |= 0b11101110;
+				PORTC |= 0b11101110;
 				break;
 				case 'E':
-					PORTC |= 0b01110110;
+				PORTC |= 0b01110110;
 				break;
 				case 'F':
-					PORTC |= 0b01110010;
+				PORTC |= 0b01110010;
 				break;
 				case 'G':
-					PORTC |= 0b11111100;
+				PORTC |= 0b11111100;
 				break;
 				case 'H':
-					PORTC |= 0b10111010;
+				PORTC |= 0b10111010;
 				break;
-			}		
+			}
 
 			_delay_us(10);
 			PORTC = 0b00000000; // Reset PORTC
