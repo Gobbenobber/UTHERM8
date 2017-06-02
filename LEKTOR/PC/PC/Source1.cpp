@@ -4,6 +4,7 @@
 #include <string>
 #include "List.h"
 #include "lectorMenu.h"
+#include <string.h>
 
 // application reads from the specified serial port and reports the collected data
 int main()
@@ -104,6 +105,12 @@ int main()
 				tempData[i] = incomingData[i];
 			}
 		}
+
+		//Test
+		strcpy(tempData, "FABFABBB");
+
+
+
 		if (outgoingData != tempData)
 		{
 			tempString = "";
@@ -135,9 +142,8 @@ int main()
 			if (arduinoPtr_2->IsConnected())
 			{
 				bool tempBool = false;
-				outgoingData[0] = 'F';
 				std::cout << outgoingData << std::endl;
-				tempBool = arduinoPtr_2->WriteData(outgoingData, 8);
+				tempBool = arduinoPtr_2->WriteData(outgoingData, 1);
 			}
 		}
 		

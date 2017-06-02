@@ -519,19 +519,19 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x123d
+.debug_info     0x00000000     0x1232
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x17b Panel_release.o
- .debug_info    0x00000d37      0x26d Panel.o
- .debug_info    0x00000fa4      0x299 uart.o
+ .debug_info    0x00000bbc      0x170 Panel_release.o
+ .debug_info    0x00000d2c      0x26d Panel.o
+ .debug_info    0x00000f99      0x299 uart.o
 
-.debug_abbrev   0x00000000      0xed3
+.debug_abbrev   0x00000000      0xec6
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_abbrev  0x00000b1a       0xc0 Panel_release.o
- .debug_abbrev  0x00000bda      0x15e Panel.o
- .debug_abbrev  0x00000d38      0x19b uart.o
+ .debug_abbrev  0x00000b1a       0xb3 Panel_release.o
+ .debug_abbrev  0x00000bcd      0x15e Panel.o
+ .debug_abbrev  0x00000d2b      0x19b uart.o
 
 .debug_line     0x00000000      0x893
  *(.debug_line .debug_line.* .debug_line_end)
@@ -546,14 +546,14 @@ END GROUP
  .debug_frame   0x00000024       0x80 Panel.o
  .debug_frame   0x000000a4       0x9c uart.o
 
-.debug_str      0x00000000      0x69a
+.debug_str      0x00000000      0x695
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x1a8 Panel_release.o
-                                0x1e1 (size before relaxing)
- .debug_str     0x0000058e       0x6e Panel.o
+ .debug_str     0x000003e6      0x1a3 Panel_release.o
+                                0x1dc (size before relaxing)
+ .debug_str     0x00000589       0x6e Panel.o
                                 0x227 (size before relaxing)
- .debug_str     0x000005fc       0x9e uart.o
+ .debug_str     0x000005f7       0x9e uart.o
                                 0x22a (size before relaxing)
 
 .debug_loc      0x00000000      0x3b9

@@ -8,7 +8,6 @@
 int main(void)
 {
 	char input = 'B';
-	char temp;
 	initPorts();
 	initInterrupt();
 	InitUART(9600, 8, 'N');
