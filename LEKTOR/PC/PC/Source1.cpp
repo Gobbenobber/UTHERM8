@@ -82,7 +82,7 @@ int main()
 			}
 		}
 	}
-		
+	lectorSys.fillStorage();
 	while (1)
 	{
 		//Receiver
@@ -116,12 +116,12 @@ int main()
 				tempString += outgoingData[i];
 			}
 			int id = tempString[0];
-			lectorSys.fillStorage();
 			if (tempString[1] == '\0')
 			{
-				//tempString[1] = ' ';
+				tempString[1] = 'F';
+
 			}
-			std::cout << tempString << std::endl;
+			//std::cout << tempString[1] << std::endl;
 			lectorSys.changeState(id, tempString[1]);
 		}
 		else
@@ -130,13 +130,20 @@ int main()
 			system("cls");
 		}
 		
-		if (outgoingData == "00000000")
+		if (outgoingData != "00000000")
 		{
 			if (arduinoPtr_2->IsConnected())
 			{
 				bool tempBool = false;
-			
-				tempBool = arduinoPtr_2->WriteData(outgoingData, dataLength);
+				for (size_t i = 0; i < dataLength; i++)
+				{
+					if (i != dataLength)
+					{
+						outgoingData[i] = 'F';
+					}
+				}
+				std::cout << outgoingData << std::endl;
+				tempBool = arduinoPtr_2->WriteData(outgoingData, 8);
 			}
 		}
 		

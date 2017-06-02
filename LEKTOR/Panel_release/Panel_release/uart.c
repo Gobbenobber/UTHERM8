@@ -112,9 +112,9 @@ Parameter:
 *************************************************************************/
 void SendInteger(int Tal)
 {
-  char array[7];
+char array[7];
   // Convert the integer to an ASCII string (array), radix = 10 
-  itoa(Tal, (char*)array, 10);
+  itoa(Tal, array, 10);
   // - then send the string
   SendString(array);
 }
