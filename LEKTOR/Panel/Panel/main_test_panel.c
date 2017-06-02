@@ -3,6 +3,8 @@
 int main(void)
 {
 	initPorts(); 
-	setInitials("A", "A", 'A');  
+	setLED('F');
+	//setInitials("B", "B", 'A');  
 	return 0;
 }
+

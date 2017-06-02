@@ -9,6 +9,9 @@ volatile static char condition = '1';
 // Prototype for initialiseringen af porte 
 void initPorts(); 
 
+//Prototype for LED's modtager char {'A'-away, 'B'-busy & 'F'-free}
+void setLED(char input);
+
 //Prototype for interrupt 0, PD0
 void initInterrupt();
 

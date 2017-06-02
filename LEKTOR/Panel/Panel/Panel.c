@@ -2,9 +2,31 @@
 
 void initPorts()
 {
-	DDRB = 0xFF;
+	DDRB |= (1 << PINB0) | (1 << PINB1);	//Using portB {0,1}
 	DDRA = 0xFF;
 	DDRC = 0xFF;
+	DDRD |= (1 << PIND0) | (1 << PIND1);	//Using portD {0,1}
+}
+
+void setLED(char input)
+{
+	switch (input)
+	{
+		case 'A':
+		PORTD &= ~(1 << PIND0);
+		PORTD &= ~(1 << PIND1);
+		break;
+		case 'B':
+		PORTD |= (1 << PIND0);
+		PORTD |= (1 << PIND1);
+		break;
+		case 'F':
+		PORTD &= ~(1 << PIND0);
+		PORTD |= (1 << PIND1);
+		break;
+		default:
+		break;
+	}
 }
 
 void initInterrupt()
