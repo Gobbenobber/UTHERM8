@@ -5,8 +5,18 @@
  int firstCheck = 1;
  int i;
  int j;
- unsigned static char receive[4];
- unsigned static char firstByteReceived;
+ static unsigned char receive[5];
+ static unsigned char firstByteReceived;
+ 
+ void resetReceiver()
+ {
+	receive[0] = '\0';
+	receive[1] = '\0';
+	receive[2] = '\0';
+	receive[3] = '\0';
+	receive[4] = '\0';
+	firstByteReceived = 'A';
+ }
 
 char validateStartByte(char val)
 {
@@ -67,9 +77,6 @@ void start400usDelay()
 
 unsigned char* receiveBurst()
 {
-	while (!(PINF & (1 << 7)))
-	{}
-
 	for (j = 7; j >= 0; j--)
 	{
 		if (PINF & (1 << 7))

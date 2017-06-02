@@ -25,6 +25,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <util/delay.h>
+#include <stdlib.h>
 
 //Drivers
 #include "Manchester.h"
@@ -33,15 +34,15 @@
 #include "uart.h"
 
 int main(void)
-{	
-
+{
+	
 	//Initiér UART og ZCDetector.
 	InitUART(9600,8,'N');
 	initZCDetector();
 
 	//PINA7 = INPUTS!
 	DDRF &= ~(1 << 7);
-	// ^ Hvis det ikke virker, prøv evt: DDRA = 0; 
+	// ^ Hvis det ikke virker, prøv evt: DDRA = 0;
 
 	//// Global interrupt enable
 	sei();
@@ -52,13 +53,13 @@ int main(void)
 	//static char konverteretDataTemp[5];
 	//int h;
 	//int w = 1;
+	static unsigned char* receivedData;
 	while(1)
-	{
-		char* receivedData = receiveBurst();
-
-		if (receivedData[4] == '\0')
-		{
-		SendString(manchesterToString(receivedData));
-		}
+	{	
+		while (!(PINF & (1 << 7)))
+		{}
+		receivedData = receiveBurst();
+		//SendInteger(strlen(receivedData));
+		SendString(manchesterToString(receiveBurst()));
 	}
 }
