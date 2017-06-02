@@ -37,6 +37,7 @@
 #include "zeroCrossDetector.h"
 #include "X10_Master.h"
 
+
 int main(void)
 {
 	//Initializing
@@ -67,6 +68,7 @@ int main(void)
 			sendCharX10(tilbageTilNormal[i]);
 		}
 		*/
+		int n;
 	while(1)
 	{	
 		// Go through UC1 & UC2 -- also changes LED according to actual status.
@@ -83,11 +85,15 @@ int main(void)
 			streng[1] = COMMAND;
 			streng[2] = '\0';
 			unsigned char* konverteretStreng = stringToManchester(streng);
+			for (n = 0; n < 2; n++)
+			{
+			
 			sendCharX10(STARTCODE);
 			for (i = 0; i < strlen((char*)konverteretStreng); i++)
 			{
 				sendCharX10(konverteretStreng[i]);
 			}
+			start1msDelay();
 			// Send stopBit?!  
 			//ventPaaZC();
 			//start1msDelay();
@@ -96,6 +102,7 @@ int main(void)
 			//sendBurst();
 			//freePtr();
 			//free(konverteretStreng);
+			}
 		}
 	}
 }

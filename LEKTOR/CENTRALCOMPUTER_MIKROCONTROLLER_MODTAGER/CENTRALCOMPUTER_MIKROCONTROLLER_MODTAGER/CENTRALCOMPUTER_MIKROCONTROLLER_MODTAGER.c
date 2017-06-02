@@ -53,13 +53,10 @@ int main(void)
 	//static char konverteretDataTemp[5];
 	//int h;
 	//int w = 1;
-	static unsigned char* receivedData;
 	while(1)
 	{	
 		while (!(PINF & (1 << 7)))
 		{}
-		receivedData = receiveBurst();
-		//SendInteger(strlen(receivedData));
-		SendString(manchesterToString(receiveBurst()));
+		SendString((char*)manchesterToString(receiveBurst()));
 	}
 }

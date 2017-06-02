@@ -78,7 +78,8 @@ void start400usDelay()
 unsigned char* receiveBurst()
 {
 	for (j = 7; j >= 0; j--)
-	{
+	{	
+		start400usDelay();
 		if (PINF & (1 << 7))
 		{
 			firstByteReceived |= 1 << j;
@@ -90,7 +91,6 @@ unsigned char* receiveBurst()
 		ventPaaZC();
 		start1msDelay();
 		start1msDelay();
-		start400usDelay();
 		start400usDelay();
 	}
 

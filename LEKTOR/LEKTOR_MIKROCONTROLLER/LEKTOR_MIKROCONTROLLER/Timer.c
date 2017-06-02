@@ -13,12 +13,19 @@ Using timer 1, provides a 10 minute timer.
 
  #include "Timer.h"
  //Variables
- volatile static int ctr_ = 0;
- volatile static int timerStatus_ = 0;
+ volatile int ctr_ = 0;
+ volatile int timerStatus_ = 0;
 
  int returnerTimerStatus()
  {
-	return timerStatus_;
+	if (timerStatus_ == '0')
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
  }
 
 
@@ -32,9 +39,8 @@ Using timer 1, provides a 10 minute timer.
 
  void setTimer()
  {
- 
       //Sæt timerStatus til '1' (=going)
-	  timerStatus_ = '1';	
+      timerStatus_ = '1';
 	  // Timer1: Normal mode, PS = 1024
 	  TCCR1A = 0b00000000;
 	  TCCR1B = 0b00000101;
@@ -51,7 +57,7 @@ Using timer 1, provides a 10 minute timer.
 	 //	sætter tcnt1 til krævet værdi for 1s delay
 	 TCNT1 = (0xFFFF-15625);
 
-	 if (ctr_ == 600) //overflow 1 gang i sekundet betyder 600 = 10 min.	 
+	 if (ctr_ == 5) //overflow 1 gang i sekundet betyder 600 = 10 min.	 
 	 {
 		resetTimer();
 		TIMSK1 &= 0;
