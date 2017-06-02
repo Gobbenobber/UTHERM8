@@ -4,7 +4,7 @@
 #include <string>
 #include "List.h"
 #include "lectorMenu.h"
-#include <string.h>
+
 
 // application reads from the specified serial port and reports the collected data
 int main()
@@ -30,14 +30,15 @@ int main()
 		printf("Arduino_2 fundet!\n");
 
 	// Variables and Buffers
-	unsigned char incomingData[9] = "";			// don't forget to pre-allocate memory
-	char tempData[9] = "";
-	char outgoingData[9] = "";
+	unsigned char incomingData[10] = "";			// don't forget to pre-allocate memory
+	char tempData[10];
+	char tempArr[10] = "";
+	char outgoingData[10] = "";
 	// printf("%s\n",incomingData);
 	
 	std::string tempString;
 	// Definer data length
-	int dataLength = 8;
+	int dataLength = 9;
 	int readResult = 0;
 
 	List lectorSys;	//Using the default 256 spaces. Outputting to "Text.txt"
@@ -106,11 +107,8 @@ int main()
 			}
 		}
 
-		//Test
-		strcpy(tempData, "FABFABBB");
-
-
-
+		strcpy(tempData, "ABCD");
+	
 		if (outgoingData != tempData)
 		{
 			tempString = "";
