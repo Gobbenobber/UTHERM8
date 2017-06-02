@@ -10,35 +10,35 @@
 int main()
 {
 	//Receiver
-	const std::string COMPort_1 = "COM4";
+	const std::string COMPort_1 = "COM5";
 	std::cout << "Seriel kommunikation ### - 1 - ###" << std::endl;
-	Serial* arduinoPtr_1 = new Serial("COM3");			// adjust as needed
+	Serial* arduinoPtr_1 = new Serial("COM5");			// adjust as needed
 	std::cout << "Arduino_1 Receiver on the " << COMPort_1 << " port"<< std::endl << std::endl;
 
 	if (arduinoPtr_1->IsConnected())
 		printf("Arduino_1 fundet!\n");
 
 	//Transmitter
-	const std::string COMPort_2 = "COM3";
+	const std::string COMPort_2 = "COM4";
 
 	std::cout << "Seriel kommunikation ### - 2 - ###" << std::endl;
 	Serial* arduinoPtr_2 = new Serial("COM4");			// adjust as needed
 
-	std::cout << "Arduino_2 Receiver on the " << COMPort_2 << " port" << std::endl << std::endl;
+	std::cout << "Arduino_2 Panel on the " << COMPort_2 << " port" << std::endl << std::endl;
 
 	if (arduinoPtr_2->IsConnected())
 		printf("Arduino_2 fundet!\n");
 
 	// Variables and Buffers
 	unsigned char incomingData[10] = "";			// don't forget to pre-allocate memory
-	char tempData[10];
+	char tempData[10] = "";
 	char tempArr[10] = "";
 	char outgoingData[10] = "";
 	// printf("%s\n",incomingData);
 	
 	std::string tempString;
 	// Definer data length
-	int dataLength = 9;
+	int dataLength = 2;
 	int readResult = 0;
 
 	List lectorSys;	//Using the default 256 spaces. Outputting to "Text.txt"
@@ -89,26 +89,26 @@ int main()
 	{
 		//Receiver
 		//Move data from serial to incomingData
-		//system("cls");
 
 		if (arduinoPtr_1->IsConnected())
 		{
 			//Serial Read
 			readResult = arduinoPtr_1->ReadData(incomingData, dataLength);
-			// printf("Bytes read: (0 means no data available) %i\n",readResult);
+			//printf("Bytes read: (0 means no data available) %i\n",readResult);
 			incomingData[readResult] = 0;
-
-			std::cout << incomingData << std::endl;
-
-			//Storing Data
-			for (int i = 0; i < dataLength; i++)
-			{
-				tempData[i] = incomingData[i];
-			}
 		}
 
-		strcpy(tempData, "ABCD");
-	
+		if (incomingData[0] >= 'A')
+		{
+			std::cout << incomingData << std::endl;
+		}
+
+		//Storing Data
+		for (int i = 0; i < dataLength; i++)
+		{
+			tempData[i] = incomingData[i];
+		}
+		
 		if (outgoingData != tempData)
 		{
 			tempString = "";
@@ -127,12 +127,8 @@ int main()
 
 			}
 			//std::cout << tempString[1] << std::endl;
+			id = 10;
 			lectorSys.changeState(id, tempString[1]);
-		}
-		else
-		{
-			std::cout << "Waiting..." << std::endl;
-			system("cls");
 		}
 		
 		if (outgoingData != "00000000")
@@ -140,7 +136,7 @@ int main()
 			if (arduinoPtr_2->IsConnected())
 			{
 				bool tempBool = false;
-				std::cout << outgoingData << std::endl;
+				outgoingData[0] = outgoingData[1];
 				tempBool = arduinoPtr_2->WriteData(outgoingData, 1);
 			}
 		}
