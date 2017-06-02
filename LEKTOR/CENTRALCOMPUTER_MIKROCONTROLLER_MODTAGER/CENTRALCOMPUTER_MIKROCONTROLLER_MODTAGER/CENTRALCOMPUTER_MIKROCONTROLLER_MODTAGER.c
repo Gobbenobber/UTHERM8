@@ -20,9 +20,11 @@
 //					We still need to test it with toggleswitch and sensor.
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+#define F_CPU 16000000
 //AVR Header files
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <util/delay.h>
 
 //Drivers
 #include "Manchester.h"
@@ -31,25 +33,32 @@
 #include "uart.h"
 
 int main(void)
-{
+{	
+
 	//Initiér UART og ZCDetector.
-	InitUART(9600,8, 'N');
+	InitUART(9600,8,'N');
 	initZCDetector();
 
 	//PINA7 = INPUTS!
-	DDRA &= ~(1 << 7);
+	DDRF &= ~(1 << 7);
 	// ^ Hvis det ikke virker, prøv evt: DDRA = 0; 
-
 
 	//// Global interrupt enable
 	sei();
 
 	//unsigned char* konverteretStreng;
 	//char* buffer = "";
-
+	//static char* konverteretData;
+	//static char konverteretDataTemp[5];
+	//int h;
+	//int w = 1;
 	while(1)
 	{
-		receiveBurst();
-		SendString((char*)receive);
+		char* receivedData = receiveBurst();
+
+		if (receivedData[4] == '\0')
+		{
+		SendString(manchesterToString(receivedData));
+		}
 	}
 }

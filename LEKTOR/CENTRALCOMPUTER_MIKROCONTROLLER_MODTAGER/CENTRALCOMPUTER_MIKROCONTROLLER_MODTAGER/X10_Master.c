@@ -5,6 +5,8 @@
  int firstCheck = 1;
  int i;
  int j;
+ unsigned static char receive[4];
+ unsigned static char firstByteReceived;
 
 char validateStartByte(char val)
 {
@@ -65,36 +67,38 @@ void start400usDelay()
 
 unsigned char* receiveBurst()
 {
-	while (!(PINA & (1 << 7)))
+	while (!(PINF & (1 << 7)))
 	{}
 
-	for (j = 0; j < 8; j++)
+	for (j = 7; j >= 0; j--)
 	{
-		if (PINA & (1 << 7))
+		if (PINF & (1 << 7))
 		{
-			receive[0] |= 1 << j;
+			firstByteReceived |= 1 << j;
 		}
 		else
 		{
-			receive[0] &= ~(1 << j);
+			firstByteReceived &= ~(1 << j);
 		}
 		ventPaaZC();
 		start1msDelay();
 		start1msDelay();
 		start400usDelay();
+		start400usDelay();
 	}
 
-	if (receive[0] == 0b11101110)
+	if (firstByteReceived == 0b11101110)
 	{
-		for (i = 1; i < 6; i++)
+		for (i = 0; i < 5; i++)
 		{
-			if (i == 6)
+			if (i == 4)
 			{
 				receive[i] = '\0';
+				break;
 			}
-			for (j = 0; j < 8; j++)
+			for (j = 7; j >= 0; j--)
 			{
-				if (PINA & (1 << 7))
+				if (PINF & (1 << 7))
 				{
 					receive[i] |= 1 << j;
 				}
@@ -106,8 +110,10 @@ unsigned char* receiveBurst()
 				start1msDelay();
 				start1msDelay();
 				start400usDelay();
+				start400usDelay();
 			}
 		}
+			
 	}
 return receive;
 }

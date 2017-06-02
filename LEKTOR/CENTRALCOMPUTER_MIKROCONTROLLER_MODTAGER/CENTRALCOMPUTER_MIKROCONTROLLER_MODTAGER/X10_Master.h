@@ -16,7 +16,7 @@
 #define PINNR 6
 volatile unsigned char COMMAND;
 volatile char aendring_;
-unsigned char receive[6];
+
 
 // 8 data bit, no parity, 1 stop bit
 char validateStartByte(char val);
