@@ -2,9 +2,10 @@
 
 void initPorts()
 {
-	DDRB |= (1 << PINB0) | (1 << PINB1) | (1 << PINB2) | (1 << PINB3);	//Using portB {0,1}
+	DDRG |= (1 << PING0) | (1 << PING1) | (1 << PING2) | (1 << PING3);	//Using portB {0,1}
 	DDRA = 0xFF;
 	DDRC = 0xFF;
+	DDRB |= (1 << PINB0) | (1 << PINB1);
 	//DDRH |= (1 << PINH0);	//Using portD {0,1}
 	//DDRH |= (1 << PINH1);
 
@@ -15,16 +16,16 @@ void setLED(char input)
 	switch (input)
 	{
 		case 'A':
-		PORTB &= ~(1 << 2);
-		PORTB &= ~(1 << 3);
+		PORTG &= ~(1 << 0);
+		PORTG &= ~(1 << 1);
 		break;
 		case 'B':
-		PORTB |= (1 << 2);
-		PORTB |= (1 << 3);
+		PORTG |= (1 << 0);
+		PORTG |= (1 << 1);
 		break;
 		case 'F':
-		PORTB &= ~(1 << 2);
-		PORTB |= (1 << 3);
+		PORTG &= ~(1 << 0);
+		PORTG |= (1 << 1);
 		break;
 		default:
 		break;
@@ -56,6 +57,7 @@ void setInitials(char* fN, char* lN, char portLetter)
 {
 	condition = '1';
 	do{
+		condition = 0;
 		if (portLetter == 'A') //Hvis man ønsker at ændre navnet på første initial på en lektor connected til portA
 		{
 			PORTB |= 0b11111101;

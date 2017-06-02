@@ -16,10 +16,14 @@ int main(void)
 	
 	while (1)
 	{
-		input = ReadChar();
-		SendChar(input);
+		// Wait for new character received
+		while ( (UCSR0A & (1<<7)) == 0 )
+		{
+			setInitials("H", "H", 'A');
+		}
+		// Then return it
+		input = UDR0;
 		setLED(input);
-		//setInitials("H", "H", 'A');
 	}
 
 	return 0;

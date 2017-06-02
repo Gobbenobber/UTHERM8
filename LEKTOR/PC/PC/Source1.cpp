@@ -135,13 +135,7 @@ int main()
 			if (arduinoPtr_2->IsConnected())
 			{
 				bool tempBool = false;
-				for (size_t i = 0; i < dataLength; i++)
-				{
-					if (i != dataLength)
-					{
-						outgoingData[i] = 'F';
-					}
-				}
+				outgoingData[0] = 'F';
 				std::cout << outgoingData << std::endl;
 				tempBool = arduinoPtr_2->WriteData(outgoingData, 8);
 			}
