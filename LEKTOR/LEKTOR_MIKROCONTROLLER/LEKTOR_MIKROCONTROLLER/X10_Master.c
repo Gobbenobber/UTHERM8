@@ -12,11 +12,12 @@
  #include "Timer.h"
  #include "zeroCrossDetector.h"
 
- volatile int state;
- volatile int firstCheck = 1;
+ volatile static int state;
+ volatile static int firstCheck = 1;
+ volatile int lektorGone_;
  void opdaterKommando()
  {
-	 if (lektorOptaget_ == '0' && lektortilStede_ == '0')
+	 if ((lektorOptaget_ == '0') && (lektortilStede_ == '0'))
 	 {
 		 if ((state == 00) && (firstCheck != 1))
 		 {
@@ -25,8 +26,9 @@
 		 else
 		 {
 			 aendring_ = 1;
-			 COMMAND = 'V'; // V indikerer at lektor er væk!	
-			 state = 00;   
+			 COMMAND = 'A'; // V indikerer at lektor er væk!	
+			 state = 00;
+			 lektorGone_ = 0;   
 		 }
 	 }
 	 else if ((lektorOptaget_ == '0') && (lektortilStede_ == '1'))
@@ -39,8 +41,9 @@
 		 {
 			 resetTimer();
 			 aendring_ = 1;
-			 COMMAND = 'T';		// T Indikerer at lektor er tilstede
+			 COMMAND = 'F';		// T Indikerer at lektor er tilstede
 			 state = 01;
+			 lektorGone_ = 0;
 		 }
 	 }
 	 else if ((lektorOptaget_ == '1') && (lektortilStede_ == '0'))
@@ -48,12 +51,21 @@
 		 if ((state == 10) && (firstCheck != 1))
 		 {
 			 aendring_ = 0;
+			 if (returnerTimerStatus() == 0 && lektorGone_ != 1)
+			 {
+			 aendring_ = 1;
+			 COMMAND = 'A';		//A FOR AWAY
+			 state = 10;
+			 lektorGone_ = 1;
+			 }
 		 }
 		 else
-		 {
+		 {		
+			 setTimer();
 			 aendring_ = 1;
-			 COMMAND = 'O';		// O indikerer at lektor har benyttet ToggleSwitch (=Optaget)
+			 COMMAND = 'B';		// O indikerer at lektor har benyttet ToggleSwitch (=Optaget)
 			 state = 10;
+			 lektorGone_ = 0;
 		 }
 	 }
 	 else if ((lektorOptaget_ == '1') && (lektortilStede_ == '1'))
@@ -64,13 +76,10 @@
 		 }
 		 else
 		 {
-			 if (returnerTimerStatus() == 0)
-			 {
-				 setTimer();
-			 }
 			 aendring_ = 1;
-			 COMMAND = 'O';		// O indikerer at lektor har benyttet ToggleSwitch (=Optaget)
+			 COMMAND = 'B';		// O indikerer at lektor har benyttet ToggleSwitch (=Optaget)
 			 state = 11;
+			 lektorGone_ = 0;
 		 }
 	 }
 

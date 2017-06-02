@@ -23,5 +23,5 @@
 #include <stdlib.h>
 
 unsigned char* stringToManchester(unsigned char* toBeConverted);
-unsigned char* mancesterToString(unsigned char* toBeConverted);
+unsigned char* manchesterToString(unsigned char* toBeConverted);
 void freePtr();

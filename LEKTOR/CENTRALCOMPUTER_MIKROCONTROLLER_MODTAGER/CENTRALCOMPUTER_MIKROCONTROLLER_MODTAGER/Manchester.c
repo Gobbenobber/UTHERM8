@@ -10,7 +10,7 @@ unsigned char* stringToManchester(unsigned char* toBeConverted)
 {
 	if (toBeConverted == (unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
 	int len = strlen((char*)toBeConverted);											// Lav size_t som kan passes til calloc.
-	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);				// Alloker hukommelse
+	manchesterPtr = (unsigned char *)calloc((((len + 1) * 2) + 1), 1);				// Alloker hukommelse
 	int counter = 8;
 	int t = 0;
 
@@ -45,11 +45,11 @@ unsigned char* stringToManchester(unsigned char* toBeConverted)
 	return manchesterPtr;													// Returnér manchesterkoden
 }
 
-unsigned char* mancesterToString(unsigned char* toBeConverted)
+unsigned char* manchesterToString(unsigned char* toBeConverted)
 {
 	if (toBeConverted == (unsigned char*)"") return 0;
 	int len = ((int)(strlen((char*)toBeConverted)) / 2);
-	manchesterPtr = calloc((len+1), sizeof(unsigned char));
+	manchesterPtr = calloc((len+1), 1);
 	if (manchesterPtr == (unsigned char*)"")
 	{
 		return '\0';
@@ -58,7 +58,7 @@ unsigned char* mancesterToString(unsigned char* toBeConverted)
 	int z = 7;
 	int p = 7;
 
-	for (int j = 0; j <= len * 2; j++)
+	for (int j = 0; j <= (len * 2); j++)
 	{
 		unsigned char ch = toBeConverted[j];
 
