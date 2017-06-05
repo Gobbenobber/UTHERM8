@@ -142,14 +142,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Header.h" />
+    <ClInclude Include="SerialCom.h" />
     <ClInclude Include="lectorMenu.h" />
     <ClInclude Include="List.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lectorMenu.cpp" />
     <ClCompile Include="List.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="SerialCom.cpp" />
     <ClCompile Include="Source1.cpp" />
   </ItemGroup>
   <ItemGroup>

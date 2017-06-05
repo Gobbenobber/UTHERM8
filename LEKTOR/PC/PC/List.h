@@ -33,7 +33,6 @@ public:
 	void resetAll();
 	int returnID(std::string initialer);
 	std::string returnLector(int id);
-	char returnState(int id);
 	void fillStorage();
 private:
 	int size_; //Changeable

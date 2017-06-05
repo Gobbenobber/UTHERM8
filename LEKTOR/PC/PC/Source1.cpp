@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <tchar.h>
-#include "Header.h"	// Library described above
+#include "SerialCom.h"	// Library described above
 #include <string>
 #include "List.h"
 #include "lectorMenu.h"

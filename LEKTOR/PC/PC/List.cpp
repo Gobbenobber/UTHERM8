@@ -264,10 +264,6 @@ std::string List::returnLector(int id)
 	return tempString;
 }
 
-char List::returnState(int id)
-{
-	return 0;
-}
 
 void List::fillStorage()
 {
