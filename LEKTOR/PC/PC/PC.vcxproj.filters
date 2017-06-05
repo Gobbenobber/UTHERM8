@@ -21,7 +21,7 @@
     <ClInclude Include="lectorMenu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="SerialCom.h">
+    <ClInclude Include="Serial.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -35,7 +35,7 @@
     <ClCompile Include="lectorMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SerialCom.cpp">
+    <ClCompile Include="Serial.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
