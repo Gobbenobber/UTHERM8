@@ -2,9 +2,9 @@
 
 
 
-List::List()
+List::List(int size)
 {
-	size_ = 256; //256 lektorKontorer.
+	size_ = size; //256 lektorKontorer.
 	storage_ = new std::string[size_];
 }
 
@@ -16,7 +16,8 @@ List::~List()
 }
 
 void List::setSize(int size)
-{
+{	
+	//Validation, we don't want a too large array.
 	if (size < 1000 && size > 0)
 	{
 		size_ = size;
@@ -44,6 +45,7 @@ std::string List::getLine() const
 
 void List::initializeSpaces(int size)
 {
+	//Prepare the text file.
 	myFile_.open("Text.txt");
 	//Prepare indicators
 	std::cout << "Inputting indicators\n";
@@ -77,6 +79,7 @@ void List::initializeSpaces(int size)
 
 void List::printAll()
 {
+	//Printing everything from the text file and saving it in the storage array
 	std::cout << "Printing the text from the file\n";
 	std::ifstream myFile_("Text.txt");
 	int location = 0;
@@ -116,13 +119,9 @@ void List::validation() const
 	}
 }
 
-void List::inputText()
-{
-
-}
-
 void List::textToInt()
 {
+	//Conversion from the text in the 'text' file to useable integers
 	idArr = new int[size_];
 	std::string tempStorage;
 	std::string tempStr;
@@ -167,7 +166,8 @@ void List::textToInt()
 	}
 }
 
-//Name is InitialsFirst + - + Name + Lastname
+//Add lector [int ID, string NAME]
+//Name is InitialsFirst + '-' + Name + Lastname
 void List::addLector(int id, std::string name)
 {
 	std::ofstream myFile_;
@@ -185,6 +185,7 @@ void List::addLector(int id, std::string name)
 	myFile_.close();
 }
 
+//Remove lector [int ID]
 void List::removeLector(int id)
 {
 	std::ofstream myFile_;
@@ -202,6 +203,8 @@ void List::removeLector(int id)
 	myFile_.close();
 }
 
+//Changes the char that represents the state of the lector
+//[int ID, char STATE]
 void List::changeState(int id, char state)
 {
 	std::ofstream myFile_;
@@ -225,6 +228,7 @@ std::string List::getLector(int id) const
 
 void List::resetAll()
 {
+	//Resets and initialises the text file. Requires a reboot of the program to function proberly
 	std::ofstream myFile_;
 
 	myFile_.open("Text.txt", std::ofstream::out | std::ofstream::trunc);	//Might need further testing
@@ -232,10 +236,6 @@ void List::resetAll()
 	initializeSpaces(size_);
 
 
-}
-
-void List::terminateProgram()
-{
 }
 
 int List::returnID(std::string initialer)
@@ -271,6 +271,7 @@ char List::returnState(int id)
 
 void List::fillStorage()
 {
+	//Fills the internal storage array with the text from the array.
 	std::ifstream myFile_("Text.txt");
 	int location = 0;
 	std::string holder;	//temp

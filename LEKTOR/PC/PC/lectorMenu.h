@@ -19,6 +19,8 @@ public:
 	void setEdit(bool edit);
 	bool getEdit();
 	void initMenu();
+	
+private:
 	void createLector();
 	void removeLector();
 	void findLector();
@@ -26,7 +28,6 @@ public:
 	void printAllOfLectorSystem();
 	void resetAllOfLectorSystem();
 	void terminateTheMenu();
-private:
 	bool edit_;
 	int menuIndex_;
 	int tempEdit_;

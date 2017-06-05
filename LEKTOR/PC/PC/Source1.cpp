@@ -34,7 +34,6 @@ int main()
 	char tempData[10] = "";
 	char tempArr[10] = "";
 	char outgoingData[10] = "";
-	// printf("%s\n",incomingData);
 	
 	std::string tempString;
 	// Definer data length
@@ -50,42 +49,12 @@ int main()
 	int menuIndex;
 	edit = adminSys.getEdit();
 
-	while (edit == true)
+	do	//Running the LectorMenu on startup, will proceed until all changes has been made.
 	{
 		adminSys.initMenu();
 		edit = adminSys.getEdit();
-		menuIndex = adminSys.getMenuIndex();
+	} while (edit == true);
 
-		if (menuIndex >= 1 && menuIndex <= 7)
-		{
-			switch (menuIndex)
-			{
-			case 1:
-				adminSys.createLector();
-			break;
-			case 2:
-				adminSys.removeLector();
-			break;
-			case 3:
-				adminSys.findLector();
-			break;
-			case 4:
-				adminSys.changeStateOfLector();
-			break;
-			case 5:
-				adminSys.printAllOfLectorSystem();
-			break;
-			case 6:
-				adminSys.resetAllOfLectorSystem();
-			break;
-			case 7:
-				adminSys.terminateTheMenu();
-			break;
-			}
-		}
-	}
-	lectorSys.fillStorage();
-	while (1)
 	{
 		//Receiver
 		//Move data from serial to incomingData
@@ -94,7 +63,6 @@ int main()
 		{
 			//Serial Read
 			readResult = arduinoPtr_1->ReadData(incomingData, dataLength);
-			//printf("Bytes read: (0 means no data available) %i\n",readResult);
 			incomingData[readResult] = 0;
 		}
 
@@ -126,17 +94,19 @@ int main()
 				tempString[1] = 'F';
 
 			}
-			//std::cout << tempString[1] << std::endl;
-			id = 10;
+			id = 10;	//Temporary ID, chosen for clarity in the text file.
 			lectorSys.changeState(id, tempString[1]);
 		}
 		
+		//Output to panel
 		if (outgoingData != "00000000")
 		{
 			if (arduinoPtr_2->IsConnected())
 			{
 				bool tempBool = false;
 				outgoingData[0] = outgoingData[1];
+
+				//Writing 1 char for prototype.
 				tempBool = arduinoPtr_2->WriteData(outgoingData, 1);
 			}
 		}

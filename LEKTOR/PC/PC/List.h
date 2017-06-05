@@ -10,7 +10,7 @@
 class List
 {
 public:
-	List();		//Default constructor
+	List(int size = 256);		//Default constructor
 	~List();	//Destructor
 
 	//Mutators
@@ -23,7 +23,6 @@ public:
 	void initializeSpaces(int size);
 	void printAll();
 	void validation() const;
-	void inputText();
 	void textToInt();
 	
 	//Add lector from name
@@ -32,7 +31,6 @@ public:
 	void changeState(int id, char state);
 	std::string getLector(int id) const;
 	void resetAll();
-	void terminateProgram();
 	int returnID(std::string initialer);
 	std::string returnLector(int id);
 	char returnState(int id);

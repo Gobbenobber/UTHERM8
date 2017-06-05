@@ -4,7 +4,7 @@
 
 lectorMenu::lectorMenu() : lectorSys_()
 {
-	menuIndex_ = 0;
+	menuIndex_ = 1;
 	edit_ = true;
 	tempEdit_ = true;
 	handle_ = true;
@@ -36,52 +36,95 @@ bool lectorMenu::getEdit()
 
 void lectorMenu::initMenu()
 {
-	if (handle_ == false)
+	while (edit_ == true)
 	{
-		_getch();
-		system("cls");
-	}
-	std::cout << "########################################" << std::endl;
-	std::cout << "#### --------- Admin Menu --------- ####" << std::endl;
-	std::cout << "#### ----- Choose {1} to edit ----- ####" << std::endl;
-	std::cout << "#### --- Choose {0} to continue --- ####" << std::endl;
-	std::cout << "= ";
-	std::cin >> tempEdit_;
-	std::cout << "########################################" << std::endl;
-	if (tempEdit_ == 0)
-		edit_ = false;
-	else if (tempEdit_ == 1)
-		edit_ = true;
-
-	handle_ = false;
-	system("cls");
-
-	menuIndex_ = 0;
-	if (edit_)
-	{
-		std::cout << "########################################" << std::endl;
-		std::cout << "### ----WELCOME TO THE ADMIN MENU--- ###" << std::endl;
-		std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
-		std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
-		std::cout << "### - Press '3' find a lector      - ###" << std::endl;
-		std::cout << "### - Press '4' change a state     - ###" << std::endl;
-		std::cout << "### - Press '5' print all          - ###" << std::endl;
-		std::cout << "### - Press '6' to resetall (!!!)  - ###" << std::endl;
-		std::cout << "### - Press '7' to terminate       - ###" << std::endl;
-
-		while (menuIndex_ < 1 || menuIndex_ > 7)
+		if (menuIndex_ >= 1 && menuIndex_ <= 7)
 		{
+
+			if (handle_ == false)
+			{
+				_getch();
+				system("cls");
+			}
+
+			//GUI Introduction
+			std::cout << "########################################" << std::endl;
+			std::cout << "#### --------- Admin Menu --------- ####" << std::endl;
+			std::cout << "#### ----- Choose {1} to edit ----- ####" << std::endl;
+			std::cout << "#### --- Choose {0} to continue --- ####" << std::endl;
 			std::cout << "= ";
-			std::cin >> menuIndex_;
+			std::cin >> tempEdit_;
+			std::cout << "########################################" << std::endl;
+
+			do
+			{
+				if (tempEdit_ == 0)
+					edit_ = false;
+				else if (tempEdit_ == 1)
+					edit_ = true;
+			} while (tempEdit_ < 0 || tempEdit_ > 1);
+
+			handle_ = false;
+			system("cls");
+
+			menuIndex_ = 0;
+			if (edit_)	//GUI List
+			{
+				std::cout << "########################################" << std::endl;
+				std::cout << "### ----WELCOME TO THE ADMIN MENU--- ###" << std::endl;
+				std::cout << "### - Press '1' to create a Lector - ###" << std::endl;
+				std::cout << "### - Press '2' to remove a Lector - ###" << std::endl;
+				std::cout << "### - Press '3' find a lector      - ###" << std::endl;
+				std::cout << "### - Press '4' change a state     - ###" << std::endl;
+				std::cout << "### - Press '5' print all          - ###" << std::endl;
+				std::cout << "### - Press '6' to resetall (!!!)  - ###" << std::endl;
+				std::cout << "### - Press '7' to terminate       - ###" << std::endl;
+
+				while (menuIndex_ < 1 || menuIndex_ > 7)
+				{
+					std::cout << "= ";
+					std::cin >> menuIndex_;
+				}
+				std::cout << "########################################" << std::endl;
+			}
+
+			//Logic to choose how to proceed
+			switch (menuIndex_)
+			{
+			case 1:
+				createLector();
+				break;
+			case 2:
+				removeLector();
+				break;
+			case 3:
+				findLector();
+				break;
+			case 4:
+				changeStateOfLector();
+				break;
+			case 5:
+				printAllOfLectorSystem();
+				break;
+			case 6:
+				resetAllOfLectorSystem();
+				break;
+			case 7:
+				terminateTheMenu();
+				break;
+			}
 		}
-		std::cout << "########################################" << std::endl;
 	}
-	
+
+	//Make sure that the array is not out of bounds
+	lectorSys_.fillStorage();
 }
 
 void lectorMenu::createLector()
 {
 	system("cls");
+
+	//GUI: Header
 	std::cout << "########################################" << std::endl;
 	std::cout << "### --------- Create a Lector ------ ###" << std::endl;
 	std::cout << "### ----- Enter a lector in the ---- ###" << std::endl;
@@ -90,7 +133,7 @@ void lectorMenu::createLector()
 	//Initials
 	std::cout << std::endl;
 	std::cout << "### ---------- Initials {XX} ------- ###" << std::endl;
-	do
+	do	//Validation & Output/Confirmation (won't describe again because of redundancy)
 	{
 		std::cout << "= ";
 		std::cin >> tempString_;
@@ -147,7 +190,7 @@ void lectorMenu::createLector()
 	tempString_ = holderString_ + '-' + tempString_;
 
 	std::size_t found = tempString_.find_first_of(" ");
-	while (found != std::string::npos)
+	while (found != std::string::npos)	//insert '-' instead of spaces
 	{
 		tempString_[found] = '-';
 		found = tempString_.find_first_of(" ", found + 1);
@@ -163,6 +206,7 @@ void lectorMenu::createLector()
 void lectorMenu::removeLector()
 {
 	system("cls");
+	//GUI: Header
 	std::cout << "########################################" << std::endl;
 	std::cout << "### --------- Remove a Lector ------ ###" << std::endl;
 	std::cout << "### --- Enter the ID of a lector --- ###" << std::endl;
@@ -180,12 +224,12 @@ void lectorMenu::removeLector()
 	std::cout << "### -- You've succesfully removed -- ###" << std::endl;
 	std::cout << "& { " << tempInt_ << "-" << lectorSys_.returnLector(tempInt_) << std::endl;
 	std::cout << "########################################" << std::endl;
-
 }
 
 void lectorMenu::findLector()
 {
 	system("cls");
+	//GUI: Header
 	std::cout << "########################################" << std::endl;
 	std::cout << "### --------- Find a lector -------- ###" << std::endl;
 	std::cout << "### --- Enter the ID of a lector --- ###" << std::endl;
@@ -207,6 +251,7 @@ void lectorMenu::findLector()
 void lectorMenu::changeStateOfLector()
 {
 	system("cls");
+	//GUI: Header
 	std::cout << "########################################" << std::endl;
 	std::cout << "### - Change the state of a lector - ###" << std::endl;
 	std::cout << "### --- Enter the ID of a lector --- ###" << std::endl;
@@ -242,6 +287,7 @@ void lectorMenu::changeStateOfLector()
 void lectorMenu::printAllOfLectorSystem()
 {
 	system("cls");
+	//GUI: Header
 	std::cout << "########################################" << std::endl;
 	std::cout << "### ------ Printing everything ----- ###" << std::endl;
 	lectorSys_.printAll();
@@ -262,5 +308,6 @@ void lectorMenu::resetAllOfLectorSystem()
 
 void lectorMenu::terminateTheMenu()
 {
+	//Termination of LectorMenu to terminate the while loop in initmenu.
 	edit_ = false;
 }
