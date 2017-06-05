@@ -193,10 +193,10 @@ Disassembly of section .text:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
 
 00000124 <main>:
+#include "uart.h"
 
 int main(void)
 {
-	
 	//Initiér UART og ZCDetector.
 	InitUART(9600,8,'N');
  124:	2e e4       	ldi	r18, 0x4E	; 78
@@ -208,11 +208,10 @@ int main(void)
 	initZCDetector();
  130:	ab d0       	rcall	.+342    	; 0x288 <InitUART>
  132:	d6 d1       	rcall	.+940    	; 0x4e0 <initZCDetector>
-
-	//PINA7 = INPUT!
+	//PINF7 = INPUT!
 	DDRF &= ~(1 << 7);
  134:	87 98       	cbi	0x10, 7	; 16
-	//// Global interrupt enable
+	//Global interrupt enable
 	sei();
 
 	while(1)

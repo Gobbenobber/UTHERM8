@@ -20,13 +20,10 @@
 //					We still need to test it with toggleswitch and sensor.
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-#define F_CPU 16000000
 //AVR Header files
 #include <avr/io.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
 #include <stdlib.h>
-
 //Drivers
 #include "Manchester.h"
 #include "zeroCrossDetector.h"
@@ -35,16 +32,12 @@
 
 int main(void)
 {
-	
 	//Initiér UART og ZCDetector.
 	InitUART(9600,8,'N');
 	initZCDetector();
-
-	//PINA7 = INPUT!
+	//PINF7 = INPUT!
 	DDRF &= ~(1 << 7);
-	// ^ Hvis det ikke virker, prøv evt: DDRA = 0;
-
-	//// Global interrupt enable
+	//Global interrupt enable
 	sei();
 
 	while(1)
