@@ -57,7 +57,7 @@ Using timer 1, provides a 10 minute timer.
 	 //	sætter tcnt1 til krævet værdi for 1s delay
 	 TCNT1 = (0xFFFF-15625);
 
-	 if (ctr_ == 5) //overflow 1 gang i sekundet betyder 600 = 10 min.	 
+	 if (ctr_ == 600) //overflow 1 gang i sekundet betyder 600 = 10 min.	 
 	 {
 		resetTimer();
 		TIMSK1 &= 0;

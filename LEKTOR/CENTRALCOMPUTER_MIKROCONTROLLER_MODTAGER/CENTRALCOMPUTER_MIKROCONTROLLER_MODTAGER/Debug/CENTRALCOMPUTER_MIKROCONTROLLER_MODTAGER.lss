@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000008b0  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000120  00000000  00000000  000008f0  2**0
+  5 .debug_aranges 000000f8  00000000  00000000  000008f0  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000152c  00000000  00000000  00000a10  2**0
+  6 .debug_info   000014a6  00000000  00000000  000009e8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000fe1  00000000  00000000  00001f3c  2**0
+  7 .debug_abbrev 00000f9e  00000000  00000000  00001e8e  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00000b18  00000000  00000000  00002f1d  2**0
+  8 .debug_line   00000a43  00000000  00000000  00002e2c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000288  00000000  00000000  00003a38  2**2
+  9 .debug_frame  00000238  00000000  00000000  00003870  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    000007c6  00000000  00000000  00003cc0  2**0
+ 10 .debug_str    00000789  00000000  00000000  00003aa8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000787  00000000  00000000  00004486  2**0
+ 11 .debug_loc    00000766  00000000  00000000  00004231  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000140  00000000  00000000  00004c0d  2**0
+ 12 .debug_ranges 00000118  00000000  00000000  00004997  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -209,26 +209,26 @@ int main(void)
  130:	ab d0       	rcall	.+342    	; 0x288 <InitUART>
  132:	d6 d1       	rcall	.+940    	; 0x4e0 <initZCDetector>
 
-	//PINA7 = INPUTS!
+	//PINA7 = INPUT!
 	DDRF &= ~(1 << 7);
  134:	87 98       	cbi	0x10, 7	; 16
-	//static char konverteretDataTemp[5];
-	//int h;
-	//int w = 1;
+	//// Global interrupt enable
+	sei();
+
 	while(1)
 	{	
 		while (!(PINF & (1 << 7)))
  136:	78 94       	sei
  138:	7f 9b       	sbis	0x0f, 7	; 15
  13a:	fe cf       	rjmp	.-4      	; 0x138 <main+0x14>
- 13c:	35 d1       	rcall	.+618    	; 0x3a8 <receiveBurst>
+ 13c:	35 d1       	rcall	.+618    	; 0x3a8 <receiveX10Message>
  13e:	02 d0       	rcall	.+4      	; 0x144 <manchesterToString>
  140:	f6 d0       	rcall	.+492    	; 0x32e <SendString>
  142:	fa cf       	rjmp	.-12     	; 0x138 <main+0x14>
 
 00000144 <manchesterToString>:
 	}
-	return manchesterPtr;													// Returnér manchesterkoden
+	return manchesterPtr;												// Returnér manchesterkoden
 }
 
 unsigned char* manchesterToString(unsigned char* toBeConverted)
@@ -442,7 +442,7 @@ unsigned char* manchesterToString(unsigned char* toBeConverted)
  236:	8c 2d       	mov	r24, r12
  238:	9d 2d       	mov	r25, r13
  23a:	17 c0       	rjmp	.+46     	; 0x26a <manchesterToString+0x126>
-	return manchesterPtr;													// Returnér manchesterkoden
+	return manchesterPtr;												// Returnér manchesterkoden
 }
 
 unsigned char* manchesterToString(unsigned char* toBeConverted)
@@ -651,8 +651,8 @@ void SendString(char* Streng)
  348:	08 95       	ret
 
 0000034a <start1msDelay>:
-}
-
+ static unsigned char firstByteReceived;
+ 
 void start1msDelay()
 {
 	// Timer3: Normal mode, PS = 0
@@ -680,10 +680,10 @@ void start1msDelay()
  36a:	88 bb       	out	0x18, r24	; 24
  36c:	08 95       	ret
 
-0000036e <start400usDelay>:
+0000036e <start100usDelay>:
 }
 
-void start400usDelay()
+void start100usDelay()
 {
 	// Timer4: Normal mode, PS = 0
 	TCCR4A = 0b00000000;
@@ -701,7 +701,7 @@ void start400usDelay()
  380:	80 93 a4 00 	sts	0x00A4, r24	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7000a4>
 	while ((TIFR4 & (1<<0)) == 0)
  384:	c8 9b       	sbis	0x19, 0	; 25
- 386:	fe cf       	rjmp	.-4      	; 0x384 <start400usDelay+0x16>
+ 386:	fe cf       	rjmp	.-4      	; 0x384 <start100usDelay+0x16>
 	{}
 	TCCR4B = 0;
  388:	10 92 a1 00 	sts	0x00A1, r1	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7000a1>
@@ -724,10 +724,9 @@ void ventPaaZC()
  39e:	90 91 11 02 	lds	r25, 0x0211	; 0x800211 <ZCDetected_+0x1>
  3a2:	89 2b       	or	r24, r25
  3a4:	d1 f3       	breq	.-12     	; 0x39a <ventPaaZC+0x8>
-}
  3a6:	08 95       	ret
 
-000003a8 <receiveBurst>:
+000003a8 <receiveX10Message>:
  3a8:	0f 93       	push	r16
  3aa:	1f 93       	push	r17
  3ac:	cf 93       	push	r28
@@ -740,17 +739,17 @@ void ventPaaZC()
  3be:	12 e0       	ldi	r17, 0x02	; 2
  3c0:	c1 e0       	ldi	r28, 0x01	; 1
  3c2:	d0 e0       	ldi	r29, 0x00	; 0
- 3c4:	d4 df       	rcall	.-88     	; 0x36e <start400usDelay>
+ 3c4:	d4 df       	rcall	.-88     	; 0x36e <start100usDelay>
  3c6:	7f 9b       	sbis	0x0f, 7	; 15
- 3c8:	0e c0       	rjmp	.+28     	; 0x3e6 <receiveBurst+0x3e>
+ 3c8:	0e c0       	rjmp	.+28     	; 0x3e6 <receiveX10Message+0x3e>
  3ca:	ce 01       	movw	r24, r28
  3cc:	f8 01       	movw	r30, r16
  3ce:	00 80       	ld	r0, Z
- 3d0:	02 c0       	rjmp	.+4      	; 0x3d6 <receiveBurst+0x2e>
+ 3d0:	02 c0       	rjmp	.+4      	; 0x3d6 <receiveX10Message+0x2e>
  3d2:	88 0f       	add	r24, r24
  3d4:	99 1f       	adc	r25, r25
  3d6:	0a 94       	dec	r0
- 3d8:	e2 f7       	brpl	.-8      	; 0x3d2 <receiveBurst+0x2a>
+ 3d8:	e2 f7       	brpl	.-8      	; 0x3d2 <receiveX10Message+0x2a>
  3da:	90 91 0a 02 	lds	r25, 0x020A	; 0x80020a <firstByteReceived>
  3de:	89 2b       	or	r24, r25
  3e0:	80 93 0a 02 	sts	0x020A, r24	; 0x80020a <firstByteReceived>
@@ -758,11 +757,11 @@ void ventPaaZC()
  3e6:	ce 01       	movw	r24, r28
  3e8:	f8 01       	movw	r30, r16
  3ea:	00 80       	ld	r0, Z
- 3ec:	02 c0       	rjmp	.+4      	; 0x3f2 <receiveBurst+0x4a>
+ 3ec:	02 c0       	rjmp	.+4      	; 0x3f2 <receiveX10Message+0x4a>
  3ee:	88 0f       	add	r24, r24
  3f0:	99 1f       	adc	r25, r25
  3f2:	0a 94       	dec	r0
- 3f4:	e2 f7       	brpl	.-8      	; 0x3ee <receiveBurst+0x46>
+ 3f4:	e2 f7       	brpl	.-8      	; 0x3ee <receiveX10Message+0x46>
  3f6:	80 95       	com	r24
  3f8:	90 91 0a 02 	lds	r25, 0x020A	; 0x80020a <firstByteReceived>
  3fc:	89 23       	and	r24, r25
@@ -770,14 +769,14 @@ void ventPaaZC()
  402:	c7 df       	rcall	.-114    	; 0x392 <ventPaaZC>
  404:	a2 df       	rcall	.-188    	; 0x34a <start1msDelay>
  406:	a1 df       	rcall	.-190    	; 0x34a <start1msDelay>
- 408:	b2 df       	rcall	.-156    	; 0x36e <start400usDelay>
+ 408:	b2 df       	rcall	.-156    	; 0x36e <start100usDelay>
  40a:	80 91 14 02 	lds	r24, 0x0214	; 0x800214 <j>
  40e:	90 91 15 02 	lds	r25, 0x0215	; 0x800215 <j+0x1>
  412:	01 97       	sbiw	r24, 0x01	; 1
  414:	90 93 15 02 	sts	0x0215, r25	; 0x800215 <j+0x1>
  418:	80 93 14 02 	sts	0x0214, r24	; 0x800214 <j>
  41c:	99 23       	and	r25, r25
- 41e:	94 f6       	brge	.-92     	; 0x3c4 <receiveBurst+0x1c>
+ 41e:	94 f6       	brge	.-92     	; 0x3c4 <receiveX10Message+0x1c>
  420:	80 91 0a 02 	lds	r24, 0x020A	; 0x80020a <firstByteReceived>
  424:	8e 3e       	cpi	r24, 0xEE	; 238
  426:	09 f0       	breq	.+2      	; 0x42a <__LOCK_REGION_LENGTH__+0x2a>
@@ -831,8 +830,8 @@ void ventPaaZC()
  498:	7c df       	rcall	.-264    	; 0x392 <ventPaaZC>
  49a:	57 df       	rcall	.-338    	; 0x34a <start1msDelay>
  49c:	56 df       	rcall	.-340    	; 0x34a <start1msDelay>
- 49e:	67 df       	rcall	.-306    	; 0x36e <start400usDelay>
- 4a0:	66 df       	rcall	.-308    	; 0x36e <start400usDelay>
+ 49e:	67 df       	rcall	.-306    	; 0x36e <start100usDelay>
+ 4a0:	66 df       	rcall	.-308    	; 0x36e <start100usDelay>
  4a2:	80 91 14 02 	lds	r24, 0x0214	; 0x800214 <j>
  4a6:	90 91 15 02 	lds	r25, 0x0215	; 0x800215 <j+0x1>
  4aa:	01 97       	sbiw	r24, 0x01	; 1

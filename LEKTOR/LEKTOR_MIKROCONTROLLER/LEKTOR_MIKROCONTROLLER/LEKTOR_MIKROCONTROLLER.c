@@ -54,7 +54,7 @@ int main(void)
 	sei();
 
 	//Streng med data som skal sendes.
-	unsigned char streng[3];
+	unsigned char X10Message[3];
 	//Streng som er manchester-encoded (strengen som egentlig sendes).
 	int i = 0;
 		/*
@@ -81,10 +81,10 @@ int main(void)
 		if (aendring_ == 1)
 		{
 			//COMMAND = 'c';
-			streng[0] = LEKTORID1;
-			streng[1] = COMMAND;
-			streng[2] = '\0';
-			unsigned char* konverteretStreng = stringToManchester(streng);
+			X10Message[0] = LEKTORID1;
+			X10Message[1] = COMMAND;
+			X10Message[2] = '\0';
+			unsigned char* konverteretStreng = stringToManchester(X10Message);
 			for (n = 0; n < 2; n++)
 			{
 			

@@ -25,4 +25,4 @@
 int returnerTimerStatus();
 void setTimer();
 void resetTimer();
-int returnerTimerStatus();
+

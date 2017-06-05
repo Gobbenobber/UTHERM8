@@ -24,11 +24,11 @@ c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/..
 Allocating common symbols
 Common symbol       size              file
 
-j                   0x2               X10_Master.o
+j                   0x2               X10_Receiver.o
 __brkval            0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-state               0x2               X10_Master.o
+state               0x2               X10_Receiver.o
 ZCDetected_         0x2               CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
-i                   0x2               X10_Master.o
+i                   0x2               X10_Receiver.o
 aendring_           0x1               CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
 __flp               0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
 COMMAND             0x1               CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
@@ -55,21 +55,11 @@ Discarded input sections
                 0x00000000       0x10 uart.o
  .text.SendInteger
                 0x00000000       0x3a uart.o
- .text          0x00000000        0x0 X10_Master.o
- .data          0x00000000        0x0 X10_Master.o
- .bss           0x00000000        0x0 X10_Master.o
- .text.resetReceiver
-                0x00000000       0x16 X10_Master.o
- .text.validateStartByte
-                0x00000000        0xc X10_Master.o
- .text.start500usDelay
-                0x00000000       0x24 X10_Master.o
- .text.initBurst
-                0x00000000       0x18 X10_Master.o
- .text.pinStatus
-                0x00000000        0xe X10_Master.o
+ .text          0x00000000        0x0 X10_Receiver.o
+ .data          0x00000000        0x0 X10_Receiver.o
+ .bss           0x00000000        0x0 X10_Receiver.o
  .data.firstCheck
-                0x00000000        0x2 X10_Master.o
+                0x00000000        0x2 X10_Receiver.o
  .text          0x00000000        0x0 zeroCrossDetector.o
  .data          0x00000000        0x0 zeroCrossDetector.o
  .bss           0x00000000        0x0 zeroCrossDetector.o
@@ -178,7 +168,7 @@ LOAD C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/
 LOAD CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
 LOAD Manchester.o
 LOAD uart.o
-LOAD X10_Master.o
+LOAD X10_Receiver.o
 LOAD zeroCrossDetector.o
 START GROUP
 LOAD c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libm.a
@@ -419,17 +409,17 @@ END GROUP
                 0x0000032e       0x1c uart.o
                 0x0000032e                SendString
  .text.start1msDelay
-                0x0000034a       0x24 X10_Master.o
+                0x0000034a       0x24 X10_Receiver.o
                 0x0000034a                start1msDelay
- .text.start400usDelay
-                0x0000036e       0x24 X10_Master.o
-                0x0000036e                start400usDelay
+ .text.start100usDelay
+                0x0000036e       0x24 X10_Receiver.o
+                0x0000036e                start100usDelay
  .text.ventPaaZC
-                0x00000392       0x16 X10_Master.o
+                0x00000392       0x16 X10_Receiver.o
                 0x00000392                ventPaaZC
- .text.receiveBurst
-                0x000003a8      0x138 X10_Master.o
-                0x000003a8                receiveBurst
+ .text.receiveX10Message
+                0x000003a8      0x138 X10_Receiver.o
+                0x000003a8                receiveX10Message
  .text.initZCDetector
                 0x000004e0        0xe zeroCrossDetector.o
                 0x000004e0                initZCDetector
@@ -501,14 +491,14 @@ END GROUP
  .bss.manchesterPtr
                 0x00800208        0x2 Manchester.o
  .bss.firstByteReceived
-                0x0080020a        0x1 X10_Master.o
- .bss.receive   0x0080020b        0x5 X10_Master.o
+                0x0080020a        0x1 X10_Receiver.o
+ .bss.receive   0x0080020b        0x5 X10_Receiver.o
  *(COMMON)
  COMMON         0x00800210        0x4 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
                 0x00800210                ZCDetected_
                 0x00800212                aendring_
                 0x00800213                COMMAND
- COMMON         0x00800214        0x6 X10_Master.o
+ COMMON         0x00800214        0x6 X10_Receiver.o
                 0x00800214                j
                 0x00800216                state
                 0x00800218                i
@@ -569,7 +559,7 @@ END GROUP
                                  0x31 (size before relaxing)
  .comment       0x00000030       0x31 Manchester.o
  .comment       0x00000030       0x31 uart.o
- .comment       0x00000030       0x31 X10_Master.o
+ .comment       0x00000030       0x31 X10_Receiver.o
  .comment       0x00000030       0x31 zeroCrossDetector.o
  .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(calloc.o)
  .comment       0x00000030       0x31 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
@@ -594,7 +584,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000      0x120
+.debug_aranges  0x00000000       0xf8
  *(.debug_aranges)
  .debug_aranges
                 0x00000000       0x20 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
@@ -603,68 +593,68 @@ END GROUP
  .debug_aranges
                 0x00000050       0x48 uart.o
  .debug_aranges
-                0x00000098       0x60 X10_Master.o
+                0x00000098       0x38 X10_Receiver.o
  .debug_aranges
-                0x000000f8       0x28 zeroCrossDetector.o
+                0x000000d0       0x28 zeroCrossDetector.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x152c
+.debug_info     0x00000000     0x14a6
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_info    0x00000bbc      0x170 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
  .debug_info    0x00000d2c      0x221 Manchester.o
  .debug_info    0x00000f4d      0x299 uart.o
- .debug_info    0x000011e6      0x290 X10_Master.o
- .debug_info    0x00001476       0xb6 zeroCrossDetector.o
+ .debug_info    0x000011e6      0x20a X10_Receiver.o
+ .debug_info    0x000013f0       0xb6 zeroCrossDetector.o
 
-.debug_abbrev   0x00000000      0xfe1
+.debug_abbrev   0x00000000      0xf9e
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a       0xa6 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
  .debug_abbrev  0x00000bc0       0xfd Manchester.o
  .debug_abbrev  0x00000cbd      0x19b uart.o
- .debug_abbrev  0x00000e58      0x10a X10_Master.o
- .debug_abbrev  0x00000f62       0x7f zeroCrossDetector.o
+ .debug_abbrev  0x00000e58       0xc7 X10_Receiver.o
+ .debug_abbrev  0x00000f1f       0x7f zeroCrossDetector.o
 
-.debug_line     0x00000000      0xb18
+.debug_line     0x00000000      0xa43
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_line    0x000001f9      0x12e CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
- .debug_line    0x00000327      0x22b Manchester.o
- .debug_line    0x00000552      0x1b5 uart.o
- .debug_line    0x00000707      0x31e X10_Master.o
- .debug_line    0x00000a25       0xf3 zeroCrossDetector.o
+ .debug_line    0x000001f9      0x130 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
+ .debug_line    0x00000329      0x22b Manchester.o
+ .debug_line    0x00000554      0x1b5 uart.o
+ .debug_line    0x00000709      0x247 X10_Receiver.o
+ .debug_line    0x00000950       0xf3 zeroCrossDetector.o
 
-.debug_frame    0x00000000      0x288
+.debug_frame    0x00000000      0x238
  *(.debug_frame)
  .debug_frame   0x00000000       0x24 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
  .debug_frame   0x00000024       0xc8 Manchester.o
  .debug_frame   0x000000ec       0x9c uart.o
- .debug_frame   0x00000188       0xb8 X10_Master.o
- .debug_frame   0x00000240       0x48 zeroCrossDetector.o
+ .debug_frame   0x00000188       0x68 X10_Receiver.o
+ .debug_frame   0x000001f0       0x48 zeroCrossDetector.o
 
-.debug_str      0x00000000      0x7c6
+.debug_str      0x00000000      0x789
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x216 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
-                                0x24f (size before relaxing)
- .debug_str     0x000005fc       0x6a Manchester.o
+ .debug_str     0x000003e6      0x21b CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
+                                0x254 (size before relaxing)
+ .debug_str     0x00000601       0x6a Manchester.o
                                 0x1dc (size before relaxing)
- .debug_str     0x00000666       0x93 uart.o
+ .debug_str     0x0000066b       0x93 uart.o
                                 0x25b (size before relaxing)
- .debug_str     0x000006f9       0xa9 X10_Master.o
-                                0x29f (size before relaxing)
- .debug_str     0x000007a2       0x24 zeroCrossDetector.o
+ .debug_str     0x000006fe       0x67 X10_Receiver.o
+                                0x262 (size before relaxing)
+ .debug_str     0x00000765       0x24 zeroCrossDetector.o
                                 0x1f3 (size before relaxing)
 
-.debug_loc      0x00000000      0x787
+.debug_loc      0x00000000      0x766
  *(.debug_loc)
  .debug_loc     0x00000000      0x4e2 Manchester.o
  .debug_loc     0x000004e2      0x1f2 uart.o
- .debug_loc     0x000006d4       0x6a X10_Master.o
- .debug_loc     0x0000073e       0x49 zeroCrossDetector.o
+ .debug_loc     0x000006d4       0x49 X10_Receiver.o
+ .debug_loc     0x0000071d       0x49 zeroCrossDetector.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -684,13 +674,13 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x140
+.debug_ranges   0x00000000      0x118
  *(.debug_ranges)
  .debug_ranges  0x00000000       0x10 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o
  .debug_ranges  0x00000010       0x90 Manchester.o
  .debug_ranges  0x000000a0       0x38 uart.o
- .debug_ranges  0x000000d8       0x50 X10_Master.o
- .debug_ranges  0x00000128       0x18 zeroCrossDetector.o
+ .debug_ranges  0x000000d8       0x28 X10_Receiver.o
+ .debug_ranges  0x00000100       0x18 zeroCrossDetector.o
 
 .debug_macro
  *(.debug_macro)

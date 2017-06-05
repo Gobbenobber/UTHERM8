@@ -40,7 +40,7 @@ C_SRCS +=  \
 ../CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.c \
 ../Manchester.c \
 ../uart.c \
-../X10_Master.c \
+../X10_Receiver.c \
 ../zeroCrossDetector.c
 
 
@@ -54,28 +54,28 @@ OBJS +=  \
 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o \
 Manchester.o \
 uart.o \
-X10_Master.o \
+X10_Receiver.o \
 zeroCrossDetector.o
 
 OBJS_AS_ARGS +=  \
 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.o \
 Manchester.o \
 uart.o \
-X10_Master.o \
+X10_Receiver.o \
 zeroCrossDetector.o
 
 C_DEPS +=  \
 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.d \
 Manchester.d \
 uart.d \
-X10_Master.d \
+X10_Receiver.d \
 zeroCrossDetector.d
 
 C_DEPS_AS_ARGS +=  \
 CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.d \
 Manchester.d \
 uart.d \
-X10_Master.d \
+X10_Receiver.d \
 zeroCrossDetector.d
 
 OUTPUT_FILE_PATH +=CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.elf

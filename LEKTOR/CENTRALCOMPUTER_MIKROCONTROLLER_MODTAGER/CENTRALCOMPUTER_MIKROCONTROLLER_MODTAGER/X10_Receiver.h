@@ -18,11 +18,7 @@ volatile unsigned char COMMAND;
 volatile char aendring_;
 
 // 8 data bit, no parity, 1 stop bit
-char validateStartByte(char val);
-void start500usDelay();
 void start1msDelay();
-void start400usDelay();
-unsigned char* receiveBurst();
+void start100usDelay();
+unsigned char* receiveX10Message();
 void ventPaaZC();
-void initBurst();
-void resetReceiver();

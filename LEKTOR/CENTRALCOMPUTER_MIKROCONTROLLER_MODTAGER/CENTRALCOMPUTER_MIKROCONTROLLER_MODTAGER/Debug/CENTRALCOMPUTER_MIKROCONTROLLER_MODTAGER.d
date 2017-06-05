@@ -21,7 +21,7 @@ CENTRALCOMPUTER_MIKROCONTROLLER_MODTAGER.d \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\lib\gcc\avr\5.4.0\include\stddef.h \
  .././Manchester.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
- .././zeroCrossDetector.h .././X10_Master.h .././uart.h
+ .././zeroCrossDetector.h .././X10_Receiver.h .././uart.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -65,6 +65,6 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 .././zeroCrossDetector.h:
 
-.././X10_Master.h:
+.././X10_Receiver.h:
 
 .././uart.h:

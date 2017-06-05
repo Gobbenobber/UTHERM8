@@ -124,14 +124,13 @@
 
   void initBurst()
   {
-	  // PH = input (burst not outgoing)
-	  DDRH = 0;
-	  // Toggle OC2B on compare match
-	  // Mode = 4 (CTC)
-	  // Clock prescaler = 1
+	  // PB7/OC0A = input (burst not outgoing)
+	  DDRB = (1 << 7);
+	  // Toggle OC0A on compare match
+	  // Mode = 4 (CTC); Clock prescaler = 1
 	  TCCR0A = 0b01000010;
 	  TCCR0B = 0b00000001;
-	  // 120kHz = 16000000Hz/(2*1*(1+OCR1B))  --> OCR1B = 119kHz...
+	  // 120kHz = 16000000Hz/(2*1*(1+OCR1B))  --> OC0A = 119kHz...
 	  OCR0A = 66;
   }
 
@@ -149,7 +148,7 @@
 	  ventPaaZC();
 	  start1msDelay();
 	  start1msDelay();
-	  start400usDelay();
+	  start100usDelay();
 		  if(x & 0b10000000)
 		  {
 			  sendBurst();
@@ -161,7 +160,7 @@
 	  //Test ###DUNNO what the stopbit is###
   }
 
-   void start400usDelay()
+   void start100usDelay()
    {
 	   // Timer4: Normal mode, PS = 0
 	   TCCR4A = 0b00000000;

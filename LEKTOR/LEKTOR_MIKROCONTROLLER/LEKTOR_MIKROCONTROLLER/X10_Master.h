@@ -20,4 +20,4 @@ void ventPaaZC();
 void initBurst();
 void opdaterKommando();
 void start1msDelay();
-void start400usDelay();
+void start100usDelay();

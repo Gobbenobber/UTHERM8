@@ -42,7 +42,7 @@ unsigned char* stringToManchester(unsigned char* toBeConverted)
 		}
 		--t;															// Find næste character i array af chars som skal konverteres.
 	}
-	return manchesterPtr;													// Returnér manchesterkoden
+	return manchesterPtr;												// Returnér manchesterkoden
 }
 
 unsigned char* manchesterToString(unsigned char* toBeConverted)

@@ -1,4 +1,4 @@
- #include "X10_Master.h"
+ #include "X10_Receiver.h"
  #include "zeroCrossDetector.h"
 
  volatile int state;
@@ -8,41 +8,6 @@
  static unsigned char receive[5];
  static unsigned char firstByteReceived;
  
- void resetReceiver()
- {
-	receive[0] = '\0';
-	receive[1] = '\0';
-	receive[2] = '\0';
-	receive[3] = '\0';
-	receive[4] = '\0';
-	firstByteReceived = 'A';
- }
-
-char validateStartByte(char val)
-{
-	// val = 0b11101110
-	if (val & 0b11101110)
-		return 't';
-	else
-		return 'f';
-}
-
-void start500usDelay()
-{
-	// Timer3: Normal mode, PS = 0
-	TCCR3A = 0b00000000;
-	TCCR3B = 0b00000001;
-	// Overflow hvert MS.
-	//Sæt timerStatus til '1' (=going)
-	//timerStatus_3 = '1';
-	TCNT3 = (0xFFFF-32000);
-	while ((TIFR3 & (1<<0)) == 0)
-	{}
-	TCCR3B = 0;
-	TIFR3 = 1<<0;
-	//timerStatus_3 = '0';
-}
-
 void start1msDelay()
 {
 	// Timer3: Normal mode, PS = 0
@@ -59,7 +24,7 @@ void start1msDelay()
 	//timerStatus_3 = '0';
 }
 
-void start400usDelay()
+void start100usDelay()
 {
 	// Timer4: Normal mode, PS = 0
 	TCCR4A = 0b00000000;
@@ -75,11 +40,11 @@ void start400usDelay()
 	//timerStatus_3 = '0';
 }
 
-unsigned char* receiveBurst()
+unsigned char* receiveX10Message()
 {
 	for (j = 7; j >= 0; j--)
 	{	
-		start400usDelay();
+		start100usDelay();
 		if (PINF & (1 << 7))
 		{
 			firstByteReceived |= 1 << j;
@@ -91,7 +56,7 @@ unsigned char* receiveBurst()
 		ventPaaZC();
 		start1msDelay();
 		start1msDelay();
-		start400usDelay();
+		start100usDelay();
 	}
 
 	if (firstByteReceived == 0b11101110)
@@ -116,8 +81,8 @@ unsigned char* receiveBurst()
 				ventPaaZC();
 				start1msDelay();
 				start1msDelay();
-				start400usDelay();
-				start400usDelay();
+				start100usDelay();
+				start100usDelay();
 			}
 		}
 			
@@ -129,22 +94,4 @@ void ventPaaZC()
 {
 	ZCDetected_ = 0;
 	while(ZCDetected_ == 0)	{}
-}
-
-void initBurst()
-{
-	// PH = input (burst not outgoing)
-	DDRH = 0;
-	// Toggle OC2B on compare match
-	// Mode = 4 (CTC)
-	// Clock prescaler = 1
-	TCCR2A = 0b00010000;
-	TCCR2B = 0b00000001;
-	// Frekvens = 120.3 kHz
-	// 120kHz = 16000000Hz/(2*1*(1+OCR1A))  --> OCR1A = 131.33...
-	OCR2B = 131;
-}
-
-int pinStatus(){
-	return PORT << PINNR;
 }

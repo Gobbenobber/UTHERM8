@@ -148,10 +148,10 @@
     <Compile Include="uart.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="X10_Master.c">
+    <Compile Include="X10_Receiver.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="X10_Master.h">
+    <Compile Include="X10_Receiver.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="zeroCrossDetector.c">

@@ -8,7 +8,7 @@ Manchester.c
 
 uart.c
 
-X10_Master.c
+X10_Receiver.c
 
 zeroCrossDetector.c
 

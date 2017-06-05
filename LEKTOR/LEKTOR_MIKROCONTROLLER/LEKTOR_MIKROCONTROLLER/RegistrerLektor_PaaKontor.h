@@ -13,4 +13,3 @@ char lektortilStede_; // Variablen her fortæller om lektor pt. er til stede på k
 //Functions
 void skiftLEDTilstand_PaaKontor();
 void lektorStatus_PaaKontor();
-void UC1_LPK();

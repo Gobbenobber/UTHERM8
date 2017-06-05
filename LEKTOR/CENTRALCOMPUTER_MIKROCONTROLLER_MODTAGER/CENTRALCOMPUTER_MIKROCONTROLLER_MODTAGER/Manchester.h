@@ -13,7 +13,7 @@
 //.MMMM.MMMMM.MMMMAAAA....AAAAA.NNNN..NNNNN...CCCCCCCCCC..HHHH...HHHH..EEEEEEEEEEE.SSSSSSSSSS.....TTTT....EEEEEEEEEEE..RRRR...RRRRR..
 //.MMMM.MMMMM.MMMMAAAA.....AAAA.NNNN...NNNN....CCCCCCCC...HHHH...HHHH..EEEEEEEEEEE..SSSSSSSS......TTTT....EEEEEEEEEEE..RRRR...RRRRR...h
 //..................................................................................................................................
-// Skrevet af Patrick Bjerregaard og Kasper Hermansen.
+// Skrevet af Patrick Bjerregaard.
 // Version: 1.01RC
 // De to nedenstående funktioner kan benyttes til at kovertere en given tekststreng til Manchester kode og benytter dynamisk hukommelse til at opnå dette.
 // Fungerer både på MCU og PC.

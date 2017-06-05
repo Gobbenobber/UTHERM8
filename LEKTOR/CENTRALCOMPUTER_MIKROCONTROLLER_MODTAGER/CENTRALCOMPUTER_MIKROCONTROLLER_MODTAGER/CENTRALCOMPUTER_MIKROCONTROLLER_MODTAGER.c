@@ -15,7 +15,7 @@
 //      UU:::::::::UU          T:::::::::T      H:::::::H     H:::::::HE::::::::::::::::::::ER::::::R     R:::::RM::::::M               M::::::M   88:::::::::88
 //        UUUUUUUUU            TTTTTTTTTTT      HHHHHHHHH     HHHHHHHHHEEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRMMMMMMMM               MMMMMMMM     888888888
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-//					MAIN PROGRAM
+//					MAIN PROGRAM - RECEIVER
 //	- 20/05/2017:	The program has been written anf compiles just fine
 //					We still need to test it with toggleswitch and sensor.
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -30,7 +30,7 @@
 //Drivers
 #include "Manchester.h"
 #include "zeroCrossDetector.h"
-#include "X10_Master.h"
+#include "X10_Receiver.h"
 #include "uart.h"
 
 int main(void)
@@ -40,23 +40,17 @@ int main(void)
 	InitUART(9600,8,'N');
 	initZCDetector();
 
-	//PINA7 = INPUTS!
+	//PINA7 = INPUT!
 	DDRF &= ~(1 << 7);
 	// ^ Hvis det ikke virker, prøv evt: DDRA = 0;
 
 	//// Global interrupt enable
 	sei();
 
-	//unsigned char* konverteretStreng;
-	//char* buffer = "";
-	//static char* konverteretData;
-	//static char konverteretDataTemp[5];
-	//int h;
-	//int w = 1;
 	while(1)
 	{	
 		while (!(PINF & (1 << 7)))
 		{}
-		SendString((char*)manchesterToString(receiveBurst()));
+		SendString((char*)manchesterToString(receiveX10Message()));
 	}
 }
