@@ -8,8 +8,8 @@
 #pragma once
 
 //Variables
-char lektortilStede_; // Variablen her fortæller om lektor pt. er til stede på kontoret. Hvis ikke '1', er lektor IKKE til stede.
+volatile char lektortilStede_; // Variablen her fortæller om lektor pt. er til stede på kontoret. Hvis ikke '1', er lektor IKKE til stede.
 
 //Functions
-void skiftLEDTilstand_PaaKontor();
+//void skiftLEDTilstand_PaaKontor();
 void lektorStatus_PaaKontor();

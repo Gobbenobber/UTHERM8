@@ -1,8 +1,6 @@
  #include "X10_Receiver.h"
  #include "zeroCrossDetector.h"
 
- volatile int state;
- int firstCheck = 1;
  int i;
  int j;
  static unsigned char receive[5];

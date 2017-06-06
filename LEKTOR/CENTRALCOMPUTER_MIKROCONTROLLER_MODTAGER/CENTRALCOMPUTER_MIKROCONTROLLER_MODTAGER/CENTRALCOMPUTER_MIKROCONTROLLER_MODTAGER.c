@@ -15,9 +15,9 @@
 //      UU:::::::::UU          T:::::::::T      H:::::::H     H:::::::HE::::::::::::::::::::ER::::::R     R:::::RM::::::M               M::::::M   88:::::::::88
 //        UUUUUUUUU            TTTTTTTTTTT      HHHHHHHHH     HHHHHHHHHEEEEEEEEEEEEEEEEEEEEEERRRRRRRR     RRRRRRRMMMMMMMM               MMMMMMMM     888888888
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
-//					MAIN PROGRAM - RECEIVER
-//	- 20/05/2017:	The program has been written anf compiles just fine
-//					We still need to test it with toggleswitch and sensor.
+//					MAIN PROGRAM - RECEIVER																						                                  |
+//	- 31/05/2017:	PROGRAM WORKS!!																																  |
+//																																								  |
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //AVR Header files

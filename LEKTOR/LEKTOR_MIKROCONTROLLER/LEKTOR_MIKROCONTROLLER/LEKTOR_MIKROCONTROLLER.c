@@ -55,32 +55,20 @@ int main(void)
 
 	//Streng med data som skal sendes.
 	unsigned char X10Message[3];
-	//Streng som er manchester-encoded (strengen som egentlig sendes).
 	int i = 0;
-		/*
-		For testing -- Above and below both work.
-		+ DO NOT use #define for chars unless typecast is used!
-		+ STARTCODE, LEKTORID1, COMMAND now all declared as variables.
-		---------------------------------------------------------------
-		unsigned char* tilbageTilNormal = manchesterToString(konverteretStreng);
-		for (i = 0; i < strlen((char*)kll); i++)
-		{
-			sendCharX10(tilbageTilNormal[i]);
-		}
-		*/
-		int n;
+	int n;
 	while(1)
 	{	
-		// Go through UC1 & UC2 -- also changes LED according to actual status.
+		// Go through UC1 & UC2
 		lektorStatus_PaaKontor();
 		lektorStatus_Optaget();
 		// Check om der er sket en ændring, opdatér kommando baseret på dette.
-		opdaterKommando(); //Returnerer umiddelbart 'V' for 'Væk'.
+		opdaterKommando(); 
 
-		// Hvis der er sket en ændring, send STARTCODE efterfulgt af X10-kommando (bestående af LEKTORID1 og COMMAND).
+		// Hvis der er sket en ændring, send STARTCODE efterfulgt af X10-information (bestående af LEKTORID1 og COMMAND (konvereret til Manchester)).
 		if (aendring_ == 1)
 		{
-			//COMMAND = 'c';
+			// COMMAND = 'c';
 			X10Message[0] = LEKTORID1;
 			X10Message[1] = COMMAND;
 			X10Message[2] = '\0';
@@ -94,14 +82,7 @@ int main(void)
 				sendCharX10(konverteretStreng[i]);
 			}
 			start1msDelay();
-			// Send stopBit?!  
-			//ventPaaZC();
-			//start1msDelay();
-			//start1msDelay();
-			//start400usDelay();
-			//sendBurst();
-			//freePtr();
-			//free(konverteretStreng);
+			freePtr();
 			}
 		}
 	}

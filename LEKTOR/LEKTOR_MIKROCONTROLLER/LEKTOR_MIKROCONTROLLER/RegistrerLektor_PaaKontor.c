@@ -27,12 +27,12 @@
 	if (kontorStatus() == '1') 
 	{
 		lektortilStede_ = '1';
-		skiftLEDTilstand_PaaKontor();
+		//skiftLEDTilstand_PaaKontor();
 	}
 	else
 	{
 		lektortilStede_ = '0';
-		skiftLEDTilstand_PaaKontor();
+		//skiftLEDTilstand_PaaKontor();
 	}
 
  }

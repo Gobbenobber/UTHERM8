@@ -8,13 +8,13 @@ void lektorStatus_Optaget()
 	if (toggleSwitchStatus() == '1') //bemærk, '1' for "optaget".
 	{
 	lektorOptaget_ = '1';
-	skiftLEDTilstand_Optaget();
+	//skiftLEDTilstand_Optaget();
 	}
 
 	else
 	{
 	lektorOptaget_ = '0';
-	skiftLEDTilstand_Optaget();
+	//skiftLEDTilstand_Optaget();
 	}
 
 }

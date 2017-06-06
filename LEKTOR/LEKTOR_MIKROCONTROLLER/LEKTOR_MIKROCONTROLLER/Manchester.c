@@ -9,8 +9,8 @@ void freePtr(){
 unsigned char* stringToManchester(unsigned char* toBeConverted)
 {
 	if (toBeConverted == (unsigned char*)"") return 0;						// Hvis der ikke er input, return 0 
-	int len = strlen((char*)toBeConverted);											// Lav size_t som kan passes til calloc.
-	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);				// Alloker hukommelse
+	int len = strlen((char*)toBeConverted);									// Lav size_t som kan passes til calloc.
+	manchesterPtr = (unsigned char *)calloc((((len+1) * 2) + 1), 1);		// Alloker hukommelse
 	int counter = 8;
 	int t = 0;
 

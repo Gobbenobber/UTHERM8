@@ -19,7 +19,6 @@ Allocating common symbols
 Common symbol       size              file
 
 lektortilStede_     0x1               X10_Master.o
-lektorGone_         0x2               X10_Master.o
 __brkval            0x2               c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
 lektorOptaget_      0x1               X10_Master.o
 ZCDetected_         0x2               X10_Master.o
@@ -42,15 +41,18 @@ Discarded input sections
  .text          0x00000000        0x0 Manchester.o
  .data          0x00000000        0x0 Manchester.o
  .bss           0x00000000        0x0 Manchester.o
- .text.freePtr  0x00000000        0xe Manchester.o
  .text.manchesterToString
                 0x00000000      0x146 Manchester.o
  .text          0x00000000        0x0 RegistrerLektor_Optaget.o
  .data          0x00000000        0x0 RegistrerLektor_Optaget.o
  .bss           0x00000000        0x0 RegistrerLektor_Optaget.o
+ .text.skiftLEDTilstand_Optaget
+                0x00000000       0x16 RegistrerLektor_Optaget.o
  .text          0x00000000        0x0 RegistrerLektor_PaaKontor.o
  .data          0x00000000        0x0 RegistrerLektor_PaaKontor.o
  .bss           0x00000000        0x0 RegistrerLektor_PaaKontor.o
+ .text.skiftLEDTilstand_PaaKontor
+                0x00000000       0x20 RegistrerLektor_PaaKontor.o
  .text          0x00000000        0x0 Sensor.o
  .data          0x00000000        0x0 Sensor.o
  .bss           0x00000000        0x0 Sensor.o
@@ -63,6 +65,10 @@ Discarded input sections
  .text          0x00000000        0x0 ToggleSwitchLED.o
  .data          0x00000000        0x0 ToggleSwitchLED.o
  .bss           0x00000000        0x0 ToggleSwitchLED.o
+ .text.setToggleSwitchLED
+                0x00000000      0x2c2 ToggleSwitchLED.o
+ .progmem.gcc_sw_table.setToggleSwitchLED
+                0x00000000       0x18 ToggleSwitchLED.o
  COMMON         0x00000000        0x1 ToggleSwitchLED.o
  .text          0x00000000        0x0 zeroCrossDetector.o
  .data          0x00000000        0x0 zeroCrossDetector.o
@@ -272,7 +278,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x14a2
+.text           0x00000000     0x11a4
  *(.vectors)
  .vectors       0x00000000       0xe4 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -289,46 +295,44 @@ END GROUP
                 0x0000012c       0x18 ToggleSwitch.o
  .progmem.gcc_sw_table.initToggleSwitchLED
                 0x00000144       0x18 ToggleSwitchLED.o
- .progmem.gcc_sw_table.setToggleSwitchLED
-                0x0000015c       0x18 ToggleSwitchLED.o
-                0x00000174                . = ALIGN (0x2)
-                0x00000174                __trampolines_start = .
+                0x0000015c                . = ALIGN (0x2)
+                0x0000015c                __trampolines_start = .
  *(.trampolines)
- .trampolines   0x00000174        0x0 linker stubs
+ .trampolines   0x0000015c        0x0 linker stubs
  *(.trampolines*)
-                0x00000174                __trampolines_end = .
+                0x0000015c                __trampolines_end = .
  *libprintf_flt.a:*(.progmem.data)
  *libc.a:*(.progmem.data)
  *(.progmem*)
-                0x00000174                . = ALIGN (0x2)
+                0x0000015c                . = ALIGN (0x2)
  *(.jumptables)
  *(.jumptables*)
  *(.lowtext)
  *(.lowtext*)
-                0x00000174                __ctors_start = .
+                0x0000015c                __ctors_start = .
  *(.ctors)
-                0x00000174                __ctors_end = .
-                0x00000174                __dtors_start = .
+                0x0000015c                __ctors_end = .
+                0x0000015c                __dtors_start = .
  *(.dtors)
-                0x00000174                __dtors_end = .
+                0x0000015c                __dtors_end = .
  SORT(*)(.ctors)
  SORT(*)(.dtors)
  *(.init0)
- .init0         0x00000174        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x00000174                __init
+ .init0         0x0000015c        0x0 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x0000015c                __init
  *(.init0)
  *(.init1)
  *(.init1)
  *(.init2)
- .init2         0x00000174       0x10 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init2         0x0000015c       0x10 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  *(.init2)
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x00000184       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
-                0x00000184                __do_copy_data
- .init4         0x0000019e       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
-                0x0000019e                __do_clear_bss
+ .init4         0x0000016c       0x1a c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+                0x0000016c                __do_copy_data
+ .init4         0x00000186       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
+                0x00000186                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -339,158 +343,151 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x000001ae        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init9         0x00000196        0x6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  *(.init9)
  *(.text)
- .text          0x000001b4        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x000001b4                __vector_38
-                0x000001b4                __vector_22
-                0x000001b4                __vector_28
-                0x000001b4                __vector_32
-                0x000001b4                __vector_34
-                0x000001b4                __vector_24
-                0x000001b4                __vector_12
-                0x000001b4                __vector_55
-                0x000001b4                __vector_46
-                0x000001b4                __bad_interrupt
-                0x000001b4                __vector_6
-                0x000001b4                __vector_31
-                0x000001b4                __vector_35
-                0x000001b4                __vector_39
-                0x000001b4                __vector_3
-                0x000001b4                __vector_23
-                0x000001b4                __vector_30
-                0x000001b4                __vector_45
-                0x000001b4                __vector_25
-                0x000001b4                __vector_11
-                0x000001b4                __vector_54
-                0x000001b4                __vector_13
-                0x000001b4                __vector_17
-                0x000001b4                __vector_19
-                0x000001b4                __vector_56
-                0x000001b4                __vector_7
-                0x000001b4                __vector_49
-                0x000001b4                __vector_41
-                0x000001b4                __vector_43
-                0x000001b4                __vector_27
-                0x000001b4                __vector_5
-                0x000001b4                __vector_33
-                0x000001b4                __vector_47
-                0x000001b4                __vector_52
-                0x000001b4                __vector_37
-                0x000001b4                __vector_4
-                0x000001b4                __vector_44
-                0x000001b4                __vector_51
-                0x000001b4                __vector_9
-                0x000001b4                __vector_2
-                0x000001b4                __vector_21
-                0x000001b4                __vector_15
-                0x000001b4                __vector_36
-                0x000001b4                __vector_29
-                0x000001b4                __vector_40
-                0x000001b4                __vector_8
-                0x000001b4                __vector_26
-                0x000001b4                __vector_48
-                0x000001b4                __vector_14
-                0x000001b4                __vector_53
-                0x000001b4                __vector_10
-                0x000001b4                __vector_50
-                0x000001b4                __vector_16
-                0x000001b4                __vector_18
-                0x000001b4                __vector_42
-                0x000001b6                . = ALIGN (0x2)
+ .text          0x0000019c        0x2 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x0000019c                __vector_38
+                0x0000019c                __vector_22
+                0x0000019c                __vector_28
+                0x0000019c                __vector_32
+                0x0000019c                __vector_34
+                0x0000019c                __vector_24
+                0x0000019c                __vector_12
+                0x0000019c                __vector_55
+                0x0000019c                __vector_46
+                0x0000019c                __bad_interrupt
+                0x0000019c                __vector_6
+                0x0000019c                __vector_31
+                0x0000019c                __vector_35
+                0x0000019c                __vector_39
+                0x0000019c                __vector_3
+                0x0000019c                __vector_23
+                0x0000019c                __vector_30
+                0x0000019c                __vector_45
+                0x0000019c                __vector_25
+                0x0000019c                __vector_11
+                0x0000019c                __vector_54
+                0x0000019c                __vector_13
+                0x0000019c                __vector_17
+                0x0000019c                __vector_19
+                0x0000019c                __vector_56
+                0x0000019c                __vector_7
+                0x0000019c                __vector_49
+                0x0000019c                __vector_41
+                0x0000019c                __vector_43
+                0x0000019c                __vector_27
+                0x0000019c                __vector_5
+                0x0000019c                __vector_33
+                0x0000019c                __vector_47
+                0x0000019c                __vector_52
+                0x0000019c                __vector_37
+                0x0000019c                __vector_4
+                0x0000019c                __vector_44
+                0x0000019c                __vector_51
+                0x0000019c                __vector_9
+                0x0000019c                __vector_2
+                0x0000019c                __vector_21
+                0x0000019c                __vector_15
+                0x0000019c                __vector_36
+                0x0000019c                __vector_29
+                0x0000019c                __vector_40
+                0x0000019c                __vector_8
+                0x0000019c                __vector_26
+                0x0000019c                __vector_48
+                0x0000019c                __vector_14
+                0x0000019c                __vector_53
+                0x0000019c                __vector_10
+                0x0000019c                __vector_50
+                0x0000019c                __vector_16
+                0x0000019c                __vector_18
+                0x0000019c                __vector_42
+                0x0000019e                . = ALIGN (0x2)
  *(.text.*)
  .text.opdaterKommando
-                0x000001b6      0x192 X10_Master.o
-                0x000001b6                opdaterKommando
+                0x0000019e      0x192 X10_Master.o
+                0x0000019e                opdaterKommando
  .text.start1msDelay
-                0x00000348       0x24 X10_Master.o
-                0x00000348                start1msDelay
+                0x00000330       0x24 X10_Master.o
+                0x00000330                start1msDelay
  .text.sendBurst
-                0x0000036c       0x10 X10_Master.o
-                0x0000036c                sendBurst
+                0x00000354       0x10 X10_Master.o
+                0x00000354                sendBurst
  .text.ventPaaZC
-                0x0000037c       0x16 X10_Master.o
-                0x0000037c                ventPaaZC
+                0x00000364       0x16 X10_Master.o
+                0x00000364                ventPaaZC
  .text.initBurst
-                0x00000392       0x10 X10_Master.o
-                0x00000392                initBurst
+                0x0000037a       0x10 X10_Master.o
+                0x0000037a                initBurst
  .text.start100usDelay
-                0x000003a2       0x24 X10_Master.o
-                0x000003a2                start100usDelay
+                0x0000038a       0x24 X10_Master.o
+                0x0000038a                start100usDelay
  .text.sendCharX10
-                0x000003c6       0x22 X10_Master.o
-                0x000003c6                sendCharX10
- .text.main     0x000003e8       0x90 LEKTOR_MIKROCONTROLLER.o
-                0x000003e8                main
+                0x000003ae       0x22 X10_Master.o
+                0x000003ae                sendCharX10
+ .text.main     0x000003d0       0x92 LEKTOR_MIKROCONTROLLER.o
+                0x000003d0                main
+ .text.freePtr  0x00000462        0xc Manchester.o
+                0x00000462                freePtr
  .text.stringToManchester
-                0x00000478      0x118 Manchester.o
-                0x00000478                stringToManchester
- .text.skiftLEDTilstand_Optaget
-                0x00000590       0x12 RegistrerLektor_Optaget.o
-                0x00000590                skiftLEDTilstand_Optaget
+                0x0000046e      0x118 Manchester.o
+                0x0000046e                stringToManchester
  .text.lektorStatus_Optaget
-                0x000005a2       0x18 RegistrerLektor_Optaget.o
-                0x000005a2                lektorStatus_Optaget
- .text.skiftLEDTilstand_PaaKontor
-                0x000005ba       0x1a RegistrerLektor_PaaKontor.o
-                0x000005ba                skiftLEDTilstand_PaaKontor
+                0x00000586       0x14 RegistrerLektor_Optaget.o
+                0x00000586                lektorStatus_Optaget
  .text.lektorStatus_PaaKontor
-                0x000005d4       0x18 RegistrerLektor_PaaKontor.o
-                0x000005d4                lektorStatus_PaaKontor
+                0x0000059a       0x14 RegistrerLektor_PaaKontor.o
+                0x0000059a                lektorStatus_PaaKontor
  .text.initSensor
-                0x000005ec      0x194 Sensor.o
-                0x000005ec                initSensor
+                0x000005ae      0x194 Sensor.o
+                0x000005ae                initSensor
  .text.kontorStatus
-                0x00000780      0x176 Sensor.o
-                0x00000780                kontorStatus
+                0x00000742      0x176 Sensor.o
+                0x00000742                kontorStatus
  .text.returnerTimerStatus
-                0x000008f6       0x18 Timer.o
-                0x000008f6                returnerTimerStatus
+                0x000008b8       0x18 Timer.o
+                0x000008b8                returnerTimerStatus
  .text.resetTimer
-                0x0000090e       0x16 Timer.o
-                0x0000090e                resetTimer
+                0x000008d0       0x16 Timer.o
+                0x000008d0                resetTimer
  .text.setTimer
-                0x00000924       0x2e Timer.o
-                0x00000924                setTimer
+                0x000008e6       0x2e Timer.o
+                0x000008e6                setTimer
  .text.__vector_20
-                0x00000952       0x82 Timer.o
-                0x00000952                __vector_20
+                0x00000914       0x82 Timer.o
+                0x00000914                __vector_20
  .text.initToggleSwitch
-                0x000009d4      0x198 ToggleSwitch.o
-                0x000009d4                initToggleSwitch
+                0x00000996      0x198 ToggleSwitch.o
+                0x00000996                initToggleSwitch
  .text.toggleSwitchStatus
-                0x00000b6c      0x226 ToggleSwitch.o
-                0x00000b6c                toggleSwitchStatus
+                0x00000b2e      0x226 ToggleSwitch.o
+                0x00000b2e                toggleSwitchStatus
  .text.initToggleSwitchLED
-                0x00000d92      0x182 ToggleSwitchLED.o
-                0x00000d92                initToggleSwitchLED
- .text.setToggleSwitchLED
-                0x00000f14      0x2c0 ToggleSwitchLED.o
-                0x00000f14                setToggleSwitchLED
+                0x00000d54      0x182 ToggleSwitchLED.o
+                0x00000d54                initToggleSwitchLED
  .text.initZCDetector
-                0x000011d4        0xe zeroCrossDetector.o
-                0x000011d4                initZCDetector
+                0x00000ed6        0xe zeroCrossDetector.o
+                0x00000ed6                initZCDetector
  .text.__vector_1
-                0x000011e2       0x28 zeroCrossDetector.o
-                0x000011e2                __vector_1
- .text.libgcc   0x0000120a       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
-                0x0000120a                __tablejump2__
+                0x00000ee4       0x28 zeroCrossDetector.o
+                0x00000ee4                __vector_1
+ .text.libgcc   0x00000f0c       0x10 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_tablejump2.o)
+                0x00000f0c                __tablejump2__
  .text.avr-libc
-                0x0000121a       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(calloc.o)
-                0x0000121a                calloc
+                0x00000f1c       0x34 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(calloc.o)
+                0x00000f1c                calloc
  .text.avr-libc
-                0x0000124e      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
-                0x0000124e                malloc
-                0x0000137e                free
+                0x00000f50      0x242 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
+                0x00000f50                malloc
+                0x00001080                free
  .text.avr-libc
-                0x00001490        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memset.o)
-                0x00001490                memset
-                0x0000149e                . = ALIGN (0x2)
+                0x00001192        0xe c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(memset.o)
+                0x00001192                memset
+                0x000011a0                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x0000149e        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x0000149e                _exit
-                0x0000149e                exit
+ .fini9         0x000011a0        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x000011a0                _exit
+                0x000011a0                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -509,11 +506,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x0000149e        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x000011a0        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000014a2                _etext = .
+                0x000011a4                _etext = .
 
-.data           0x00800200        0xa load address 0x000014a2
+.data           0x00800200        0xa load address 0x000011a4
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  .data          0x00800200        0x6 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(malloc.o)
@@ -537,27 +534,28 @@ END GROUP
                 0x0080020a                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.state     0x0080020a        0x2 X10_Master.o
+ .bss.lektorGone_
+                0x0080020a        0x2 X10_Master.o
+ .bss.state     0x0080020c        0x2 X10_Master.o
  .bss.manchesterPtr
-                0x0080020c        0x2 Manchester.o
- .bss.pin_      0x0080020e        0x2 Sensor.o
+                0x0080020e        0x2 Manchester.o
+ .bss.pin_      0x00800210        0x2 Sensor.o
  .bss.register_
-                0x00800210        0x1 Sensor.o
+                0x00800212        0x1 Sensor.o
  .bss.timerStatus_
-                0x00800211        0x2 Timer.o
-                0x00800211                timerStatus_
- .bss.ctr_      0x00800213        0x2 Timer.o
-                0x00800213                ctr_
- .bss.pin_      0x00800215        0x2 ToggleSwitch.o
+                0x00800213        0x2 Timer.o
+                0x00800213                timerStatus_
+ .bss.ctr_      0x00800215        0x2 Timer.o
+                0x00800215                ctr_
+ .bss.pin_      0x00800217        0x2 ToggleSwitch.o
  .bss.register_
-                0x00800217        0x1 ToggleSwitch.o
- .bss.pin_      0x00800218        0x2 ToggleSwitchLED.o
+                0x00800219        0x1 ToggleSwitch.o
+ .bss.pin_      0x0080021a        0x2 ToggleSwitchLED.o
  .bss.register_
-                0x0080021a        0x1 ToggleSwitchLED.o
+                0x0080021c        0x1 ToggleSwitchLED.o
  *(COMMON)
- COMMON         0x0080021b        0x8 X10_Master.o
-                0x0080021b                lektortilStede_
-                0x0080021c                lektorGone_
+ COMMON         0x0080021d        0x6 X10_Master.o
+                0x0080021d                lektortilStede_
                 0x0080021e                lektorOptaget_
                 0x0080021f                ZCDetected_
                 0x00800221                aendring_
@@ -568,8 +566,8 @@ END GROUP
                 0x00800224                __brkval
                 0x00800226                __flp
                 0x00800228                PROVIDE (__bss_end, .)
-                0x000014a2                __data_load_start = LOADADDR (.data)
-                0x000014ac                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x000011a4                __data_load_start = LOADADDR (.data)
+                0x000011ae                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800228        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -677,47 +675,47 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1a0e
+.debug_info     0x00000000     0x1a04
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x26c X10_Master.o
- .debug_info    0x00000e28      0x2c7 LEKTOR_MIKROCONTROLLER.o
- .debug_info    0x000010ef      0x221 Manchester.o
- .debug_info    0x00001310      0x102 RegistrerLektor_Optaget.o
- .debug_info    0x00001412      0x11e RegistrerLektor_PaaKontor.o
- .debug_info    0x00001530       0xfd Sensor.o
- .debug_info    0x0000162d      0x108 Timer.o
- .debug_info    0x00001735      0x109 ToggleSwitch.o
- .debug_info    0x0000183e      0x11a ToggleSwitchLED.o
- .debug_info    0x00001958       0xb6 zeroCrossDetector.o
+ .debug_info    0x00000bbc      0x26b X10_Master.o
+ .debug_info    0x00000e27      0x2dd LEKTOR_MIKROCONTROLLER.o
+ .debug_info    0x00001104      0x221 Manchester.o
+ .debug_info    0x00001325       0xf0 RegistrerLektor_Optaget.o
+ .debug_info    0x00001415      0x111 RegistrerLektor_PaaKontor.o
+ .debug_info    0x00001526       0xfd Sensor.o
+ .debug_info    0x00001623      0x108 Timer.o
+ .debug_info    0x0000172b      0x109 ToggleSwitch.o
+ .debug_info    0x00001834      0x11a ToggleSwitchLED.o
+ .debug_info    0x0000194e       0xb6 zeroCrossDetector.o
 
-.debug_abbrev   0x00000000     0x1229
+.debug_abbrev   0x00000000     0x1230
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_abbrev  0x00000b1a       0xe3 X10_Master.o
  .debug_abbrev  0x00000bfd       0xf9 LEKTOR_MIKROCONTROLLER.o
  .debug_abbrev  0x00000cf6       0xfd Manchester.o
  .debug_abbrev  0x00000df3       0x90 RegistrerLektor_Optaget.o
- .debug_abbrev  0x00000e83       0x96 RegistrerLektor_PaaKontor.o
- .debug_abbrev  0x00000f19       0xa5 Sensor.o
- .debug_abbrev  0x00000fbe       0xa4 Timer.o
- .debug_abbrev  0x00001062       0xb0 ToggleSwitch.o
- .debug_abbrev  0x00001112       0x98 ToggleSwitchLED.o
- .debug_abbrev  0x000011aa       0x7f zeroCrossDetector.o
+ .debug_abbrev  0x00000e83       0x9d RegistrerLektor_PaaKontor.o
+ .debug_abbrev  0x00000f20       0xa5 Sensor.o
+ .debug_abbrev  0x00000fc5       0xa4 Timer.o
+ .debug_abbrev  0x00001069       0xb0 ToggleSwitch.o
+ .debug_abbrev  0x00001119       0x98 ToggleSwitchLED.o
+ .debug_abbrev  0x000011b1       0x7f zeroCrossDetector.o
 
-.debug_line     0x00000000     0x143e
+.debug_line     0x00000000     0x1430
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1f9 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_line    0x000001f9      0x399 X10_Master.o
- .debug_line    0x00000592      0x18b LEKTOR_MIKROCONTROLLER.o
- .debug_line    0x0000071d      0x22b Manchester.o
- .debug_line    0x00000948       0xce RegistrerLektor_Optaget.o
- .debug_line    0x00000a16       0xe5 RegistrerLektor_PaaKontor.o
- .debug_line    0x00000afb      0x22f Sensor.o
- .debug_line    0x00000d2a      0x126 Timer.o
- .debug_line    0x00000e50      0x2c4 ToggleSwitch.o
- .debug_line    0x00001114      0x237 ToggleSwitchLED.o
- .debug_line    0x0000134b       0xf3 zeroCrossDetector.o
+ .debug_line    0x00000592      0x195 LEKTOR_MIKROCONTROLLER.o
+ .debug_line    0x00000727      0x22b Manchester.o
+ .debug_line    0x00000952       0xc2 RegistrerLektor_Optaget.o
+ .debug_line    0x00000a14       0xd9 RegistrerLektor_PaaKontor.o
+ .debug_line    0x00000aed      0x22f Sensor.o
+ .debug_line    0x00000d1c      0x126 Timer.o
+ .debug_line    0x00000e42      0x2c4 ToggleSwitch.o
+ .debug_line    0x00001106      0x237 ToggleSwitchLED.o
+ .debug_line    0x0000133d       0xf3 zeroCrossDetector.o
 
 .debug_frame    0x00000000      0x374
  *(.debug_frame)
@@ -737,9 +735,9 @@ END GROUP
  .debug_str     0x00000000      0x3e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.2.132/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .debug_str     0x000003e6      0x24d X10_Master.o
                                 0x28f (size before relaxing)
- .debug_str     0x00000633       0xdb LEKTOR_MIKROCONTROLLER.o
-                                0x2d9 (size before relaxing)
- .debug_str     0x0000070e       0x6a Manchester.o
+ .debug_str     0x00000633       0xe3 LEKTOR_MIKROCONTROLLER.o
+                                0x2e1 (size before relaxing)
+ .debug_str     0x00000716       0x62 Manchester.o
                                 0x1b8 (size before relaxing)
  .debug_str     0x00000778       0x5e RegistrerLektor_Optaget.o
                                 0x205 (size before relaxing)

@@ -14,7 +14,8 @@
 
  volatile static int state;
  volatile static int firstCheck = 1;
- volatile int lektorGone_;
+ volatile static int lektorGone_;
+
  void opdaterKommando()
  {
 	 if ((lektorOptaget_ == '0') && (lektortilStede_ == '0'))

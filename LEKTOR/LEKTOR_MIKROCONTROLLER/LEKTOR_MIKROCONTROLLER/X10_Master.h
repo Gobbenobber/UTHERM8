@@ -8,8 +8,6 @@
 #pragma once
 #include "avr/interrupt.h"
 #include "avr/io.h"
-#define PORT  PORTH
-#define PINNR 6
 volatile unsigned char COMMAND;
 volatile char aendring_;
 
